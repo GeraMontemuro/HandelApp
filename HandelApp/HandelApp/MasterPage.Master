@@ -8,16 +8,85 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        footer {
+            background-color: #333;
+            color: chocolate;
+            padding: 20px;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .custom-heading {
+            font-family: inherit;
+            font-weight: bold;
+            text-align: center;
+            color: aquamarine;
+            font-family: inherit;
+        }
+
+        #sidebar {
+            position: fixed;
+            margin-left: 0px;
+            width: 115px;
+            background-color: #333;
+            color: #fff;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+            #sidebar a:hover {
+                background-color: #555;
+            }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <%--<a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>--%>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">                        
+                        <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
+                        <label for="ddlMarca" class="form-label">BIENVENIDO MENGANITO</label>                       
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div id="sidebar">
 
-        <div class="container">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <br />
+            <a class="nav-link" href="Inicio.aspx">INICIO</a>
+            <a class="nav-link" href="Productos.aspx">PRODUCTOS</a>
+            <a class="nav-link" href="Vender.aspx">VENDER</a>
+            <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
+            <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
+            <asp:Button ID="btnSalir" runat="server" Text="Button" OnClick="btnSalir_Click" />
+            <%--
+            BUTTON<label for="ddlSalir" class="form-label">SALIR</label>--%>
+            
         </div>
-        
+
+            <div class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
     </form>
 </body>
 </html>
