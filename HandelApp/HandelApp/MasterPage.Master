@@ -64,7 +64,8 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">                        
                         <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
-                        <label for="ddlMarca" class="form-label">BIENVENIDO MENGANITO</label>                       
+                        <label for="ddlMarca" class="form-label">BIENVENIDO MENGANITO</label>     
+                        <label for="ddlMarca" class="form-label">BIENVENIDO LALALA</label>    
                     </div>
                 </div>
             </div>
