@@ -15,9 +15,9 @@ namespace HandelApp
             
         }
 
-        protected void btnSalir_Click(object sender, EventArgs e)
+        protected void BtnSalir_Click(object sender, EventArgs e)
         {
-            //Cierre la ventana en ejecucion.
+            Response.Redirect("Inicio.aspx"); //vuelve siemmpre a inicio
         }
     }
 }

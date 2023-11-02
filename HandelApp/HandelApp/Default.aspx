@@ -24,7 +24,7 @@
                         <label for="contraseña">Contraseña</label>
                         <input type="password" id="contraseña" name="contraseña" required/>
                     </div>
-                    <asp:Button Text="Inica sesión" runat="server" onclick="Logearse"/>                    
+                    //<asp:Button Text="Inica sesión" runat="server" onclick="Logearse"/>                    
                 </form>
             </div>
         </div>

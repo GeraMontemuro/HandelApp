@@ -78,9 +78,8 @@
             <a class="nav-link" href="Vender.aspx">VENDER</a>
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
-            <asp:Button ID="btnSalir" runat="server" Text="Button" OnClick="btnSalir_Click" />
-            <%--
-            BUTTON<label for="ddlSalir" class="form-label">SALIR</label>--%>
+            <asp:Button ID="btnSalir" runat="server" Text="Button" OnClick="BtnSalir_Click" />
+            
             
         </div>
 
