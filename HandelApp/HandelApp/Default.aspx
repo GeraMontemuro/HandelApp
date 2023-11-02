@@ -15,7 +15,7 @@
         <div class="right">
             <div class="login-box">
                 <h2>Iniciar sesión</h2>
-                <form method="post" action="Login.aspx">
+                <form method="post" runat="server" action="Login.aspx">
                     <div class="input-container">
                         <label for="usuario">Usuario</label>
                         <input type="text" id="usuario" name="usuario" required/>
@@ -24,7 +24,7 @@
                         <label for="contraseña">Contraseña</label>
                         <input type="password" id="contraseña" name="contraseña" required/>
                     </div>
-                    <input type="submit" value="Iniciar sesión" />
+                    <asp:Button Text="Inica sesión" runat="server" onclick="Logearse"/>                    
                 </form>
             </div>
         </div>
