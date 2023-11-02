@@ -14,9 +14,6 @@ namespace HandelApp
 
         }
 
-        protected void Logearse(object sender, EventArgs e)
-        {
-            Response.Redirect("Inicio.aspx");
-        }
+       
     }
 }
