@@ -9,17 +9,17 @@
         <div class="row align-items-start">
             <div class="col">
                 <button class="btnAcciones">
-                    <img src="Logos/logo.png" alt="...">
+                    <img src="Logos/Logo.jpg" alt="...">
                 </button>
             </div>
             <div class="col">
                 <button class="btnAcciones">
-                    <img src="Logos/logo.png" alt="...">
+                    <img src="Logos/Logo.jpg" alt="...">
                 </button>
             </div>
             <div class="col">
                 <button class="btnAcciones">
-                    <img src="Logos/logo.png" alt="...">
+                    <img src="Logos/Logo.jpg" alt="...">
                 </button>
             </div>
         </div>
