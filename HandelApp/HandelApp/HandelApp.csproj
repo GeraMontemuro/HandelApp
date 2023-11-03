@@ -72,6 +72,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Logos\Logo.jpg" />
+    <Content Include="Logos\logoSolo.png" />
     <Content Include="Productos.aspx" />
     <Content Include="Styles.css" />
     <Content Include="Usuarios.aspx" />

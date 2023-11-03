@@ -12,19 +12,23 @@
         <div class="left">
             <img src="Logos/Logo.jpg" alt="Logo" />
         </div>
+
         <div class="right">
             <div class="login-box">
                 <h2>Iniciar sesión</h2>
+
                 <form method="post" action="Inicio.aspx">
                     <div class="input-container">
                         <label for="usuario">Usuario</label>
                         <input type="text" id="usuario" name="usuario" required/>
                     </div>
+
                     <div class="input-container">
                         <label for="contraseña">Contraseña</label>
                         <input type="password" id="contraseña" name="contraseña" required/>
                     </div>
-                        <input type="submit" value="Iniciar sesión"/>                  
+
+                    <input type="submit" value="Iniciar sesión"/>                  
                 </form>
             </div>
         </div>
