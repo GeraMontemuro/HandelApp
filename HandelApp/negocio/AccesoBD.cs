@@ -23,7 +23,7 @@ namespace negocio
 
         public AccesoBD()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=HandelApp_data; integrated security=true;");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=HandelApp; integrated security=true;");
             comando = new SqlCommand();
         }
 
