@@ -13,9 +13,9 @@ namespace HandelApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MarcaNegocio marcaNegocio = new MarcaNegocio();
-            List<Marca> lista = new List<Marca>();
-            lista=marcaNegocio.listar();          
+            ProductoNegocio ProductoNegocio = new ProductoNegocio();
+            List<Producto> lista = new List<Producto>();
+            lista = ProductoNegocio.listarconSp();         
 
             dgvVentas.DataSource = lista;
             dgvVentas.DataBind();

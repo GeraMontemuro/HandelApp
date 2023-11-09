@@ -46,5 +46,20 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void alta(Proveedor nuevo)
+        {
+            /// ventana de carga de producto, guardo en un objeto producto del back y llamo a la funcion en el onclick de aceptar
+        }
+
+
+        public void modificar(Proveedor nuevo)
+        {
+            /// selecciono el row o el id del dgv 
+        }
+
+        public void baja(Proveedor nuevo)
+        {
+            /// ver si usamos baja fisica o logica.
+        }
     }
 }
