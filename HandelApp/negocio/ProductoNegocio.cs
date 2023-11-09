@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using dominio;
+using System.Data;
+using System.Reflection;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.ComponentModel.Design;
+using System.Collections;
 
 namespace negocio
 {
@@ -17,22 +24,32 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("SP_listarProducto");
-                datos.setearConsulta("select Codigo as NCodigo, Marcas as N_Marca, Categorias as N_Categoria, StockTotal as Stock, StockMinimo as N_stockMi, PrecioVenta as Precio, PrecioCompra as N_PrecioCompra, Descripcion from Producto");
+                datos.setearConsulta("select P.Codigo, P.Marcas as Marcas, M.Descripcion as MDes, P.Categorias as Categorias, C.Descripcion as CDes, P.StockTotal, P.StockMinimo, \r\nP.PrecioVenta, P.PrecioCompra, P.Descripcion from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read()){
 
                     Producto ProdAux = new Producto();
-                    ProdAux.MarcProducto = new Marca();
-                    ProdAux.CatProducto = new Categoria();
+                    ProdAux.Marca = new Marca();
+                    ProdAux.Categoria = new Categoria();
 
-                    ProdAux.Codigo = (int)datos.Lector["NCodigo"];
-                    ProdAux.MarcProducto.ID= (int)datos.Lector["N_Marcas"];
-                    ProdAux.CatProducto.Id = (int)datos.Lector["N_Categorias"];
-                    ProdAux.StockTotal = (int)datos.Lector["Stock"];
-                   // ProdAux.StockMinimo = (int)datos.Lector["StockMinimo"];
-                    ProdAux.PrecioVenta = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("Precio"));
-                    ProdAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("N_PrecioCompra"));
+                    ProdAux.Codigo = (long)datos.Lector["Codigo"];
+                    ProdAux.Marca.ID= (int)datos.Lector["Marcas"];
+                    if (!(datos.Lector["Marcas"] is DBNull))
+                    {
+                        ProdAux.Marca.Descripcion = (string)datos.Lector["MDes"];
+                    }
+                    else { ProdAux.Marca.Descripcion = "No tiene"; }
+                    ProdAux.Categoria.Id = (int)datos.Lector["Categorias"];
+                    if (!(datos.Lector["Categorias"] is DBNull))
+                    {
+                        ProdAux.Categoria.Descripcion = (string)datos.Lector["CDes"];
+                    }
+                    else { ProdAux.Categoria.Descripcion = "No tiene"; }
+                    ProdAux.StockTotal = (long)datos.Lector["StockTotal"];
+                    ProdAux.StockMinimo = (byte)datos.Lector["StockMinimo"];
+                    ProdAux.PrecioVenta = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioVenta"));
+                    ProdAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioCompra"));
                     ProdAux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     listaaux.Add(ProdAux);
