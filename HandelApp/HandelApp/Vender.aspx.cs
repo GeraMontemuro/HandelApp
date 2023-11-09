@@ -11,7 +11,7 @@ namespace HandelApp
 {
     public partial class Vender : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio ProductoNegocio = new ProductoNegocio();
             List<Producto> lista = new List<Producto>();

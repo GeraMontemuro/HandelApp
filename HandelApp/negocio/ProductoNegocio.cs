@@ -17,7 +17,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("SP_listarProducto");
-                datos.setearConsulta("select Codigo, Marcas, Categorias, StockTotal, StockMinimo, PrecioVenta, PrecioCompra, Descripcion from Producto");
+                datos.setearConsulta("select Codigo as NCodigo, Marcas as N_Marca, Categorias as N_Categoria, StockTotal as Stock, StockMinimo as N_stockMi, PrecioVenta as Precio, PrecioCompra as N_PrecioCompra, Descripcion from Producto");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read()){
@@ -26,13 +26,13 @@ namespace negocio
                     ProdAux.MarcProducto = new Marca();
                     ProdAux.CatProducto = new Categoria();
 
-                    //ProdAux.Codigo = (int)datos.Lector["Codigo"];
-                    ProdAux.MarcProducto.ID= (int)datos.Lector["Marcas"];
-                    ProdAux.CatProducto.Id = (int)datos.Lector["Categorias"];
-                    //ProdAux.StockTotal = (int)datos.Lector["StockTotal"];
+                    ProdAux.Codigo = (int)datos.Lector["NCodigo"];
+                    ProdAux.MarcProducto.ID= (int)datos.Lector["N_Marcas"];
+                    ProdAux.CatProducto.Id = (int)datos.Lector["N_Categorias"];
+                    ProdAux.StockTotal = (int)datos.Lector["Stock"];
                    // ProdAux.StockMinimo = (int)datos.Lector["StockMinimo"];
-                    ProdAux.PrecioVenta = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioVenta"));
-                    ProdAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioCompra"));
+                    ProdAux.PrecioVenta = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("Precio"));
+                    ProdAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("N_PrecioCompra"));
                     ProdAux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     listaaux.Add(ProdAux);
