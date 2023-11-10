@@ -6,7 +6,9 @@
     
     <asp:GridView ID="dgvVentas" runat="server" CssClass="table" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged">
         <Columns>
-            <asp:BoundField HeaderText="Id" DataField="Codigo" />
+            <asp:BoundField HeaderText="Id" DataField="IDProducto" />
+            <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
+            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
             <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
             <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />

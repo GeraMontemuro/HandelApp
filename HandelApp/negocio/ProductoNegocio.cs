@@ -24,7 +24,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("SP_listarProducto");
-                datos.setearConsulta("select P.Codigo, P.Marcas as Marcas, M.Descripcion as MDes, P.Categorias as Categorias, C.Descripcion as CDes, P.StockTotal, P.StockMinimo, \r\nP.PrecioVenta, P.PrecioCompra, P.Descripcion from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
+                datos.setearConsulta("select P.Nombre,P.Descripcion,P.Codigo, P.Marcas, M.Descripcion, P.Categorias, C.Descripcion, P.StockTotal, P.StockMinimo, \r\nP.PrecioVenta, P.PrecioCompra from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read()){
@@ -33,7 +33,10 @@ namespace negocio
                     ProdAux.Marca = new Marca();
                     ProdAux.Categoria = new Categoria();
 
-                    ProdAux.Codigo = (long)datos.Lector["Codigo"];
+                    ProdAux.IdProducto = (int)datos.Lector["IdProducto"];
+                    ProdAux.Codigo = (string)datos.Lector["Codigo"];
+                    ProdAux.Nombre = (string)datos.Lector["Nombre"];
+                    ProdAux.Descripcion = (string)datos.Lector["Descripcion"];
                     ProdAux.Marca.ID= (int)datos.Lector["Marcas"];
                     if (!(datos.Lector["Marcas"] is DBNull))
                     {
@@ -46,11 +49,10 @@ namespace negocio
                         ProdAux.Categoria.Descripcion = (string)datos.Lector["CDes"];
                     }
                     else { ProdAux.Categoria.Descripcion = "No tiene"; }
-                    ProdAux.StockTotal = (long)datos.Lector["StockTotal"];
-                    ProdAux.StockMinimo = (byte)datos.Lector["StockMinimo"];
+                    ProdAux.StockTotal = (int)datos.Lector["StockTotal"];
+                    ProdAux.StockMinimo = (int)datos.Lector["StockMinimo"];
                     ProdAux.PrecioVenta = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioVenta"));
                     ProdAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioCompra"));
-                    ProdAux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     listaaux.Add(ProdAux);
 
