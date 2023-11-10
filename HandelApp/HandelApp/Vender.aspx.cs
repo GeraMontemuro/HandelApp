@@ -13,17 +13,7 @@ namespace HandelApp
     {
         public void Page_Load(object sender, EventArgs e)
         {
-            ProductoNegocio ProductoNegocio = new ProductoNegocio();
-            List<Producto> lista = new List<Producto>();
-            lista = ProductoNegocio.listarconSp();         
-
-            dgvVentas.DataSource = lista;
-            dgvVentas.DataBind();
         }
 
-        protected void dgvVentas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

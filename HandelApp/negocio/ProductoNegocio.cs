@@ -24,7 +24,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("SP_listarProducto");
-                datos.setearConsulta("select P.Codigo, P.Nombre, P.Descripcion, P.Marcas, M.Descripcion as MDes, P.Categorias, C.Descripcion as CDes, P.StockTotal, P.StockMinimo, \r\nP.PrecioVenta, P.PrecioCompra from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
+                datos.setearConsulta("select P.IDProducto, P.Codigo, P.Nombre, P.Descripcion, P.Marcas, M.Descripcion as MDes, P.Categorias, C.Descripcion as CDes, P.StockTotal, P.StockMinimo, \r\nP.PrecioVenta, P.PrecioCompra from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read()){
@@ -33,7 +33,7 @@ namespace negocio
                     ProdAux.Marca = new Marca();
                     ProdAux.Categoria = new Categoria();
 
-                    //ProdAux.IdProducto = (int)datos.Lector["IdProducto"];
+                    ProdAux.IdProducto = (int)datos.Lector["IdProducto"];
                     ProdAux.Codigo = (string)datos.Lector["Codigo"];
                     ProdAux.Nombre = (string)datos.Lector["Nombre"];
                     ProdAux.Descripcion = (string)datos.Lector["Descripcion"];
