@@ -27,7 +27,7 @@
         <asp:TemplateField HeaderText="Acciones">
             <ItemTemplate>
                 <asp:LinkButton runat="server" CommandName="Edit">
-                    <asp:Image runat="server" class="pequeña"  src="Logos/pencil.jpg" AlternateText=" " />
+                    <asp:Image runat="server" class="pequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
                 </asp:LinkButton>
                 <asp:LinkButton runat="server" CommandName="Edit">
                     <asp:Image runat="server" AlternateText="tacho" /> </asp:LinkButton>
@@ -42,6 +42,7 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Producto</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    
                 </div>
                 <div class="modal-body">
                     <div style="margin-bottom: 10px;">

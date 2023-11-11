@@ -22,5 +22,7 @@ namespace HandelApp
             dgvProductos.DataBind();
 
         }
+
+
     }
 }
