@@ -7,13 +7,16 @@
         >
     <Columns>
         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-        <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
-        <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
+        <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
         <asp:BoundField headerText="Precio" DataField="Precio" DataFormatString="{0:C}" />
         <asp:CommandField ShowSelectButton="true" SelectText="Eliminar Producto" HeaderText="Acción" /> 
+        
 
     </Columns>
+      
+         
 </asp:GridView> 
+        <asp:Button runat="server" Text="Button"  OnClick="BtnFactura_Click"/>
 
 
 </asp:Content>

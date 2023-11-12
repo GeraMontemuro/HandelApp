@@ -47,5 +47,11 @@ namespace HandelApp
 
 
         }
+
+        public void BtnFactura_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Factura.aspx"); 
+        }
+
     }
 }
