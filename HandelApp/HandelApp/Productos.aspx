@@ -3,12 +3,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+    <script type="text/javascript">
+        function confirmarEliminar() {
+            return confirm('¿Estás seguro de que deseas eliminar este producto?');
+        }
+    </script>
+
     <h1>PRODUCTOS  </h1>
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Producto</button>
 
 
-    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" DataKeyNames="IDProducto">
+    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProductos_RowCommand">
 
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="IDProducto" />
@@ -24,11 +31,15 @@
 
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
-                    <asp:LinkButton runat="server" CommandName="Edit">
-                    <asp:Image runat="server" class="pequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
+
+                    <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
+                    <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
-                    <asp:LinkButton runat="server" CommandName="Edit">
-                    <asp:Image runat="server" AlternateText="tacho" /> </asp:LinkButton>
+
+                    <%-- <asp:LinkButton runat="server" CommandName="Edit">
+                    <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
+                    </asp:LinkButton>--%>
+
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

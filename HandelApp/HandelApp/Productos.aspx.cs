@@ -70,7 +70,7 @@ namespace HandelApp
 
                 auxProdNegocio.alta(producto);
                 Response.Redirect("Productos.aspx");
-                lblMensaje.Text = "Ingresa un precio en números por favor";
+                lblMensaje.Text = "Producto agregado con éxito";
 
 
             }
@@ -90,6 +90,31 @@ namespace HandelApp
             {
                 // lblMensaje.Text = ex.ToString();
                 
+            }
+        }
+
+        protected void dgvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "Eliminar")
+            {
+
+                ProductoNegocio ProdAEliminar = new ProductoNegocio();
+                try
+                {
+                    ProdAEliminar.baja(id);
+                    Response.Redirect("Productos.aspx");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            else if (e.CommandName == "Editar")
+            {
+
             }
         }
     }

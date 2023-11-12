@@ -74,6 +74,7 @@
     <Content Include="Logos\Logo.jpg" />
     <Content Include="Logos\logoSolo.png" />
     <Content Include="Logos\pencil.jpg" />
+    <Content Include="Logos\trash.jpg" />
     <Content Include="Productos.aspx" />
     <Content Include="Styles.css" />
     <Content Include="Usuarios.aspx" />

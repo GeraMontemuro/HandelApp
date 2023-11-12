@@ -106,9 +106,20 @@ namespace negocio
             /// selecciono el row o el id del dgv 
         }
 
-        public void baja(Producto nuevo)
+        public void baja(int id)
         {
-            /// ver si usamos baja fisica o logica.
+            try
+            {
+                AccesoBD accesoBD = new AccesoBD();
+
+                accesoBD.setearConsulta("delete from Producto where IdProducto = @id");
+                accesoBD.setearParametro("@id", id);
+                accesoBD.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
