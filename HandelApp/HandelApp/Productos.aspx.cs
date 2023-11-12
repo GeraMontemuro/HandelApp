@@ -2,6 +2,7 @@
 using negocio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,36 +15,37 @@ namespace HandelApp
         Producto producto = new Producto();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ProductoNegocio ProductoNegocio = new ProductoNegocio();
+                List<Producto> lista = new List<Producto>();
+                lista = ProductoNegocio.listarconSp();
 
-            ProductoNegocio ProductoNegocio = new ProductoNegocio();
-            List<Producto> lista = new List<Producto>();
-            lista = ProductoNegocio.listarconSp();
+                Marca marcaaux = new Marca();
+                MarcaNegocio marNegAux = new MarcaNegocio();
+                List<Marca> listaMarcas = new List<Marca>();
 
-            Marca marcaaux = new Marca();
-            MarcaNegocio marNegAux = new MarcaNegocio();
-            List<Marca> listaMarcas = new List<Marca>();
+                Categoria categoriaaux = new Categoria();
+                CategoriaNegocio catNegAux = new CategoriaNegocio();
+                List<Categoria> listaCategorias = new List<Categoria>();
 
-            Categoria categoriaaux = new Categoria();
-            CategoriaNegocio catNegAux = new CategoriaNegocio();
-            List<Categoria> listaCategorias = new List<Categoria>();
-
-            listaMarcas = marNegAux.listar();
-            listaCategorias = catNegAux.listar();
+                listaMarcas = marNegAux.listar();
+                listaCategorias = catNegAux.listar();
 
 
-            ddlMarca.DataSource = listaMarcas;
-            ddlMarca.DataTextField = "Descripcion";
-            ddlMarca.DataValueField = "ID";
-            ddlMarca.DataBind();
+                ddlMarca.DataSource = listaMarcas;
+                ddlMarca.DataTextField = "Descripcion";
+                ddlMarca.DataValueField = "ID";
+                ddlMarca.DataBind();
 
-            ddlCategoria.DataSource = listaCategorias;
-            ddlCategoria.DataTextField = "Descripcion";
-            ddlCategoria.DataValueField = "Id";
-            ddlCategoria.DataBind();
+                ddlCategoria.DataSource = listaCategorias;
+                ddlCategoria.DataTextField = "Descripcion";
+                ddlCategoria.DataValueField = "Id";
+                ddlCategoria.DataBind();
 
-            dgvProductos.DataSource = lista;
-            dgvProductos.DataBind();
-
+                dgvProductos.DataSource = lista;
+                dgvProductos.DataBind();
+            }
         }
 
         protected void btnAgregarProd_Click(object sender, EventArgs e)
@@ -67,23 +69,27 @@ namespace HandelApp
                 producto.PrecioCompra = decimal.Parse(txtPrecio.Text);
 
                 auxProdNegocio.alta(producto);
-                lblMensaje.Text = "Producto cargado con éxito";
+                Response.Redirect("Productos.aspx");
+                lblMensaje.Text = "Ingresa un precio en números por favor";
 
 
             }
             catch (FormatException ex)
             {
-                lblMensaje.Text = "Ingresa un precio en números por favor";
+                // lblMensaje.Text = "Ingresa un precio en números por favor";
+                
             }
 
             catch (OverflowException ex)
             {
-                lblMensaje.Text = "Superaste la cantidad de caracteres";
+                //lblMensaje.Text = "Superaste la cantidad de caracteres";
+                
             }
 
             catch (Exception ex)
             {
-                lblMensaje.Text = ex.ToString();
+                // lblMensaje.Text = ex.ToString();
+                
             }
         }
     }
