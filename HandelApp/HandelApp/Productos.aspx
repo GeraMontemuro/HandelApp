@@ -5,9 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>PRODUCTOS  </h1>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-       +
-    </button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Producto</button>
 
 
     <asp:GridView ID="dgvProductos" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" DataKeyNames="IDProducto">
@@ -45,29 +43,51 @@
                     
                 </div>
                 <div class="modal-body">
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Producto" />
-                        <asp:TextBox runat="server" ID="txtProducto" />
-                    </div>
                     
                     <div style="margin-bottom: 10px;">
                         <asp:Label runat="server" Text="Nombre" />
                         <asp:TextBox runat="server" ID="txtNombre" />
                     </div>
-                    
+
                     <div style="margin-bottom: 10px;">
                         <asp:Label runat="server" Text="Descripción" />
                         <asp:TextBox runat="server" ID="txtDescripcion" />
                     </div>
-                    
+
                     <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Precio" />
+                        <asp:Label runat="server" Text="Código" />
+                        <asp:TextBox runat="server" ID="txtCodigo" />
+                    </div>
+
+                    <div style="margin-bottom: 10px;">
+                        <asp:Label runat="server" Text="Marca" />
+                        <asp:DropDownList ID="ddlMarca" runat="server" CssClass="form-select" AutoPostBack ="true"></asp:DropDownList> 
+                    </div>
+
+                    <div style="margin-bottom: 10px;">
+                        <asp:Label runat="server" Text="Categoria" />
+                        <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select" AutoPostBack ="true"></asp:DropDownList> 
+                    </div>
+
+                    <div style="margin-bottom: 10px;">
+                        <asp:Label runat="server" Text="Stock Total" />
+                        <asp:TextBox runat="server" ID="txtStockTotal" />
+                    </div>
+
+                    <div style="margin-bottom: 10px;">
+                        <asp:Label runat="server" Text="Stock Mínimo" />
+                        <asp:TextBox runat="server" ID="txtStockMinimo" />
+                    </div>
+
+                    <div style="margin-bottom: 10px;">
+                        <asp:Label runat="server" Text="Precio de Compra" />
                         <asp:TextBox runat="server" ID="txtPrecio" />
                     </div>
+                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="btn_cargarProducto">Cargar Producto</button>
+                   <asp:Button ID="btnAgregarProd" cssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarProd_Click" />
+                    <asp:Label ID="lblMensaje" runat="server" Text="" ForeColor="Red"></asp:Label> 
                 </div>
             </div>
         </div>

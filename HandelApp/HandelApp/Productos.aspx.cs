@@ -23,6 +23,9 @@ namespace HandelApp
 
         }
 
+        protected System.Void btnAgregarProd_Click()
+        {
 
+        }
     }
 }
