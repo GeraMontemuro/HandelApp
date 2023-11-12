@@ -33,7 +33,7 @@ namespace negocio
                     ProdAux.Marca = new Marca();
                     ProdAux.Categoria = new Categoria();
 
-                    ProdAux.IdProducto = (int)datos.Lector["IdProducto"];
+                    ProdAux.IdProducto = (int)datos.Lector["IDProducto"];
                     ProdAux.Codigo = (string)datos.Lector["Codigo"];
                     ProdAux.Nombre = (string)datos.Lector["Nombre"];
                     ProdAux.Descripcion = (string)datos.Lector["Descripcion"];
@@ -79,7 +79,26 @@ namespace negocio
 
         public void alta(Producto nuevo)
         {
-            /// ventana de carga de producto, guardo en un objeto producto del back y llamo a la funcion en el onclick de aceptar
+            AccesoBD accesoBD = new AccesoBD();
+            List<Producto> listaProdAgregado = new List<Producto>();
+
+            try
+            {
+                accesoBD.setearConsulta("insert Into Producto (Nombre, Descripcion, Codigo, IdMarca, IdCategoria, StockTotal, StockMinimo, PrecioCompra) values ('" + nuevo.Nombre + "', '" + nuevo.Descripcion + "','" + nuevo.Codigo + "', @IdMarca, @IdCategoria,'" + nuevo.StockTotal + "','" + nuevo.StockMinimo + "','" + nuevo.PrecioCompra + "')");
+                accesoBD.setearParametro("@IdMarca", nuevo.Marca.ID);
+                accesoBD.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                accesoBD.ejecutarAccion();
+
+                listaProdAgregado = listarconSp();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
         }
 
 
