@@ -24,7 +24,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("SP_listarProducto");
-                datos.setearConsulta("select P.IDProducto, P.Codigo, P.Nombre, P.Descripcion, P.Marcas, M.Descripcion as MDes, P.Categorias, C.Descripcion as CDes, P.StockTotal, P.StockMinimo, \r\nP.PrecioVenta, P.PrecioCompra from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
+                datos.setearConsulta("select P.IDProducto, P.Codigo, P.Nombre, P.Descripcion, P.Marcas, M.Descripcion as MDes, P.Categorias, C.Descripcion as CDes, P.StockTotal, P.StockMinimo, \r\n P.PrecioCompra from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read()){
@@ -50,8 +50,7 @@ namespace negocio
                     }
                     else { ProdAux.Categoria.Descripcion = "No tiene"; }
                     ProdAux.StockTotal = (int)datos.Lector["StockTotal"];
-                    ProdAux.StockMinimo = (int)datos.Lector["StockMinimo"];
-                    ProdAux.PrecioVenta = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioVenta"));
+                    ProdAux.StockMinimo = (int)datos.Lector["StockMinimo"];                    
                     ProdAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioCompra"));
 
                     listaaux.Add(ProdAux);
@@ -84,9 +83,9 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("insert Into Producto (Nombre, Descripcion, Codigo, IdMarca, IdCategoria, StockTotal, StockMinimo, PrecioCompra) values ('" + nuevo.Nombre + "', '" + nuevo.Descripcion + "','" + nuevo.Codigo + "', @IdMarca, @IdCategoria,'" + nuevo.StockTotal + "','" + nuevo.StockMinimo + "','" + nuevo.PrecioCompra + "')");
-                accesoBD.setearParametro("@IdMarca", nuevo.Marca.ID);
-                accesoBD.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                accesoBD.setearConsulta("insert Into Producto (Nombre, Descripcion, Codigo, Marcas, Categorias, StockTotal, StockMinimo, PrecioCompra) values ('" + nuevo.Nombre + "', '" + nuevo.Descripcion + "','" + nuevo.Codigo + "', @Marcas, @Categorias,'" + nuevo.StockTotal + "','" + nuevo.StockMinimo + "','" + nuevo.PrecioCompra + "')");
+                accesoBD.setearParametro("@Marcas", nuevo.Marca.ID);
+                accesoBD.setearParametro("@Categorias", nuevo.Categoria.Id);
                 accesoBD.ejecutarAccion();
 
                 listaProdAgregado = listarconSp();

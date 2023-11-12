@@ -10,7 +10,8 @@ using System.Web.UI.WebControls;
 namespace HandelApp
 {
     public partial class Productos : System.Web.UI.Page
-    {
+    {   
+        Producto producto = new Producto();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -45,7 +46,7 @@ namespace HandelApp
 
         }
 
-        protected System.Void btnAgregarProd_Click()
+        protected void btnAgregarProd_Click(object sender, EventArgs e)
         {
             ProductoNegocio auxProdNegocio = new ProductoNegocio();
 
