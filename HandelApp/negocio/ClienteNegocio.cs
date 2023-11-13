@@ -49,18 +49,86 @@ namespace negocio
 
         public void alta(Cliente nuevo)
         {
-            /// ventana de carga de producto, guardo en un objeto producto del back y llamo a la funcion en el onclick de aceptar
+            AccesoBD accesoBD = new AccesoBD();
+            List<Cliente> listanueva = new List<Cliente> ();  
+
+            try
+            {
+                accesoBD.setearConsulta("Insert into Cliente (NombreFantasia,Cuil,Telefono,Mail) values (@NombreFantasia, @Cuil, @Telefono, @Mail)");
+                accesoBD.setearParametro("@Nombrefantasia",nuevo.NombreFantasia);
+                accesoBD.setearParametro("@Cuil",nuevo.Cuil);
+                accesoBD.setearParametro("@Telefono",nuevo.Telefono);
+                accesoBD.setearParametro("@Mail", nuevo.Mail);
+                
+                accesoBD.ejecutarAccion();
+
+                listanueva = listarconSp();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
         }
 
+
+        public Cliente buscar (int Id)
+        {
+            Cliente ClienteBuscado = new Cliente();
+            ClienteNegocio Cnegocio = new ClienteNegocio();
+            List<Cliente> ListaFiltro = new List<Cliente>();
+            AccesoBD accesoBD = new AccesoBD();
+
+            try
+            {
+                ListaFiltro = Cnegocio.listarconSp();
+
+                foreach (var Cliente in ListaFiltro)
+                {
+                    if (Id == (int)Cliente.IdCliente)
+                    {
+                        ClienteBuscado = Cliente;
+                    }
+                }
+
+                return ClienteBuscado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
+        }
 
         public void modificar(Cliente nuevo)
         {
             /// selecciono el row o el id del dgv 
         }
 
-        public void baja(Cliente nuevo)
+        public void baja(int id)
         {
-            /// ver si usamos baja fisica o logica.
+            try
+            {
+                AccesoBD accesoBD = new AccesoBD();
+
+                accesoBD.setearConsulta("delete from Producto where IdProducto = @id");
+                accesoBD.setearParametro("@id", id);
+                accesoBD.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         

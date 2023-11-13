@@ -71,8 +71,36 @@ namespace negocio
 
         public Producto buscar(int ID)
         {
-            Producto TT=new Producto();
-            return TT;
+            Producto ProductoBuscado=new Producto();
+            ProductoNegocio Pnego = new ProductoNegocio();  
+            List<Producto> ListaFiltro = new List<Producto>();   
+            AccesoBD accesoBD = new AccesoBD();
+
+            try
+            {
+                ListaFiltro = Pnego.listarconSp();
+
+                foreach(var Producto in ListaFiltro)
+                {
+                    if(ID== (int)Producto.IdProducto)
+                    {
+                        ProductoBuscado=Producto;
+                    }
+                }
+
+                return ProductoBuscado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
+            
         }
 
 
@@ -89,6 +117,7 @@ namespace negocio
                 accesoBD.ejecutarAccion();
 
                 listaProdAgregado = listarconSp();
+                
             }
             catch (Exception ex)
             {
