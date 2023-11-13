@@ -25,7 +25,7 @@ namespace HandelApp
 
         }
 
-        protected void btnAgregarProd_Click(object sender, EventArgs e)
+        protected void btnAgregarCliente_Click(object sender, EventArgs e)
         {
             ClienteNegocio CliNegocio = new ClienteNegocio();
 
@@ -61,6 +61,7 @@ namespace HandelApp
                 try
                 {
                     CLienteAEliminar.baja(id);
+                   
                     Response.Redirect("Clientes.aspx");
                 }
                 catch (Exception ex)
@@ -76,4 +77,3 @@ namespace HandelApp
         }
     }
     }
-}

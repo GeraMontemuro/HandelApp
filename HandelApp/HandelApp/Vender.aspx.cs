@@ -14,6 +14,7 @@ namespace HandelApp
         int contador;
         public void Page_Load(object sender, EventArgs e)
         {
+
         }
         protected void dgvVentas_SelectedIndexChanged(object sender, EventArgs e)
         {

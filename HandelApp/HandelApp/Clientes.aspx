@@ -70,7 +70,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="btnAgregarProd" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarCLiente_Click" />
+                    <asp:Button ID="btnAgregarCliente" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarCliente_Click" />
                     <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
                 </div>
 

@@ -121,7 +121,7 @@ namespace negocio
             {
                 AccesoBD accesoBD = new AccesoBD();
 
-                accesoBD.setearConsulta("delete from Producto where IdProducto = @id");
+                accesoBD.setearConsulta("delete from Cliente where IDCliente = @id");
                 accesoBD.setearParametro("@id", id);
                 accesoBD.ejecutarAccion();
             }
