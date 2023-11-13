@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +13,14 @@ namespace HandelApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ClienteNegocio negocio = new ClienteNegocio();
+            List<Cliente> lista = new List<Cliente>();
+            lista = negocio.listarconSp();
+
+
+            dgvClientes.DataSource = lista;
+            dgvClientes.DataBind();
+
 
         }
     }

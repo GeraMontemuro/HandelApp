@@ -8,7 +8,7 @@ namespace dominio
 {
     public class Cliente
     {
-        public int IdCliente { get; set; }
+        public long IdCliente { get; set; }
         public string NombreFantasia { get; set; }
         public string Cuil { get; set; }
         public string Telefono { get; set; }
