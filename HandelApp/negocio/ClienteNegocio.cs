@@ -8,7 +8,7 @@ namespace negocio
 {
     public class ClienteNegocio
     {
-        public List<Cliente> listarconSp() //ver si hace falta listar una lista de proveedores o buscar alguno por ID. 
+        public List<Cliente> listarconSp() 
         {
             List<Cliente> listaaux = new List<Cliente>();
             AccesoBD datos = new AccesoBD();
@@ -124,6 +124,8 @@ namespace negocio
                 accesoBD.setearConsulta("delete from Cliente where IDCliente = @id");
                 accesoBD.setearParametro("@id", id);
                 accesoBD.ejecutarAccion();
+
+                accesoBD.cerrarConexion();
             }
             catch (Exception ex)
             {

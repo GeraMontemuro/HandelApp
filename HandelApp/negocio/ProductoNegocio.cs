@@ -144,6 +144,8 @@ namespace negocio
                 accesoBD.setearConsulta("delete from Producto where IdProducto = @id");
                 accesoBD.setearParametro("@id", id);
                 accesoBD.ejecutarAccion();
+
+                accesoBD.cerrarConexion();
             }
             catch (Exception ex)
             {

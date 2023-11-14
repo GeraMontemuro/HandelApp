@@ -8,7 +8,7 @@ namespace dominio
 {
     public class Proveedor
     {
-        public int IdProveedor { get; set; }
+        public long IdProveedor { get; set; }
         public string NombreFantasia { get; set; }
         public string Cuil { get; set; }
         public string Telefono { get; set; }

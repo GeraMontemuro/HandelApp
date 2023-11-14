@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
@@ -9,14 +11,15 @@ namespace negocio
 {
     public class ProveedorNegocio
     {
-        public List<Proveedor> listarconSp() //ver si hace falta listar una lista de proveedores o buscar alguno por ID. 
+        public List<Proveedor> listarconSp() 
         {
             List<Proveedor> listaaux = new List<Proveedor>();
             AccesoBD datos = new AccesoBD();
 
             try
             {
-                datos.setearProcedimiento("SP_PrlistarProveedor");
+                //datos.setearProcedimiento("SP_PrlistarProveedor");
+                datos.setearConsulta("select IDCliente as IDProveedor, NombreFantasia as Nombre,Cuil as Cuil,Telefono as Tel ,Mail as Mail from Proveedor" );
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -25,10 +28,10 @@ namespace negocio
                     Proveedor ProvAux = new Proveedor();
                    
 
-                    ProvAux.IdProveedor = (int)datos.Lector["IDProveedor"];
-                    ProvAux.NombreFantasia = (string)datos.Lector["NombreFantasia"];
+                    ProvAux.IdProveedor = (long)datos.Lector["IDProveedor"];
+                    ProvAux.NombreFantasia = (string)datos.Lector["Nombre"];
                     ProvAux.Cuil = (string)datos.Lector["Cuil"];
-                    ProvAux.Telefono = (string)datos.Lector["Telefono"];
+                    ProvAux.Telefono = (string)datos.Lector["Tel"];
                     ProvAux.Mail = (string)datos.Lector["Mail"];                   
 
                     listaaux.Add(ProvAux);
@@ -48,7 +51,62 @@ namespace negocio
         }
         public void alta(Proveedor nuevo)
         {
-            /// ventana de carga de producto, guardo en un objeto producto del back y llamo a la funcion en el onclick de aceptar
+            AccesoBD accesoBD = new AccesoBD();
+            List<Proveedor> listanueva = new List<Proveedor>();
+
+            try
+            {
+                accesoBD.setearConsulta("Insert into Proveedor (NombreFantasia,Cuil,Telefono,Mail) values (@NombreFantasia, @Cuil, @Telefono, @Mail)");
+                accesoBD.setearParametro("@NombreFantasia", nuevo.NombreFantasia);
+                accesoBD.setearParametro("@Cuil",nuevo.Cuil);
+                accesoBD.setearParametro("@Telefono", nuevo.Telefono);
+                accesoBD.setearParametro("@Mail", nuevo.Mail);
+
+                accesoBD.ejecutarAccion();
+
+                listanueva = listarconSp();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
+        }
+
+        public Proveedor buscar (int id)
+        {
+            Proveedor ProveedorBuscado = new Proveedor();
+            ProveedorNegocio Pnegocio = new ProveedorNegocio();
+            List<Proveedor> ListaFitro = new List<Proveedor> ();
+            AccesoBD accesoBD = new AccesoBD();
+
+            try
+            {
+                ListaFitro = Pnegocio.listarconSp();
+                foreach (var Proveedor in ListaFitro)
+                {
+                    if (id == (int)Proveedor.IdProveedor)
+                    {
+                        ProveedorBuscado = Proveedor;
+                    }
+                }
+                
+                return ProveedorBuscado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
         }
 
 
@@ -57,9 +115,28 @@ namespace negocio
             /// selecciono el row o el id del dgv 
         }
 
-        public void baja(Proveedor nuevo)
+        public void baja(int id)
         {
-            /// ver si usamos baja fisica o logica.
+            try
+            {
+                AccesoBD accesoBD = new AccesoBD ();
+
+                accesoBD.setearConsulta("delete from Proveedor where IDProveedor = @id");
+                accesoBD.setearParametro("@id", id);
+                accesoBD.ejecutarAccion();
+
+                accesoBD.cerrarConexion();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                
+            }
         }
     }
 }
