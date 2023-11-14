@@ -1,35 +1,31 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Proveedor.aspx.cs" Inherits="HandelApp.Proveedor" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Proveedores.aspx.cs" Inherits="HandelApp.Proveedores" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager runat="server"></asp:ScriptManager>
 
-    <script type="text/javascript">
-        function confirmarEliminar() {
-            return confirm('¿Estás seguro de que deseas eliminar el cliente?');
-        }
-    </script>
-    <h1>PROVEEDORES </h1>
+    <h1> PROVEEDORES </h1>
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Proveedor</button>
 
-    <asp:GridView ID="dgvProveedor" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" DataKeyNames="IdProveedor" OnRowCommand="dgvProveedor_RowCommand">
+    <asp:GridView ID="dgvProveedores" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProveedores_RowCommand" >
 
         <Columns>
-            <asp:BoundField HeaderText="Id" DataField="IdProveedor" />
-            <asp:BoundField HeaderText="Nombre Proveedor" DataField="NombreFantasia" />
+            <asp:BoundField HeaderText="Id" DataField="IDProveedor" />
+            <asp:BoundField HeaderText="Nombre Fantasia" DataField="NombreFantasia" />
             <asp:BoundField HeaderText="Cuil" DataField="Cuil" />
             <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
-            <asp:BoundField HeaderText="Contacto" DataField="Mail" />
-
-
+            <asp:BoundField HeaderText="Mail" DataField="Mail" />           
+           
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
 
-                    <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProveedor") %>' OnClientClick="return confirmarEliminar();">
-                <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
+                    <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IDProveedor") %>' OnClientClick="return confirmarEliminar();">              
+                    <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
+
+                    <%-- <asp:LinkButton runat="server" CommandName="Edit">
+                    <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
+                    </asp:LinkButton>--%>
 
                 </ItemTemplate>
             </asp:TemplateField>
@@ -61,20 +57,24 @@
                         <asp:Label runat="server" Text="Telefono" />
                         <asp:TextBox runat="server" ID="txtTelefono" />
                     </div>
-
+                    
                     <div style="margin-bottom: 10px;">
                         <asp:Label runat="server" Text="Mail" />
                         <asp:TextBox runat="server" ID="txtMail" />
-                    </div>
+                    </div>                    
 
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="btnAgregarProveedor" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarProveedor_Click" />
+                    <asp:Button ID="btnAgregarProd" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarProd_Click" />
                     <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
                 </div>
 
             </div>
         </div>
     </div>
+  
+
+
+
 
 </asp:Content>

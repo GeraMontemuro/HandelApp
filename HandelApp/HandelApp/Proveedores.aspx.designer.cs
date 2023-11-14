@@ -11,17 +11,17 @@ namespace HandelApp
 {
 
 
-    public partial class Proveedor
+    public partial class Proveedores
     {
 
         /// <summary>
-        /// dgvProveedor control.
+        /// dgvProveedores control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvProveedor;
+        protected global::System.Web.UI.WebControls.GridView dgvProveedores;
 
         /// <summary>
         /// txtNombre control.
@@ -60,13 +60,13 @@ namespace HandelApp
         protected global::System.Web.UI.WebControls.TextBox txtMail;
 
         /// <summary>
-        /// btnAgregarProveedor control.
+        /// btnAgregarProd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarProveedor;
+        protected global::System.Web.UI.WebControls.Button btnAgregarProd;
 
         /// <summary>
         /// lblMensaje control.

@@ -116,9 +116,9 @@
             <a class="nav-link" href="Productos.aspx">PRODUCTOS</a>
             <a class="nav-link" href="Vender.aspx">VENDER</a>
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
-            <a class="nav-link" href="Proveedor.aspx">PROVEEDORES</a>
+            <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
-            <asp:Button ID="btnSalir" runat="server" Text="Button" OnClick="BtnSalir_Click" />
+            <asp:Button ID="btnSalir" runat="server" Text="Cerrar Sesión" OnClick="BtnSalir_Click" />
             
             
         </div>
