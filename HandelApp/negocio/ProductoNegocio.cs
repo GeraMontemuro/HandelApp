@@ -132,7 +132,38 @@ namespace negocio
 
         public void modificar(Producto nuevo)
         {
-            /// selecciono el row o el id del dgv 
+            AccesoBD accesoBD = new AccesoBD();
+            List<Producto> listaProdmodificado = new List<Producto>();
+
+            try
+            {
+                accesoBD.setearConsulta("Update Producto set Nombre = @Nombre,Descripcion = @Descripcion, Codigo = @Codigo,Marcas = @Marcas,Categorias = @Categorias,StockTotal = @StockTotal,StockMinimo = @StockMinimo,PrecioCompra = @PrecioCompra where Id=@id");
+                accesoBD.setearParametro("@Nombre", nuevo.Nombre);
+                accesoBD.setearParametro("@Descripcion", nuevo.Descripcion);
+                accesoBD.setearParametro("@Codigo", nuevo.Codigo);
+                accesoBD.setearParametro("@Marcas", nuevo.Marca.ID);
+                accesoBD.setearParametro("@Categorias", nuevo.Categoria.Id);
+                accesoBD.setearParametro("@StockTotal", nuevo.StockTotal);
+                accesoBD.setearParametro("@StockMinimo", nuevo.StockMinimo);
+                accesoBD.setearParametro("@PrecioCompra", nuevo.PrecioCompra);
+                accesoBD.setearParametro("@id", nuevo.IdProducto);
+                accesoBD.ejecutarAccion();
+
+                listaProdmodificado = listarconSp();
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
+
+
         }
 
         public void baja(int id)
