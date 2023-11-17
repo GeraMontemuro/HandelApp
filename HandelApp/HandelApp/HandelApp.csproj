@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Clientes.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EditarProducto.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Logos\Logo.jpg" />
     <Content Include="Logos\logoSolo.png" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProducto.aspx.cs">
+      <DependentUpon>EditarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarProducto.aspx.designer.cs">
+      <DependentUpon>EditarProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

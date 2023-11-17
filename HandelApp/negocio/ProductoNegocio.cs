@@ -137,25 +137,18 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("Update Producto set Nombre = @Nombre,Descripcion = @Descripcion, Codigo = @Codigo,Marcas = @Marcas,Categorias = @Categorias,StockTotal = @StockTotal,StockMinimo = @StockMinimo,PrecioCompra = @PrecioCompra where Id=@id");
+                accesoBD.setearConsulta("Update Producto set Nombre = @Nombre,Descripcion = @Descripcion,StockMinimo = @StockMinimo where IDProducto=@id");
                 accesoBD.setearParametro("@Nombre", nuevo.Nombre);
-                accesoBD.setearParametro("@Descripcion", nuevo.Descripcion);
-                accesoBD.setearParametro("@Codigo", nuevo.Codigo);
-                accesoBD.setearParametro("@Marcas", nuevo.Marca.ID);
-                accesoBD.setearParametro("@Categorias", nuevo.Categoria.Id);
-                accesoBD.setearParametro("@StockTotal", nuevo.StockTotal);
-                accesoBD.setearParametro("@StockMinimo", nuevo.StockMinimo);
-                accesoBD.setearParametro("@PrecioCompra", nuevo.PrecioCompra);
+                accesoBD.setearParametro("@Descripcion", nuevo.Descripcion);               
+                accesoBD.setearParametro("@StockMinimo", nuevo.StockMinimo);                
                 accesoBD.setearParametro("@id", nuevo.IdProducto);
+
                 accesoBD.ejecutarAccion();
 
                 listaProdmodificado = listarconSp();
-
-
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally

@@ -12,7 +12,7 @@
 
     <h1>PRODUCTOS  </h1>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Producto</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvoProd">Nuevo Producto</button>
 
 
     <asp:GridView ID="dgvProductos" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProductos_RowCommand">
@@ -36,23 +36,25 @@
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
 
-                    <%-- <asp:LinkButton runat="server" CommandName="Edit">
+                     <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IdProducto") %>'>
                     <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
-                    </asp:LinkButton>--%>
+                    </asp:LinkButton>
 
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
 
     </asp:GridView>
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+    <%--MODAL PRODUCTO NUEVO--%>
+    <div class="modal fade" id="modalNvoProd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="lblNvoProd" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Producto</h1>
+                    <h1 class="modal-title fs-5" id="lblNvoProd">Agregar Producto</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
                 </div>
+
                 <div class="modal-body">
 
                     <div style="margin-bottom: 10px;">

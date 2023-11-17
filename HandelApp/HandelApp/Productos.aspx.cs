@@ -96,14 +96,14 @@ namespace HandelApp
         protected void dgvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
+            ProductoNegocio prodNeg = new ProductoNegocio();
+            Producto producto = new Producto();
 
             if (e.CommandName == "Eliminar")
-            {
-
-                ProductoNegocio ProdAEliminar = new ProductoNegocio();
+            {               
                 try
                 {
-                    ProdAEliminar.baja(id);
+                    prodNeg.baja(id);
                     Response.Redirect("Productos.aspx");
                 }
                 catch (Exception ex)
@@ -114,7 +114,7 @@ namespace HandelApp
             }
             else if (e.CommandName == "Editar")
             {
-
+                Response.Redirect($"~/EditarProducto.aspx?id={id}");
             }
         }
     }
