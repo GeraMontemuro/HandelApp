@@ -31,6 +31,10 @@
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
 
+                    <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IdCliente") %>'>
+                    <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
+                    </asp:LinkButton>
+
                 </ItemTemplate>
             </asp:TemplateField>
 

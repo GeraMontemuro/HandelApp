@@ -114,7 +114,7 @@ namespace HandelApp
             }
             else if (e.CommandName == "Editar")
             {
-                Response.Redirect($"~/EditarProducto.aspx?id={id}");
+                Response.Redirect($"~/EditarCliente.aspx?id={id}");
             }
         }
     }

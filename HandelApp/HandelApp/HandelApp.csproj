@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Clientes.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EditarCliente.aspx" />
     <Content Include="EditarProducto.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Logos\Logo.jpg" />
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarCliente.aspx.cs">
+      <DependentUpon>EditarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarCliente.aspx.designer.cs">
+      <DependentUpon>EditarCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditarProducto.aspx.cs">
       <DependentUpon>EditarProducto.aspx</DependentUpon>

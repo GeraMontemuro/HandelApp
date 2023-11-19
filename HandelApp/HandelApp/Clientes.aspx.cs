@@ -14,16 +14,24 @@ namespace HandelApp
         Cliente Cliente = new Cliente();  
         protected void Page_Load(object sender, EventArgs e)
         {
-            ClienteNegocio negocio = new ClienteNegocio();
-            List<Cliente> lista = new List<Cliente>();
-            lista = negocio.listarconSp();
+            try { 
+                ClienteNegocio negocio = new ClienteNegocio();
+                List<Cliente> lista = new List<Cliente>();
+                lista = negocio.listarconSp();
 
 
-            dgvClientes.DataSource = lista;
-            dgvClientes.DataBind();
+                dgvClientes.DataSource = lista;
+                dgvClientes.DataBind();
+
+            }
+            catch (FormatException ex)
+            {
+                // lblMensaje.Text = "";
+                
+            }
 
 
-        }
+}
 
         protected void btnAgregarCliente_Click(object sender, EventArgs e)
         {
@@ -72,7 +80,7 @@ namespace HandelApp
             }
             else if (e.CommandName == "Editar")
             {
-
+                Response.Redirect($"~/EditarCliente.aspx?id={id}");
             }
         }
     }

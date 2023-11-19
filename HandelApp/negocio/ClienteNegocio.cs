@@ -112,7 +112,30 @@ namespace negocio
 
         public void modificar(Cliente nuevo)
         {
-            /// selecciono el row o el id del dgv 
+            AccesoBD accesoBD = new AccesoBD();
+            List<Cliente> listaClienteModificado = new List<Cliente>();
+
+            try
+            {
+                accesoBD.setearConsulta("Update Cliente set NombreFantasia = @Nombre, Cuil = @Cuil, Telefono = @Telefono, Mail = @Mail where IDCliente=@id");
+                accesoBD.setearParametro("@Nombre", nuevo.NombreFantasia);
+                accesoBD.setearParametro("@Cuil", nuevo.Cuil);
+                accesoBD.setearParametro("@Telefono", nuevo.Telefono);
+                accesoBD.setearParametro("@Mail", nuevo.Mail);
+                accesoBD.setearParametro("@id", nuevo.IdCliente);
+
+                accesoBD.ejecutarAccion();
+
+                listaClienteModificado = listarconSp();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
         }
 
         public void baja(int id)
