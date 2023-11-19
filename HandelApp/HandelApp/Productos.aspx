@@ -15,7 +15,7 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvoProd">Nuevo Producto</button>
 
 
-    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProductos_RowCommand">
+    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProductos_RowCommand" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged">
 
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="IDProducto" />
@@ -28,6 +28,7 @@
             <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
             <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}" />
             <asp:BoundField HeaderText="Precio Compra" DataField="PrecioCompra" DataFormatString="{0:C}" />
+            <asp:CommandField ShowSelectButton="true" SelectText="Agregar Producto" HeaderText="Agregar a la factura" /> 
 
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>

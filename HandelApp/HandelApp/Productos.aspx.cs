@@ -13,6 +13,7 @@ namespace HandelApp
     public partial class Productos : System.Web.UI.Page
     {   
         Producto producto = new Producto();
+        public List<Producto> ListaDeCargaVenta = new List<Producto>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -115,6 +116,32 @@ namespace HandelApp
             else if (e.CommandName == "Editar")
             {
                 Response.Redirect($"~/EditarCliente.aspx?id={id}");
+            }
+        }
+
+        protected void dgvProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvProductos.SelectedDataKey.Value.ToString();
+            int ID = int.Parse(id);
+
+            if (Session["ListaVenta"] != null)
+            {
+                VentaNegocio Negocio = new VentaNegocio();
+                List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
+                Temporal.Add(Negocio.Buscar(ID));
+                FuncionGlobal.Valor += 1;
+                FuncionGlobal.CantidadTotalAsignada(FuncionGlobal.Valor);
+                FuncionGlobal.CantidadTotal();
+                Response.Redirect("Productos.aspx");
+            }
+            else
+            {
+                VentaNegocio Negocio = new VentaNegocio();
+                Session.Add("ListaVenta", (Negocio.Cargar(ID, ListaDeCargaVenta)));
+                FuncionGlobal.Valor += 1;
+                FuncionGlobal.CantidadTotalAsignada(FuncionGlobal.Valor);
+                FuncionGlobal.CantidadTotal();
+                Response.Redirect("Productos.aspx");
             }
         }
     }

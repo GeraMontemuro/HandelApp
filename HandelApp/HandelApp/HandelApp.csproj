@@ -76,6 +76,8 @@
     <Content Include="Logos\Logo.jpg" />
     <Content Include="Logos\logoSolo.png" />
     <Content Include="Logos\pencil.jpg" />
+    <Content Include="Logos\pngwing.com %28mas%29.png" />
+    <Content Include="Logos\pngwing.com %28menos%29.png" />
     <Content Include="Logos\trash.jpg" />
     <Content Include="Productos.aspx" />
     <Content Include="Proveedores.aspx" />
