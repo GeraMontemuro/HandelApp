@@ -72,6 +72,7 @@
     <Content Include="Default.aspx" />
     <Content Include="EditarCliente.aspx" />
     <Content Include="EditarProducto.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="Logos\Logo.jpg" />
     <Content Include="Logos\logoSolo.png" />
@@ -115,6 +116,13 @@
     </Compile>
     <Compile Include="EditarProducto.aspx.designer.cs">
       <DependentUpon>EditarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
