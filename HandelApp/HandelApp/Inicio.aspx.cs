@@ -18,7 +18,7 @@ namespace HandelApp
                 }
                 else
                 {
-                    Response.Redirect("Inicio.aspx");
+                    //Response.Redirect("Inicio.aspx");
                 }
             
         }
