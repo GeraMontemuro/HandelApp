@@ -14,7 +14,7 @@ namespace negocio
             AccesoBD datos = new AccesoBD();
             try
             {
-                datos.setearConsulta("Select ID, Usuario,Pass,TipoUser from Usuarios where Usuario = @User  AND Pass = @Pass");
+                datos.setearConsulta("Select ID,TipoUser from Usuarios where Usuario = @User  AND Pass = @Pass");
                 datos.setearParametro("@User", usuario.User);
                 datos.setearParametro("@Pass", usuario.Pass);
 
@@ -23,7 +23,7 @@ namespace negocio
                 {
 
                     usuario.Id = (int)datos.Lector["ID"];
-                    usuario.TipoUsuario = (int)(datos.Lector["TipoUser"]) == 2 ? Usuario.UserType.ADMIN : Usuario.UserType.NORMAL;
+                    usuario.TipoUsuario = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
                     return true;
                 }
                 return false;

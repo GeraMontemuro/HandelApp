@@ -22,9 +22,7 @@ namespace HandelApp
             UsuarioNegocio negocio = new UsuarioNegocio();
             try
             {
-
-
-                usuario = new Usuario(txtusuario.Text, Txtpassword.Text, false);
+                usuario = new Usuario(txtUsuario.Text, txtPassword.Text, false);
                 if (negocio.loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
@@ -41,7 +39,6 @@ namespace HandelApp
                 Session.Add("Error", ex.ToString()); //mandar a mensaje de error
                 Response.Redirect("Error.aspx", false);
             }
-
         }
     }
 }
