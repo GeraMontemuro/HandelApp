@@ -46,6 +46,7 @@ namespace HandelApp
 
                 }
                 catch (Exception)
+
                 {
                     List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
 
@@ -98,7 +99,7 @@ namespace HandelApp
         }
         protected void dgvVentas_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            AuxPrecio = 0;
             var id = dgvVentas.SelectedDataKey.Value.ToString();
             Producto aux = new Producto();
 
@@ -115,7 +116,7 @@ namespace HandelApp
                 {
                     foreach (Producto item in ventas)
                     {
-                        AuxPrecio -= item.PrecioCompra;
+                        AuxPrecio += item.PrecioCompra;
                         contador = ventas.Count();
                         FuncionGlobal.CantidadTotalAsignada(contador);
                         FuncionGlobal.CantidadTotal();

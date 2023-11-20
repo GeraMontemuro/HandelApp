@@ -104,7 +104,7 @@
 
                     <div class="navbar-nav">                        
                         <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
-                        <div class="right-text">Bienvenido  <%=Request.Form["txtusuario"] %></div>   
+                        <div class="right-text">Bienvenido  <%=Request.Form["txtusuario"] %>    </div>   
                     </div>
                 </div>
             </div>
