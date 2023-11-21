@@ -115,6 +115,7 @@
             <a class="nav-link" href="Inicio.aspx">INICIO</a>
             <a class="nav-link" href="Productos.aspx">PRODUCTOS</a>
             <a class="nav-link" href="Vender.aspx">VENDER</a>
+            <a class="nav-link" href="Compras.aspx">COMPRAS</a>
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
             <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>

@@ -16,26 +16,30 @@ namespace negocio
 
             try
             {
-                //datos.setearProcedimiento("SP_listarProducto");
-                datos.setearConsulta("Select Com.ID as IDCompra, Com.Fecha, P.Descripcion as ProdDes, Com.Cantidad, Com.PrecioCompra, Prov.NombreFantasia as NombreProv from Compras Com\r\ninner join Producto P on P.IDProducto = Com.ID\r\ninner join Proveedor Prov on Prov.IDProveedor = Com.IDProveedor");
+                
+                datos.setearConsulta("Select Com.ID as IDCompra, Com.Fecha, P.Nombre as ProdNombre, Com.Cantidad, Com.PrecioCompra, Prov.NombreFantasia as NombreProv from Compras Com\r\ninner join Producto P on P.IDProducto = Com.IDProducto\r\ninner join Proveedor Prov on Prov.IDProveedor = Com.IDProveedor");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-
                     Compra CompraAux = new Compra();
                     CompraAux.Producto = new Producto();
                     CompraAux.Proveedor = new Proveedor();
 
                     CompraAux.IDCompra = (int)datos.Lector["IDCompra"];
                     CompraAux.Fecha = (DateTime)datos.Lector["Fecha"];
-                    CompraAux.Producto.Descripcion = (string)datos.Lector["ProdDes"];
+                    CompraAux.Producto.Nombre = (string)datos.Lector["ProdNombre"];
+                    if (!(datos.Lector["ProdNombre"] is DBNull))
+                    {
+                        CompraAux.Producto.Nombre = (string)datos.Lector["ProdNombre"];
+                    }
+                    else { CompraAux.Producto.Nombre = "No tiene"; }
+
                     CompraAux.Cantidad = (int)datos.Lector["Cantidad"];
                     CompraAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioCompra"));
                     CompraAux.Proveedor.NombreFantasia = (string)datos.Lector["NombreProv"];
 
                     listaaux.Add(CompraAux);
-
                 }
                 return listaaux;
             }
@@ -68,7 +72,6 @@ namespace negocio
                         CompraBuscada = Compra;
                     }
                 }
-
                 return CompraBuscada;
             }
             catch (Exception)
@@ -88,7 +91,7 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("insert Into Compra (Fecha,IDProducto,Cantidad,PrecioCompra,IDProveedor) values ('" + nueva.Fecha + "',@Producto,'" + nueva.Cantidad + "','" + nueva.PrecioCompra + "', @Proveedor)");
+                accesoBD.setearConsulta("insert Into Compras (Fecha,IDProducto,Cantidad,PrecioCompra,IDProveedor) values ('" + nueva.Fecha + "',@Producto,'" + nueva.Cantidad + "','" + nueva.PrecioCompra + "', @Proveedor)");
                 accesoBD.setearParametro("@Producto", nueva.Producto.IdProducto);
                 accesoBD.setearParametro("@Proveedor", nueva.Proveedor.IdProveedor);
                 accesoBD.ejecutarAccion();

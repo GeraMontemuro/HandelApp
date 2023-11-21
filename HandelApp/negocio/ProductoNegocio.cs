@@ -137,10 +137,12 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("Update Producto set Nombre = @Nombre,Descripcion = @Descripcion,StockMinimo = @StockMinimo where IDProducto=@id");
+                accesoBD.setearConsulta("Update Producto set Nombre = @Nombre,Descripcion = @Descripcion,StockMinimo = @StockMinimo, StockTotal = @StockTotal, PrecioCompra = @PrecioCompra where IDProducto=@id");
                 accesoBD.setearParametro("@Nombre", nuevo.Nombre);
-                accesoBD.setearParametro("@Descripcion", nuevo.Descripcion);               
-                accesoBD.setearParametro("@StockMinimo", nuevo.StockMinimo);                
+                accesoBD.setearParametro("@Descripcion", nuevo.Descripcion);
+                accesoBD.setearParametro("@StockMinimo", nuevo.StockMinimo);
+                accesoBD.setearParametro("@StockTotal", nuevo.StockTotal);
+                accesoBD.setearParametro("@PrecioCompra", nuevo.PrecioCompra);
                 accesoBD.setearParametro("@id", nuevo.IdProducto);
 
                 accesoBD.ejecutarAccion();
@@ -174,6 +176,22 @@ namespace negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public void cargarStock(int idProducto, int cantidad, decimal precio)
+        {
+            Producto producto = new Producto();
+
+
+            producto = buscar(idProducto);
+
+            if (producto != null)
+            {
+                producto.StockTotal += cantidad;
+                producto.PrecioCompra = precio;
+
+                modificar(producto);
             }
         }
     }
