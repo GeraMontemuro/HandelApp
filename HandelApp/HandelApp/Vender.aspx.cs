@@ -144,18 +144,24 @@ namespace HandelApp
         protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
-            GridViewRow indice = dgvVentas.Rows[id];
-
+            GridViewRow indice = dgvVentas.Rows[id];//el id es el de producto no el del dgv de ventas, probe (dgvVentas.SelectedRow) pero tmp funciona
+            
             TextBox txtCantidad = (TextBox)indice.FindControl("txtStockavender");
-
+            
+                        
             int cantidad = Convert.ToInt32(txtCantidad.Text);
+            ProductoNegocio auxProductonegocio = new ProductoNegocio();
+            Producto ProdAux = new Producto();
+
+            ProdAux = auxProductonegocio.buscar(id);
 
 
-            if (e.CommandName == "Restar" && stock > 0)
+
+            if (e.CommandName == "Restar" && ProdAux.StockTotal > 0)
             {
                 cantidad--;
             }
-            else if (e.CommandName == "Sumar")
+            else if (e.CommandName == "Sumar" && cantidad <= ProdAux.StockTotal)
             {
                 cantidad++;
             }

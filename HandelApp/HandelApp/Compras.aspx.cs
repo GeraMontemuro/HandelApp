@@ -16,6 +16,8 @@ namespace HandelApp
         {
             if (!IsPostBack)
             {
+                Calendario1.Visible = false;   
+                
                 CompraNegocio comNeg = new CompraNegocio();
                 List<Compra> lista = new List<Compra>();
                 lista = comNeg.listarconSp();
@@ -92,6 +94,33 @@ namespace HandelApp
             {
                 // lblMensaje.Text = ex.ToString();
 
+            }
+        }
+
+        protected void ImagenCalendario_Click(object sender, ImageClickEventArgs e)
+        {
+            if (Calendario1.Visible)
+            {
+                Calendario1.Visible = false;
+            }
+            else
+            {
+                Calendario1.Visible = true;
+            }
+            Calendario1.Attributes.Add("style", "position:absolute");
+        }
+
+        protected void Calendario1_SelectionChanged(object sender, EventArgs e)
+        {
+            txtFecha.Text = Calendario1.SelectedDate.ToString("dd/MM/yyyy");
+            Calendario1.Visible = false;
+        }
+
+        protected void Calendario1_DayRender(object sender, DayRenderEventArgs e)
+        {
+            if (e.Day.IsOtherMonth)
+            {
+                e.Day.IsSelectable = false;
             }
         }
     }

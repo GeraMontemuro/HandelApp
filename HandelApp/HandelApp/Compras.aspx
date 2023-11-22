@@ -46,10 +46,18 @@
 
                 <div class="modal-body">
 
-                    <div style="margin-bottom: 10px;">
+                   <%-- <div style="margin-bottom: 10px;">
                         <asp:Label runat="server" Text="Fecha" />
                         <asp:Textbox runat="server" ID="txtFecha" />
                         
+                    </div>--%>
+
+                    <div style="margin-bottom: 10px;">
+                        <asp:Label runat="server" Text="Fecha" /> 
+                        <asp:Textbox runat="server" ID="txtFecha" />
+                        <asp:ImageButton ID="ImagenCalendario" Height="53px" Width="53px" runat="server" ImageUrl="Logos/pngwing.com.png" ImageAlign="AbsBottom" OnClick="ImagenCalendario_Click" />
+                        <asp:Calendar ID="Calendario1" runat="server" Height="263px" Width="283px" BackColor="#9ec5fe" OnSelectionChanged="Calendario1_SelectionChanged" OnDayRender="Calendario1_DayRender" ></asp:Calendar>
+
                     </div>
                   
                     <div style="margin-bottom: 10px;">
