@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Diagnostics.Eventing.Reader;
 
 namespace HandelApp
 {
@@ -143,23 +144,25 @@ namespace HandelApp
         protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
+            GridViewRow indice = dgvVentas.Rows[id];
+
+            TextBox txtCantidad = (TextBox)indice.FindControl("txtStockavender");
+
+            int cantidad = Convert.ToInt32(txtCantidad.Text);
 
 
+            if (e.CommandName == "Restar" && stock > 0)
+            {
+                cantidad--;
+            }
+            else if (e.CommandName == "Sumar")
+            {
+                cantidad++;
+            }
 
-            /*
-             * busco el producto
-             * int auxstock = txt 
-             
-             if reste
-                auxstock >= 1 && as <= stock.producto
-                auxs -1
-                txt = auxs!=0 
-
-
-
-             else sume
-
-             */
+            txtCantidad.Text = cantidad.ToString();
         }
+
+     
     }
 }

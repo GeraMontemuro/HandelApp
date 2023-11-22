@@ -25,7 +25,7 @@
                 <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/pngwing.com%20(menos).png" AlternateText="Eliminar" />
                 </asp:LinkButton>
 
-                <asp:TextBox ID="txtStockavender" runat="server" CssClass="maspequeña" CommandName="TxtStock" CommandArgument='<%#Eval("IdProducto") %>' />  
+                <asp:TextBox ID="txtStockavender" runat="server" CssClass="maspequeña"  AutoPostBack="true" />  
 
                 <asp:LinkButton ID="lnkbtnSumar" runat="server" CommandName="Sumar" CommandArgument='<%#Eval("IdProducto") %>'>
                 <asp:Image runat="server" class="maspequeña"  src="Logos/pngwing.com%20(mas).png" AlternateText=" "  />
