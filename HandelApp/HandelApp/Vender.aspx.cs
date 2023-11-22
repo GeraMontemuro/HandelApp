@@ -140,5 +140,26 @@ namespace HandelApp
             Response.Redirect("Factura.aspx"); 
         }
 
+        protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+
+
+
+            /*
+             * busco el producto
+             * int auxstock = txt 
+             
+             if reste
+                auxstock >= 1 && as <= stock.producto
+                auxs -1
+                txt = auxs!=0 
+
+
+
+             else sume
+
+             */
+        }
     }
 }

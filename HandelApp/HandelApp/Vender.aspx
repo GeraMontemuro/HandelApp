@@ -10,7 +10,7 @@
 
 </div>
 
-<asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged">
+<asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnRowCommand="dgvVentas_RowCommand" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged">
     <Columns>
 
         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -25,7 +25,7 @@
                 <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/pngwing.com%20(menos).png" AlternateText="Eliminar" />
                 </asp:LinkButton>
 
-                <asp:TextBox ID="txtStockavender" runat="server" CssClass="maspequeña" />  
+                <asp:TextBox ID="txtStockavender" runat="server" CssClass="maspequeña" CommandName="TxtStock" CommandArgument='<%#Eval("IdProducto") %>' />  
 
                 <asp:LinkButton ID="lnkbtnSumar" runat="server" CommandName="Sumar" CommandArgument='<%#Eval("IdProducto") %>'>
                 <asp:Image runat="server" class="maspequeña"  src="Logos/pngwing.com%20(mas).png" AlternateText=" "  />
