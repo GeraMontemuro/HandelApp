@@ -9,6 +9,7 @@
     <asp:DropDownList ID="ddlCliente" runat="server" CssClass="form-control" placeholder="Selecciona el cliente" AutoPostBack="true"></asp:DropDownList>
 
 </div>
+    <asp:Button runat="server" Text="Agregar Producto" OnClick="Unnamed_Click"  />
 
 <asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnRowCommand="dgvVentas_RowCommand" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged">
     <Columns>

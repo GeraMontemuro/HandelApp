@@ -169,6 +169,9 @@ namespace HandelApp
             txtCantidad.Text = cantidad.ToString();
         }
 
-     
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Productos.aspx", false);
+        }
     }
 }
