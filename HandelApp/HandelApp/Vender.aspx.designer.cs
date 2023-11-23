@@ -24,6 +24,33 @@ namespace HandelApp
         protected global::System.Web.UI.WebControls.DropDownList ddlCliente;
 
         /// <summary>
+        /// CuilCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CuilCliente;
+
+        /// <summary>
+        /// TelefonoCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TelefonoCliente;
+
+        /// <summary>
+        /// MailCliente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox MailCliente;
+
+        /// <summary>
         /// dgvVentas control.
         /// </summary>
         /// <remarks>

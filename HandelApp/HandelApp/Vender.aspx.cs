@@ -21,6 +21,26 @@ namespace HandelApp
         {
             if (!IsPostBack)
             {
+                Cliente ClienteFiltro = new Cliente();
+                ClienteNegocio CliNegFiltro = new ClienteNegocio();
+                List<Cliente> listaCliente = new List<Cliente>();
+
+                listaCliente = CliNegFiltro.listarconSp();
+
+                ddlCliente.DataSource = listaCliente;
+                ddlCliente.DataValueField = "NombreFantasia";
+                ddlCliente.DataBind();
+
+                foreach (var Cliente in listaCliente)
+                {
+                    if (Cliente.NombreFantasia == ddlCliente.SelectedValue)
+                    {
+                        CuilCliente.Text = Cliente.Cuil;
+                        TelefonoCliente.Text = Cliente.Telefono;
+                        MailCliente.Text = Cliente.Mail;
+
+                    }
+                }
                 try
                 {
                     int Idaux = int.Parse(Request.QueryString["id"]);
@@ -141,7 +161,7 @@ namespace HandelApp
             Response.Redirect("Factura.aspx"); 
         }
 
-        protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
+       /* protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
             GridViewRow indice = dgvVentas.Rows[id];//el id es el de producto no el del dgv de ventas, probe (dgvVentas.SelectedRow) pero tmp funciona
@@ -167,11 +187,31 @@ namespace HandelApp
             }
 
             txtCantidad.Text = cantidad.ToString();
-        }
+        }*/
 
         protected void Unnamed_Click(object sender, EventArgs e)
         {
             Response.Redirect("Productos.aspx", false);
+        }
+
+        protected void ddlCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Cliente ClienteFiltro = new Cliente();
+            ClienteNegocio CliNegFiltro = new ClienteNegocio();
+            List<Cliente> listaCliente = new List<Cliente>();
+
+            listaCliente = CliNegFiltro.listarconSp();
+
+            foreach (var Cliente in listaCliente)
+            {
+                if (Cliente.NombreFantasia == ddlCliente.SelectedValue)
+                {
+                    CuilCliente.Text = Cliente.Cuil;
+                    TelefonoCliente.Text = Cliente.Telefono;
+                    MailCliente.Text = Cliente.Mail;
+
+                }
+            }
         }
     }
 }

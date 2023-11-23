@@ -6,12 +6,19 @@
 
 <div class="form-floating mb-3">
     <asp:Label runat="server" Text="Cliente" />
-    <asp:DropDownList ID="ddlCliente" runat="server" CssClass="form-control" placeholder="Selecciona el cliente" AutoPostBack="true"></asp:DropDownList>
-
+    <asp:DropDownList style = "height: 50%" ID="ddlCliente" runat="server"  CssClass="form-control" placeholder="Selecciona el cliente" AutoPostBack="true" OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged"></asp:DropDownList>
+    <br />
+    <asp:Label runat="server" Text="Cuil :" />
+    <asp:TextBox ID="CuilCliente" ReadOnly="true" runat="server" />  
+    <asp:Label runat="server" Text="Telefono:" />
+    <asp:TextBox  ID="TelefonoCliente" ReadOnly="true" runat="server" />
+    <asp:Label runat="server" Text="Mail:" />
+    <asp:TextBox  ID="MailCliente" ReadOnly="true" runat="server"  />        
+    <hr /> 
 </div>
     <asp:Button runat="server" Text="Agregar Producto" OnClick="Unnamed_Click"  />
 
-<asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnRowCommand="dgvVentas_RowCommand" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged">
+<asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged">
     <Columns>
 
         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
