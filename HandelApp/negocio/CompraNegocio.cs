@@ -117,7 +117,7 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("Update Compra set Fecha = @Fecha, IDProducto = @IdProd, Cantidad = @Cantidad, PrecioCompra = @PrecioCompra, IDProveedor = @IDProveedor where IDCompra=@id");
+                accesoBD.setearConsulta("Update Compras set Fecha = @Fecha, IDProducto = @IdProd, Cantidad = @Cantidad, PrecioCompra = @PrecioCompra, IDProveedor = @IDProveedor where ID=@id");
                 accesoBD.setearParametro("@Fecha", nueva.Fecha);
                 accesoBD.setearParametro("@IDProducto", nueva.Producto.IdProducto);
                 accesoBD.setearParametro("@Cantidad", nueva.Cantidad);
@@ -148,7 +148,7 @@ namespace negocio
             {
                 AccesoBD accesoBD = new AccesoBD();
 
-                accesoBD.setearConsulta("delete from Compra where IDCompra = @id");
+                accesoBD.setearConsulta("delete from Compras where ID = @id");
                 accesoBD.setearParametro("@id", id);
                 accesoBD.ejecutarAccion();
 

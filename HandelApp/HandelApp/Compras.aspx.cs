@@ -123,5 +123,30 @@ namespace HandelApp
                 e.Day.IsSelectable = false;
             }
         }
+
+        protected void dgvCompras_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);            
+            CompraNegocio comNeg = new CompraNegocio();
+            Compra compra = new Compra();
+
+            if (e.CommandName == "Eliminar")
+            {
+                try
+                {
+                    comNeg.baja(id);
+                    Response.Redirect("Compras.aspx");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            else if (e.CommandName == "Editar")
+            {
+                Response.Redirect($"~/EditarCompra.aspx?id={id}");
+            }
+        }
     }
 }

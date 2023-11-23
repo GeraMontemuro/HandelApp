@@ -15,7 +15,7 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvoProd">Nuevo Producto</button>
 
 
-    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProductos_RowCommand" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged">
+    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false"  OnRowCommand="dgvProductos_RowCommand" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged">
 
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="IDProducto" />

@@ -3,12 +3,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <asp:ScriptManager runat="server"></asp:ScriptManager>   
-  
+   <script type="text/javascript">
+        function confirmarEliminar() {
+            return confirm('¿Estás seguro de que deseas eliminar este registro de compra?');
+        }
+   </script>
      <h1> COMPRAS </h1>
 
      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvaCompra">Cargar Compra</button>
 
-    <asp:GridView ID="dgvCompras" runat="server" CssClass="table" DataKeyNames="IDCompra"  AutoGenerateColumns="false">
+    <asp:GridView ID="dgvCompras" runat="server" CssClass="table" DataKeyNames="IDCompra"  AutoGenerateColumns="false" OnRowCommand="dgvCompras_RowCommand" >
        
         <Columns>
             <asp:BoundField HeaderText="IDCompra" DataField="IDCompra" />
@@ -21,7 +25,7 @@
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
 
-                    <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IDCompra") %>'>              
+                    <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IDCompra") %>' OnClientClick="return confirmarEliminar();">              
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
 
@@ -46,12 +50,7 @@
 
                 <div class="modal-body">
 
-                   <%-- <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Fecha" />
-                        <asp:Textbox runat="server" ID="txtFecha" />
-                        
-                    </div>--%>
-
+                   
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
 
