@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Productos.aspx.cs" Inherits="HandelApp.Productos" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<asp:ScriptManager runat="server"></asp:ScriptManager>
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
 
     <script type="text/javascript">
         function confirmarEliminar() {
@@ -16,10 +17,17 @@
 
     <h1>PRODUCTOS  </h1>
 
+    <div class="form-floating mb-3">
+        
+        <asp:TextBox ID="TxtBuscador" runat="server" />
+        <asp:Button ID="buscarproducto" class="btn btn-primary" Text="Buscar Producto/s" runat="server" OnClick="buscarproducto_Click" />
+       
+    </div>
+
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvoProd">Nuevo Producto</button>
 
 
-    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false"  OnRowCommand="dgvProductos_RowCommand" >
+    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnRowCommand="dgvProductos_RowCommand">
 
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="IDProducto" />
@@ -32,7 +40,7 @@
             <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
             <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}" />
             <asp:BoundField HeaderText="Precio Compra" DataField="PrecioCompra" DataFormatString="{0:C}" />
-            
+
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
 
@@ -43,7 +51,7 @@
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
 
-                     <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IdProducto") %>'>
+                    <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IdProducto") %>'>
                     <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
                     </asp:LinkButton>
 
@@ -113,7 +121,7 @@
             </div>
         </div>
     </div>
-  
-    
+
+
 
 </asp:Content>

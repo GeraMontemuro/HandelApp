@@ -1,6 +1,7 @@
 ﻿using dominio;
 using negocio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,12 +15,13 @@ namespace HandelApp
     {   
         Producto producto = new Producto();
         public List<Producto> ListaDeCargaVenta = new List<Producto>();
+        List<Producto> lista = new List<Producto>();
+        public List<Producto> ListaFiltrada = new List<Producto>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 ProductoNegocio ProductoNegocio = new ProductoNegocio();
-                List<Producto> lista = new List<Producto>();
                 lista = ProductoNegocio.listarconSp();
 
                 Marca marcaaux = new Marca();
@@ -140,6 +142,71 @@ namespace HandelApp
             {
                 Response.Redirect($"~/EditarProducto.aspx?id={id}");
             }
-        }        
+        }
+
+        protected void buscarproducto_Click(object sender, EventArgs e)
+        {
+            string PalabraBuscada = TxtBuscador.Text;
+            AccesoBD accesoBD = new AccesoBD();
+
+            try
+            {
+
+                if (PalabraBuscada != "")
+                {
+                    accesoBD.setearConsulta("select Pr.IDProducto, Pr.Codigo, Pr.Nombre, Pr.Descripcion, Pr.Marcas, M.Descripcion as MDes,Pr.Categorias, C.Descripcion as CDes, Pr.StockTotal, Pr.StockMinimo, Pr.PrecioCompra from Producto Pr \r\ninner join Marcas M on M.IDMarca = Pr.Marcas\r\ninner join Categorias C on C.IDCategoria = Pr.Categorias\r\nwhere Pr.Nombre like ('%" + PalabraBuscada + "%')");
+                    accesoBD.ejecutarLectura();
+
+
+                    while (accesoBD.Lector.Read())
+                    {
+                        Producto proaux = new Producto();
+                        proaux.Marca = new Marca();
+                        proaux.Categoria = new Categoria();
+
+                        proaux.IdProducto = (int)accesoBD.Lector["IDProducto"];
+                        proaux.Codigo = (string)accesoBD.Lector["Codigo"];
+                        proaux.Nombre = (string)accesoBD.Lector["Nombre"];
+                        proaux.Descripcion = (string)accesoBD.Lector["Descripcion"];
+                        proaux.Marca.ID = (int)accesoBD.Lector["Marcas"];
+                        if (!(accesoBD.Lector["Marcas"] is DBNull))
+                        {
+                            proaux.Marca.Descripcion = (string)accesoBD.Lector["MDes"];
+                        }
+                        else { proaux.Marca.Descripcion = "No tiene"; }
+                        proaux.Categoria.Id = (int)accesoBD.Lector["Categorias"];
+                        if (!(accesoBD.Lector["Categorias"] is DBNull))
+                        {
+                            proaux.Categoria.Descripcion = (string)accesoBD.Lector["CDes"];
+                        }
+                        else { proaux.Categoria.Descripcion = "No tiene"; }
+                        proaux.StockTotal = (int)accesoBD.Lector["StockTotal"];
+                        proaux.StockMinimo = (int)accesoBD.Lector["StockMinimo"];
+                        proaux.PrecioCompra = accesoBD.Lector.GetDecimal(accesoBD.Lector.GetOrdinal("PrecioCompra"));
+
+                        ListaFiltrada.Add(proaux);
+
+                    }
+                    dgvProductos.DataSource = ListaFiltrada;
+                    dgvProductos.DataBind();
+                }
+                else
+                {
+                    dgvProductos.DataSource = lista;
+                    dgvProductos.DataBind();
+                }
+            }
+            catch (Exception)
+            {
+                dgvProductos.DataSource = lista;
+                dgvProductos.DataBind();
+            }
+
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
+
+        }
     }
 }

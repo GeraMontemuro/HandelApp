@@ -15,6 +15,24 @@ namespace HandelApp
     {
 
         /// <summary>
+        /// TxtBuscador control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtBuscador;
+
+        /// <summary>
+        /// buscarproducto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buscarproducto;
+
+        /// <summary>
         /// dgvProductos control.
         /// </summary>
         /// <remarks>
