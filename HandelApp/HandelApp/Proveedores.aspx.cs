@@ -27,8 +27,10 @@ namespace HandelApp
         protected void dgvProveedores_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
+            ProveedorNegocio provNeg = new ProveedorNegocio();
+            Proveedor proveedor = new Proveedor();
 
-            if(e.CommandName == "Eliminar")
+            if (e.CommandName == "Eliminar")
             {
 
                 ProveedorNegocio ProveedorAEliminar = new ProveedorNegocio();
@@ -42,8 +44,11 @@ namespace HandelApp
 
                     throw;
                 }
+            }         
 
-
+            else if (e.CommandName == "Editar")
+            {
+                Response.Redirect($"~/EditarProveedor.aspx?id={id}");
             }
 
         }

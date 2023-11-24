@@ -128,17 +128,17 @@ namespace HandelApp
                 try
                 {
                     prodNeg.baja(id);
-                    Response.Redirect("Productos.aspx");
+                    Response.Redirect("Productos.aspx", false);
                 }
-                catch (Exception ex)
+                catch (System.Data.SqlClient.SqlException)
                 {
-                    throw ex;
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alert('Producto asociado a una compra. No puede eliminarse.');", true);
                 }
 
             }
             else if (e.CommandName == "Editar")
             {
-                Response.Redirect($"~/EditarCliente.aspx?id={id}");
+                Response.Redirect($"~/EditarProducto.aspx?id={id}");
             }
         }        
     }
