@@ -20,6 +20,17 @@ namespace dominio
         public string Pass { get; set; }
 
         public TipoUsuario TipoUsuario { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Apellido { get; set; }
+
+        public DateTime FechaNacimiento { get; set; }
+
+        public string Mail { get; set; }
+
+        public string ImagenPerfil { get; set; }
+
         public Usuario(string user, string pass, bool admin)
         {
             User = user;

@@ -21,16 +21,16 @@
                     <div class="input-container">
                         <label for="usuario">Usuario</label>
                          <asp:TextBox runat ="server" ID="txtUsuario"  CssClass="form-control" />
-                      <%--  <input type="text" id="usuario" name="usuario" required/>--%>
+                    
                     </div>
 
                     <div class="input-container">
                         <label for="contraseña">Contraseña</label>
                          <asp:TextBox runat ="server" ID="txtPassword"  CssClass="form-control" />
-                      <%--  <input type="password" id="contraseña" name="contraseña" required/>--%>
+                    
                     </div>
 
-                    <%--<input type="submit" value="Iniciar sesión"/>  --%>    
+                        
                     <asp:Button Text="Iniciar sesión" runat="server" ID="btnIngresar" OnClick="btnIngresar_Click"/>
                 </form>
             </div>

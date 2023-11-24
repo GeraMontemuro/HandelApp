@@ -9,6 +9,54 @@ namespace negocio
 {
     public class UsuarioNegocio
     {
+
+        public void actualizar(Usuario user)
+        {
+            AccesoBD datos = new AccesoBD();
+            try
+            {
+                datos.setearConsulta("Update Usuarios set Imagen= @Imagen,Nombre = @Nombre,Apellido =@Apellido,Email= @Mail where Usuario = @User");
+                datos.setearParametro("@Imagen", user.ImagenPerfil);
+                datos.setearParametro("@Apellido", user.Apellido);
+                datos.setearParametro("@Nombre", user.Nombre);
+                datos.setearParametro("@Mail", user.Mail);
+                // datos.setearParametro("@Imagen", user.FechaNacimiento);
+                datos.setearParametro("@User", user.User);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public int InsertarNuevoLogin(Usuario nuevo)
+        {
+            AccesoBD datos = new AccesoBD();
+
+            try
+            {
+                datos.setearProcedimiento("InsertarNuevo");
+                datos.setearParametro("@Usuario", nuevo.User);
+                datos.setearParametro("@pass", nuevo.Pass);
+                return datos.ejecutarAccionScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
         public bool loguear(Usuario usuario)
         {
             AccesoBD datos = new AccesoBD();

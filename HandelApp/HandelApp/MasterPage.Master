@@ -105,6 +105,7 @@
                     <div class="navbar-nav">                        
                         <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
                         <div class="right-text">Bienvenido  <%=Request.Form["txtusuario"] %>    </div>   
+                          <asp:Image  ID="imaAvatar" Style="height:40px; Width:40px; border-radius:50%;" ImageUrl="Logos/Logo.jpg"  runat="server" />
                     </div>
                 </div>
             </div>
@@ -117,7 +118,10 @@
             <a class="nav-link" href="Vender.aspx">VENDER</a>
             <a class="nav-link" href="Compras.aspx">COMPRAS</a>
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
+             <%if (((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+     { %>
             <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>
+               <%}; %>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
             <asp:Button ID="btnSalir" runat="server" Text="Cerrar Sesión" OnClick="BtnSalir_Click" />
             
