@@ -8,6 +8,10 @@
         function confirmarEliminar() {
             return confirm('¿Estás seguro de que deseas eliminar este producto?');
         }
+
+        function prodAgregado() {
+            return confirm('Producto agregado con éxito!');
+        }
     </script>
 
     <h1>PRODUCTOS  </h1>
@@ -15,7 +19,7 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvoProd">Nuevo Producto</button>
 
 
-    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false"  OnRowCommand="dgvProductos_RowCommand" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged">
+    <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false"  OnRowCommand="dgvProductos_RowCommand" >
 
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="IDProducto" />
@@ -28,10 +32,12 @@
             <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
             <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}" />
             <asp:BoundField HeaderText="Precio Compra" DataField="PrecioCompra" DataFormatString="{0:C}" />
-            <asp:CommandField ShowSelectButton="true" SelectText="Agregar Producto" HeaderText="Agregar a la factura" /> 
-
+            
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
+
+                    <asp:LinkButton runat="server" Text="Agregar Producto" CommandName="AgregarProd" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return prodAgregado();">                    
+                    </asp:LinkButton>
 
                     <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
