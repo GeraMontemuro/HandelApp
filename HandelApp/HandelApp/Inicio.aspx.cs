@@ -14,7 +14,7 @@ namespace HandelApp
            
                 if (Session["usuario"] == null)
                 {
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("Default.aspx");
                 }
                 else
                 {

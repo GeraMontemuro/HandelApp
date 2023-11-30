@@ -118,10 +118,10 @@
             <a class="nav-link" href="Vender.aspx">VENDER</a>
             <a class="nav-link" href="Compras.aspx">COMPRAS</a>
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
-            <%-- <%if (((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
-     { %>--%>
+             <%if ((dominio.Usuario)Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+     { %>
             <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>
-              <%-- <%}; %>--%>
+               <%}; %>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
             <asp:Button ID="btnSalir" runat="server" Text="Cerrar Sesión" OnClick="BtnSalir_Click" />
             

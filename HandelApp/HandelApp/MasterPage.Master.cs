@@ -17,7 +17,7 @@ namespace HandelApp
 
         protected void BtnSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Inicio.aspx"); //vuelve siemmpre a inicio
+            Response.Redirect("Default.aspx"); //vuelve siemmpre a inicio
         }
     }
 }
