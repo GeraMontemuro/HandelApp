@@ -11,6 +11,12 @@
         }
     </script>
     <h1>CLIENTES   </h1>
+    <div class="form-floating mb-3">
+
+    <asp:TextBox ID="TxtBuscador" runat="server" />
+    <asp:Button ID="buscarcliente" class="btn btn-primary" Text="Buscar Cliente/s" runat="server" Onclick="buscarcliente_Click"/>
+   
+    </div>
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Cliente</button>
 

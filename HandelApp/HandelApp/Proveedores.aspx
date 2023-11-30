@@ -5,6 +5,13 @@
 
     <h1> PROVEEDORES </h1>
 
+    <div class="form-floating mb-3">
+
+    <asp:TextBox ID="TxtBuscador" runat="server" />
+    <asp:Button ID="buscarproveedor" class="btn btn-primary" Text="Buscar Proveedor/es" runat="server" Onclick="buscarproveedor_Click" />
+   
+    </div>
+
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Proveedor</button>
 
     <asp:GridView ID="dgvProveedores" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProveedores_RowCommand" >
