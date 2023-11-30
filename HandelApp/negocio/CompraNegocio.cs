@@ -17,7 +17,7 @@ namespace negocio
             try
             {
                 
-                datos.setearConsulta("Select Com.ID as IDCompra, Com.Fecha, P.Nombre as ProdNombre, Com.Cantidad, Com.PrecioCompra, Prov.NombreFantasia as NombreProv from Compras Com\r\ninner join Producto P on P.IDProducto = Com.IDProducto\r\ninner join Proveedor Prov on Prov.IDProveedor = Com.IDProveedor");
+                datos.setearConsulta("Select Com.ID as IDCompra, Com.Fecha, Com.IDProducto, P.Nombre as ProdNombre, Com.Cantidad, Com.PrecioCompra, Prov.NombreFantasia as NombreProv from Compras Com\r\ninner join Producto P on P.IDProducto = Com.IDProducto\r\ninner join Proveedor Prov on Prov.IDProveedor = Com.IDProveedor");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -28,6 +28,7 @@ namespace negocio
 
                     CompraAux.IDCompra = (int)datos.Lector["IDCompra"];
                     CompraAux.Fecha = (DateTime)datos.Lector["Fecha"];
+                    CompraAux.Producto.IdProducto = (int)datos.Lector["IDProducto"];
                     CompraAux.Producto.Nombre = (string)datos.Lector["ProdNombre"];
                     if (!(datos.Lector["ProdNombre"] is DBNull))
                     {
@@ -45,7 +46,6 @@ namespace negocio
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
@@ -91,8 +91,11 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("insert Into Compras (Fecha,IDProducto,Cantidad,PrecioCompra,IDProveedor) values ('" + nueva.Fecha + "',@Producto,'" + nueva.Cantidad + "','" + nueva.PrecioCompra + "', @Proveedor)");
+                accesoBD.setearConsulta("INSERT INTO Compras (Fecha, IDProducto, Cantidad, PrecioCompra, IDProveedor) VALUES (@Fecha, @Producto, @Cantidad, @PrecioCompra, @Proveedor)");
+                accesoBD.setearParametro("@Fecha", nueva.Fecha.ToString("yyyy-MM-dd"));
                 accesoBD.setearParametro("@Producto", nueva.Producto.IdProducto);
+                accesoBD.setearParametro("@Cantidad", nueva.Cantidad);
+                accesoBD.setearParametro("@PrecioCompra", nueva.PrecioCompra);
                 accesoBD.setearParametro("@Proveedor", nueva.Proveedor.IdProveedor);
                 accesoBD.ejecutarAccion();
 
@@ -138,25 +141,39 @@ namespace negocio
             {
                 accesoBD.cerrarConexion();
             }
-
-
         }
 
         public void baja(int id)
         {
+            AccesoBD accesoBD = new AccesoBD();
+            AccesoBD accesoBD2 = new AccesoBD();
             try
             {
-                AccesoBD accesoBD = new AccesoBD();
+                Compra auxCompra = new Compra();
+
+                auxCompra = buscar(id);
+
+                int idProducto = auxCompra.Producto.IdProducto;
+                int cantidad = auxCompra.Cantidad;
 
                 accesoBD.setearConsulta("delete from Compras where ID = @id");
                 accesoBD.setearParametro("@id", id);
                 accesoBD.ejecutarAccion();
 
-                accesoBD.cerrarConexion();
+                accesoBD2.setearConsulta("Update Producto set StockTotal = StockTotal - @cantidad where IDProducto = @idProducto");
+                accesoBD2.setearParametro("@cantidad", cantidad);
+                accesoBD2.setearParametro("@idProducto", idProducto);
+
+                accesoBD2.ejecutarAccion();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
+                accesoBD2.cerrarConexion();
             }
         }
     }

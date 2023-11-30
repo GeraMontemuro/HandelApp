@@ -53,7 +53,7 @@ namespace HandelApp
         protected void btnAgregarCompra_Click(object sender, EventArgs e)
         {
             CompraNegocio auxComNeg = new CompraNegocio();
-            DateTime fechaCompra = DateTime.Parse(txtFecha.Text);
+            DateTime fechaCompra = Calendario1.SelectedDate;
             ProductoNegocio prodStock = new ProductoNegocio();
 
             try
