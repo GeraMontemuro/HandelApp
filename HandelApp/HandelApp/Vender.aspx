@@ -4,6 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <%--<h1 class="display-2 custom-heading"">Nueva Venta   </h1>  --%>
 
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+    <script type="text/javascript">
+        function confirmarEliminar() {
+           return confirm('¿Estás seguro de que deseas eliminar este producto?');
+        }              
+    </script>
+
 <div class="form-floating mb-3">
     <asp:Label runat="server" Text="Cliente" />
     <asp:DropDownList style = "height: 50%" ID="ddlCliente" runat="server"  CssClass="form-control" placeholder="Selecciona el cliente" AutoPostBack="true" OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged"></asp:DropDownList>
@@ -18,13 +26,13 @@
 </div>
     <asp:Button runat="server" Text="Agregar Producto" OnClick="Unnamed_Click"  />
 
-<asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged">
+<asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnRowCommand="dgvVentas_RowCommand">
     <Columns>
 
         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
         <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
         <asp:BoundField HeaderText="PrecioVenta" DataField="PrecioCompra" DataFormatString="{0:C}" />
-        <asp:CommandField ShowSelectButton="true" SelectText="Eliminar Producto" HeaderText="Acción" />
+        <asp:BoundField HeaderText="Stock" DataField="StockTotal"/>
 
         <asp:TemplateField HeaderText="Stock a Vender">
             <ItemTemplate>
@@ -37,6 +45,10 @@
 
                 <asp:LinkButton ID="lnkbtnSumar" runat="server" CommandName="Sumar" CommandArgument='<%#Eval("IdProducto") %>'>
                 <asp:Image runat="server" class="maspequeña"  src="Logos/pngwing.com%20(mas).png" AlternateText=" "  />
+                </asp:LinkButton>
+
+                <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();" >              
+                <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                 </asp:LinkButton>
 
             </ItemTemplate>

@@ -118,76 +118,12 @@ namespace HandelApp
             }
 
         }
-        protected void dgvVentas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AuxPrecio = 0;
-            var id = dgvVentas.SelectedDataKey.Value.ToString();
-            Producto aux = new Producto();
-
-            List<Producto> ventas = (List<Producto>)Session["ListaVenta"];
-            aux = ventas.Find(x => x.IdProducto == int.Parse(id));
-            if (aux != null)
-            {
-                ventas.Remove(aux);
-                Session["ListaVenta"] = ventas;
-
-
-
-                if (ventas != null)
-                {
-                    foreach (Producto item in ventas)
-                    {
-                        AuxPrecio += item.PrecioCompra;
-                        contador = ventas.Count();
-                        FuncionGlobal.CantidadTotalAsignada(contador);
-                        FuncionGlobal.CantidadTotal();
-
-                    }
-                    PrecioTotal = string.Format("{0:C}", AuxPrecio);
-                    TextPrecioTotal.Text = PrecioTotal;
-
-
-                }
-                dgvVentas.DataSource = ventas;
-                dgvVentas.DataBind();
-            }
-
-
-        }
-
-
+        
         public void BtnFactura_Click(object sender, EventArgs e)
         {
             Response.Redirect("Factura.aspx"); 
         }
-
-       /* protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int id = Convert.ToInt32(e.CommandArgument);
-            GridViewRow indice = dgvVentas.Rows[id];//el id es el de producto no el del dgv de ventas, probe (dgvVentas.SelectedRow) pero tmp funciona
-            
-            TextBox txtCantidad = (TextBox)indice.FindControl("txtStockavender");
-            
-                        
-            int cantidad = Convert.ToInt32(txtCantidad.Text);
-            ProductoNegocio auxProductonegocio = new ProductoNegocio();
-            Producto ProdAux = new Producto();
-
-            ProdAux = auxProductonegocio.buscar(id);
-
-
-
-            if (e.CommandName == "Restar" && ProdAux.StockTotal > 0)
-            {
-                cantidad--;
-            }
-            else if (e.CommandName == "Sumar" && cantidad <= ProdAux.StockTotal)
-            {
-                cantidad++;
-            }
-
-            txtCantidad.Text = cantidad.ToString();
-        }*/
+               
 
         protected void Unnamed_Click(object sender, EventArgs e)
         {
@@ -212,6 +148,69 @@ namespace HandelApp
 
                 }
             }
+        }
+
+        protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+
+            LinkButton btn = (LinkButton)e.CommandSource;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+
+            TextBox txtCantidad = (TextBox)row.FindControl("txtStockavender");
+            int cantidad = Convert.ToInt32(txtCantidad.Text);
+           
+            ProductoNegocio auxProductonegocio = new ProductoNegocio();
+            Producto Prodaux = new Producto();
+
+            Prodaux = auxProductonegocio.buscar(id);
+
+            if (e.CommandName == "Restar" && Prodaux.StockTotal > 0)
+            {
+                
+                cantidad--;
+            }
+            else if (e.CommandName == "Sumar" && cantidad <= Prodaux.StockTotal)
+            {
+                
+                cantidad++;
+            }
+            else if (e.CommandName == "Eliminar")
+            {
+
+                AuxPrecio = 0;
+                Producto aux = new Producto();
+
+                List<Producto> ventas = (List<Producto>)Session["ListaVenta"];
+                aux = ventas.Find(x => x.IdProducto == id);
+                if (aux != null)
+                {
+                    ventas.Remove(aux);
+                    Session["ListaVenta"] = ventas;
+
+
+
+                    if (ventas != null)
+                    {
+                        foreach (Producto item in ventas)
+                        {
+                            AuxPrecio += item.PrecioCompra;
+                            contador = ventas.Count();
+                            FuncionGlobal.CantidadTotalAsignada(contador);
+                            FuncionGlobal.CantidadTotal();
+
+                        }
+                        PrecioTotal = string.Format("{0:C}", AuxPrecio);
+                        TextPrecioTotal.Text = PrecioTotal;
+
+
+                    }
+                    dgvVentas.DataSource = ventas;
+                    dgvVentas.DataBind();
+                }
+            }
+            txtCantidad.Text = cantidad.ToString();
+
         }
     }
 }
