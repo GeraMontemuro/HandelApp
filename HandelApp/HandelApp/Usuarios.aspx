@@ -51,8 +51,8 @@
     <div class="col-mb-4">
      <asp:Button Text="Guardar" runat="server" CssClass="btn btn-primary" ID="btnGuardar" OnClick="btnGuardar_Click" />
      <a  href="Inicio.aspx">Regresar</></a>
-        <%if (((dominio.Usuario)Session["usuario"]).TipoUsuario== dominio.TipoUsuario.ADMIN) { %>
-     <asp:Button Text ="Agregar Nuevo Usuario" runat="server" CssClass="btn btn-primary" ID="btnNuevoUsuario" onclick="btnNuevoUsuario_Click" />
+       <%if (((dominio.Usuario)Session["usuario"])!= null &&((dominio.Usuario)Session["usuario"]).TipoUsuario== dominio.TipoUsuario.ADMIN) { %>
+     <asp:Button Text ="Agregar Nuevo Usuario" runat="server" CssClass="btn btn-primary" ID="btnNuevoUsuario" onclick="btnNuevoUsuario_Click1" />
            <% }; %>
     </div>
     </div>

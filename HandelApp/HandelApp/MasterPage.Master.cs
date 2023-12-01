@@ -12,7 +12,14 @@ namespace HandelApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!(Page is Inicio))
+            {
+                if (!Seguridad.SessionActiva(Session["usuario"]))
+                {
+                    Response.Redirect("Inicio.aspx", false);
+                }
+            }
+
         }
 
         protected void BtnSalir_Click(object sender, EventArgs e)

@@ -46,5 +46,10 @@ namespace HandelApp
                 Session.Add("error", ex.ToString());
             }
         }
+
+        protected void btnNuevoUsuario_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("NewLogin.aspx");
+        }
     }
 }
