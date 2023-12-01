@@ -155,6 +155,7 @@ namespace negocio
 
                 int idProducto = auxCompra.Producto.IdProducto;
                 int cantidad = auxCompra.Cantidad;
+                
 
                 accesoBD.setearConsulta("delete from Compras where ID = @id");
                 accesoBD.setearParametro("@id", id);

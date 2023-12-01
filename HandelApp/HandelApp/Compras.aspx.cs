@@ -135,7 +135,7 @@ namespace HandelApp
                 try
                 {
                     comNeg.baja(id);
-                    Response.Redirect("Compras.aspx");
+                    Response.Redirect("Compras.aspx", false);
                 }
                 catch (Exception ex)
                 {

@@ -79,8 +79,36 @@ namespace HandelApp
             }
             catch (FormatException ex)
             {
-                // lblMensaje.Text = "Ingresa un precio en números por favor";
-                
+                if (string.IsNullOrWhiteSpace(txtNombre.Text))
+                {
+                    string script = "alert('Debes completar un nombre de producto válido');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                }
+                else if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+                {
+                    string script = "alert('Debes completar una descripción de producto válida');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                }
+                else if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+                {
+                    string script = "alert('Debes completar un código de producto válido');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                }
+                else if (string.IsNullOrWhiteSpace(txtStockTotal.Text))
+                {
+                    string script = "alert('Ingresá un Stock Total en números por favor');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                }
+                else if (string.IsNullOrWhiteSpace(txtStockMinimo.Text))
+                {
+                    string script = "alert('Ingresá un Stock Mínimo en números por favor');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    string script = "alert('Ingresa un precio en números por favor');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
+                }
             }
 
             catch (OverflowException ex)
