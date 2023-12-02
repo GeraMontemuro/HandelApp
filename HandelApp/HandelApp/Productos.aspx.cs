@@ -19,6 +19,13 @@ namespace HandelApp
         public List<Producto> ListaFiltrada = new List<Producto>();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!(Seguridad.EsAdmin(Session["usuario"]) is dominio.TipoUsuario.ADMIN))
+            {
+                Session.Add("ERROR", "Se requiere permisos de aministrador.");
+                Response.Redirect("Error.aspx", false);
+            }
+
+
             if (!IsPostBack)
             {
                 ProductoNegocio ProductoNegocio = new ProductoNegocio();

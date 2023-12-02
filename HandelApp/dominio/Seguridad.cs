@@ -20,5 +20,12 @@ namespace dominio
                 return false;
             }
         }
+
+        public static TipoUsuario EsAdmin(object user)
+        {
+            Usuario usuario = user != null ? (Usuario)user : null;
+            return usuario.TipoUsuario;
+        }
+
     }
 }
