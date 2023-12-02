@@ -24,7 +24,7 @@
        
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvoProd">Nuevo Producto</button>
+    <asp:Button type="button" Text="Agregar Producto" CssClass="btn btn-primary" runat="server" ID="btnAgregProd" OnClick="btnAgregProd_Click" />
 
 
     <asp:GridView ID="dgvProductos" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnRowCommand="dgvProductos_RowCommand">
@@ -59,69 +59,6 @@
             </asp:TemplateField>
         </Columns>
 
-    </asp:GridView>
+    </asp:GridView> 
 
-    <%--MODAL PRODUCTO NUEVO--%>
-    <div class="modal fade" id="modalNvoProd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="lblNvoProd" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="lblNvoProd">Agregar Producto</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Nombre" />
-                        <asp:TextBox runat="server" ID="txtNombre" />
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Descripción" />
-                        <asp:TextBox runat="server" ID="txtDescripcion" />
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Código" />
-                        <asp:TextBox runat="server" ID="txtCodigo" />
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Marca" />
-                        <asp:DropDownList ID="ddlMarca" runat="server" CssClass="form-select" AutoPostBack="true"></asp:DropDownList>
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Categoria" />
-                        <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select" AutoPostBack="true"></asp:DropDownList>
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Stock Total" />
-                        <asp:TextBox runat="server" ID="txtStockTotal" />
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Stock Mínimo" />
-                        <asp:TextBox runat="server" ID="txtStockMinimo" />
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Precio de Compra" />
-                        <asp:TextBox runat="server" ID="txtPrecio" />
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <asp:Button ID="btnAgregarProd" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarProd_Click" />
-                    <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-
-</asp:Content>
+    </asp:Content>

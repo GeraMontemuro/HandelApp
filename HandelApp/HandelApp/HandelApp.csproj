@@ -85,6 +85,7 @@
     <Content Include="Logos\pngwing.com.png" />
     <Content Include="Logos\trash.jpg" />
     <Content Include="NewLogin.aspx" />
+    <Content Include="NuevoProducto.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Styles.css" />
@@ -170,6 +171,13 @@
     </Compile>
     <Compile Include="NewLogin.aspx.designer.cs">
       <DependentUpon>NewLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoProducto.aspx.cs">
+      <DependentUpon>NuevoProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NuevoProducto.aspx.designer.cs">
+      <DependentUpon>NuevoProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>

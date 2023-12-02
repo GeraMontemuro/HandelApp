@@ -24,105 +24,16 @@ namespace HandelApp
                 ProductoNegocio ProductoNegocio = new ProductoNegocio();
                 lista = ProductoNegocio.listarconSp();
 
-                Marca marcaaux = new Marca();
-                MarcaNegocio marNegAux = new MarcaNegocio();
-                List<Marca> listaMarcas = new List<Marca>();
-
-                Categoria categoriaaux = new Categoria();
-                CategoriaNegocio catNegAux = new CategoriaNegocio();
-                List<Categoria> listaCategorias = new List<Categoria>();
-
-                listaMarcas = marNegAux.listar();
-                listaCategorias = catNegAux.listar();
+               
 
 
-                ddlMarca.DataSource = listaMarcas;
-                ddlMarca.DataTextField = "Descripcion";
-                ddlMarca.DataValueField = "ID";
-                ddlMarca.DataBind();
-
-                ddlCategoria.DataSource = listaCategorias;
-                ddlCategoria.DataTextField = "Descripcion";
-                ddlCategoria.DataValueField = "Id";
-                ddlCategoria.DataBind();
 
                 dgvProductos.DataSource = lista;
                 dgvProductos.DataBind();
             }
         }
 
-        protected void btnAgregarProd_Click(object sender, EventArgs e)
-        {
-            ProductoNegocio auxProdNegocio = new ProductoNegocio();
-
-            try
-            {
-                if (producto == null) { producto = new Producto(); }
-                if (producto.Marca == null) { producto.Marca = new Marca(); }
-                if (producto.Categoria == null) { producto.Categoria = new Categoria(); }
-
-
-                producto.Nombre = txtNombre.Text;
-                producto.Descripcion = txtDescripcion.Text;
-                producto.Codigo = txtCodigo.Text;
-                producto.Marca.ID = int.Parse(ddlMarca.SelectedValue);
-                producto.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
-                producto.StockTotal = int.Parse(txtStockTotal.Text);
-                producto.StockMinimo = int.Parse(txtStockMinimo.Text);
-                producto.PrecioCompra = decimal.Parse(txtPrecio.Text);
-
-                auxProdNegocio.alta(producto);
-                Response.Redirect("Productos.aspx");
-                lblMensaje.Text = "Producto agregado con éxito";
-
-
-            }
-            catch (FormatException ex)
-            {
-                if (string.IsNullOrWhiteSpace(txtNombre.Text))
-                {
-                    string script = "alert('Debes completar un nombre de producto válido');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-                else if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
-                {
-                    string script = "alert('Debes completar una descripción de producto válida');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-                else if (string.IsNullOrWhiteSpace(txtCodigo.Text))
-                {
-                    string script = "alert('Debes completar un código de producto válido');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-                else if (string.IsNullOrWhiteSpace(txtStockTotal.Text))
-                {
-                    string script = "alert('Ingresá un Stock Total en números por favor');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-                else if (string.IsNullOrWhiteSpace(txtStockMinimo.Text))
-                {
-                    string script = "alert('Ingresá un Stock Mínimo en números por favor');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-                else
-                {
-                    string script = "alert('Ingresa un precio en números por favor');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-            }
-
-            catch (OverflowException ex)
-            {
-                //lblMensaje.Text = "Superaste la cantidad de caracteres";
-                
-            }
-
-            catch (Exception ex)
-            {
-                // lblMensaje.Text = ex.ToString();
-                
-            }
-        }
+      
 
         protected void dgvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -235,6 +146,11 @@ namespace HandelApp
                 accesoBD.cerrarConexion();
             }
 
+        }
+
+        protected void btnAgregProd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NuevoProducto.aspx");
         }
     }
 }
