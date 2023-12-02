@@ -38,5 +38,7 @@ namespace dominio
             TipoUsuario = admin ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
         }
 
+        public Usuario() { }
+
     }
 }
