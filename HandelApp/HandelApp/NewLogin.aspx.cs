@@ -32,5 +32,10 @@ namespace HandelApp
                 Session.Add("error", ex.ToString());
             }
         }
+
+        protected void GuardarEditarPerfil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

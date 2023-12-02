@@ -23,9 +23,20 @@ namespace HandelApp
 
         }
 
-        protected void BtnSalir_Click(object sender, EventArgs e)
+        //protected void BtnSalir_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("Default.aspx"); //vuelve siemmpre a inicio
+        //}
+
+        protected void btnSalirSession_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx"); //vuelve siemmpre a inicio
+            Session.Clear();
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void btnNuevoUsuario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NewLogin.aspx");
         }
     }
 }

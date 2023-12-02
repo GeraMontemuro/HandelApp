@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="row"> 
+            <div class="row"> 
     <div class="col-md-4">
         <div class="mb-3">
             <label for="Usuario">Usuario</label>
@@ -15,39 +15,9 @@
              <asp:TextBox runat ="server" ID="txtNombre"  CssClass="form-control" />
 
         </div>
-
-        <div class="mb-3">
-         <label for="Apellido">Apellido</label>
-         <asp:TextBox runat ="server" ID="txtApellido"  CssClass="form-control" />
- 
-        </div>
-         <divc lass="mb-3">
-             <label for="Mail">Email</label>
-             <asp:TextBox runat ="server" ID="txtEmail"  CssClass="form-control" />
-           
-        </div>
-         <div class="mb-3">
-            <label for="Fecha">Fecha</label>
-            <asp:TextBox runat ="server" ID="txtFecha"  CssClass="form-control" />
- 
-        </div>
+</div>
     </div>
-    <div class="col-mb-4"> 
-
-            <div class="mb-3">
-                <label class="form-class">Imagen Perfil</label>
-                <input type="file" id="txtImagen" runat="server" class="form-control" />
+                <asp:Button Text="Guardar" runat="server" ID="GuardarEditarPerfil" OnClick="GuardarEditarPerfil_Click" CssClass="btn btn-primary" Font-Size="Small"/>
             </div>
-            <asp:Image ID="imaNuevoPerfil" ImageUrl="~/Logos/Logo.jpg" runat="server" CssClass="img-fluid mb-3" />
-
-        </div>
-</div>
-<div class="row">
-
-<div class="col-mb-4">
- <asp:Button Text="Guardar" runat="server" CssClass="btn btn-primary" ID="btnGuardarUsuario" OnClick="btnGuardarUsuario_Click" />
- <a  href="Usuario.aspx">Regresar</> </a>
-</div>
-    </div>
 
 </asp:Content>
