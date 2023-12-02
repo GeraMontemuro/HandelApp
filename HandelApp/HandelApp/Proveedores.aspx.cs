@@ -53,7 +53,7 @@ namespace HandelApp
 
         }
 
-        protected void btnAgregarProd_Click(object sender, EventArgs e)
+       /* protected void btnAgregarProd_Click(object sender, EventArgs e)
         {
             ProveedorNegocio ProNegocio = new ProveedorNegocio ();
 
@@ -75,6 +75,10 @@ namespace HandelApp
                 throw;
             }
 
+        }*/
+        protected void AgregarProveedor_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NuevoProveedor.aspx", false);
         }
 
         protected void buscarproveedor_Click(object sender, EventArgs e)

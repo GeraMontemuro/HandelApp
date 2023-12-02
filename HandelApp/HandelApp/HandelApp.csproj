@@ -86,7 +86,9 @@
     <Content Include="Logos\pngwing.com.png" />
     <Content Include="Logos\trash.jpg" />
     <Content Include="NewLogin.aspx" />
+    <Content Include="NuevoCliente.aspx" />
     <Content Include="NuevoProducto.aspx" />
+    <Content Include="NuevoProveedor.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Proveedores.aspx" />
     <Content Include="Styles.css" />
@@ -180,12 +182,26 @@
     <Compile Include="NewLogin.aspx.designer.cs">
       <DependentUpon>NewLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NuevoCliente.aspx.cs">
+      <DependentUpon>NuevoCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NuevoCliente.aspx.designer.cs">
+      <DependentUpon>NuevoCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NuevoProducto.aspx.cs">
       <DependentUpon>NuevoProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="NuevoProducto.aspx.designer.cs">
       <DependentUpon>NuevoProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoProveedor.aspx.cs">
+      <DependentUpon>NuevoProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NuevoProveedor.aspx.designer.cs">
+      <DependentUpon>NuevoProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
