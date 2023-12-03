@@ -30,13 +30,13 @@ namespace HandelApp
                 }
                 else
                 {
-                    Session.Add("Error", "user o password incorrectos");
+                    Session.Add("Error", "Usuario y/o contraseña incorrectos");
                     Response.Redirect("Default.aspx", false);
                 }
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex.ToString()); //mandar a mensaje de error
+                Session.Add("Error", ex.ToString()); 
                 Response.Redirect("Default.aspx", false);
             }
         }

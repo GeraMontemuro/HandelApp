@@ -104,19 +104,23 @@
 
                     <div class="navbar-nav">
                         <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
-                        <div class="right-text">Bienvenido  <%=Request.Form["txtusuario"] %>    </div>
+
+                        <div class="right-text">Bienvenido  <%=Request.Form["txtUsuario"] %>    </div>
                         <asp:Image ID="imaAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" ImageUrl="Logos/Logo.jpg" runat="server" />
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">login
-                            </a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">login <%=Request.Form["txtUsuario"] %> </a>
+
                             <ul class="dropdown-menu">
+
                                 <li><a class="dropdown-item" href="EditarPerfilUsuario.aspx">Mi Perfil</a></li>
+
                                 <li><%if (((dominio.Usuario)Session["usuario"]) != null && ((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
                                         { %>
                                     <asp:Button Text="Agregar Nuevo Usuario" runat="server" ID="btnNuevoUsuario" OnClick="btnNuevoUsuario_Click" />
                                     <% }; %></li>
-                                <li>
-                                    <asp:Button class="dropdown-item" runat="server" Text="Cerrar Sesión" ID="btnSalirSession" CssClass="btn btn-primary" OnClick="btnSalirSession_Click"></asp:Button></li>
+
+                                <li><asp:Button class="dropdown-item" runat="server" Text="Cerrar Sesión" ID="btnSalirSession" CssClass="btn btn-primary" OnClick="btnSalirSession_Click"></asp:Button></li>
 
                             </ul>
                         </li>

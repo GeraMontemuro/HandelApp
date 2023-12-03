@@ -43,9 +43,9 @@
                 <asp:Image ID="imaNuevoPerfil" ImageUrl="~/Logos/Logo.jpg" runat="server" CssClass="img-fluid mb-3" />--%>
 
              </div>
-
                 <asp:Button Text="Guardar" runat="server" ID="btnGuardarEditarPerfil" OnClick="btnGuardarEditarPerfil_Click" />
                 <a href="Usuario.aspx">Regresar</> </a>
             </div>
+        
         </div>
 </asp:Content>
