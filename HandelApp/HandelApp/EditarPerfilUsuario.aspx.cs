@@ -13,7 +13,26 @@ namespace HandelApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                //if (Request.QueryString["id"] != null)
+                //{
+                //    try
+                //    {
+                //        int id = Convert.ToInt32(Request.QueryString["id"]);
+                //        ClienteNegocio cliNeg = new ClienteNegocio();
+                //        Cliente cliente = new Cliente();
+                //        cliente = cliNeg.buscar(id);
 
+                //        txtNombre.Text = cliente.NombreFantasia;
+                //        txtCuil.Text = cliente.Cuil;
+                //        txtTelefono.Text = cliente.Telefono;
+                //        TxtMail.Text = cliente.Mail;
+                //    }
+                //    catch (Exception ex)
+                //    { throw ex; }
+                //}
+            }
         }
 
         protected void btnGuardarEditarPerfil_Click(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace HandelApp
 
         }
 
-        protected void btnGuardarUsuario_Click(object sender, EventArgs e)
+        protected void GuardarNvoUSuario_Click(object sender, EventArgs e)
         {
             try
             {
@@ -31,11 +31,6 @@ namespace HandelApp
             {
                 Session.Add("error", ex.ToString());
             }
-        }
-
-        protected void GuardarEditarPerfil_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
