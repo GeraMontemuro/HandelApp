@@ -24,57 +24,66 @@ namespace HandelApp
         protected global::System.Web.UI.WebControls.DropDownList ddlCliente;
 
         /// <summary>
-        /// CuilCliente control.
+        /// txtBuscarCuit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CuilCliente;
+        protected global::System.Web.UI.WebControls.TextBox txtBuscarCuit;
 
         /// <summary>
-        /// TelefonoCliente control.
+        /// btnBuscarCuit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TelefonoCliente;
+        protected global::System.Web.UI.WebControls.Button btnBuscarCuit;
 
         /// <summary>
-        /// MailCliente control.
+        /// dgvClienteVenta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MailCliente;
+        protected global::System.Web.UI.WebControls.GridView dgvClienteVenta;
 
         /// <summary>
-        /// dgvVentas control.
+        /// txtBusquedaProducto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvVentas;
+        protected global::System.Web.UI.WebControls.TextBox txtBusquedaProducto;
 
         /// <summary>
-        /// lblPrecio control.
+        /// btnBusquedaProducto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrecio;
+        protected global::System.Web.UI.WebControls.Button btnBusquedaProducto;
 
         /// <summary>
-        /// TextPrecioTotal control.
+        /// dgvProdBuscado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextPrecioTotal;
+        protected global::System.Web.UI.WebControls.GridView dgvProdBuscado;
+
+        /// <summary>
+        /// dgvProductoVenta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvProductoVenta;
     }
 }

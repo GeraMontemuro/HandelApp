@@ -12,122 +12,30 @@ namespace HandelApp
 {
     public partial class Vender : System.Web.UI.Page
     {
-        private Producto pro = new Producto();
-        private List<Producto> ListadeVenta = new List<Producto>();
-        decimal AuxPrecio = 0;
-        int contador;
-        string PrecioTotal;
         public void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                Cliente ClienteFiltro = new Cliente();
-                ClienteNegocio CliNegFiltro = new ClienteNegocio();
+                ClienteNegocio CliNegddl = new ClienteNegocio();
                 List<Cliente> listaCliente = new List<Cliente>();
 
-                listaCliente = CliNegFiltro.listarconSp();
+                listaCliente = CliNegddl.listarconSp();
 
                 ddlCliente.DataSource = listaCliente;
-                ddlCliente.DataValueField = "NombreFantasia";
+                ddlCliente.DataTextField = "NombreFantasia";
+                ddlCliente.DataValueField = "IDCliente";
                 ddlCliente.DataBind();
 
-                foreach (var Cliente in listaCliente)
-                {
-                    if (Cliente.NombreFantasia == ddlCliente.SelectedValue)
-                    {
-                        CuilCliente.Text = Cliente.Cuil;
-                        TelefonoCliente.Text = Cliente.Telefono;
-                        MailCliente.Text = Cliente.Mail;
+                //ProductoNegocio ProdNegddl = new ProductoNegocio();
+                //List<Producto> listaProducto = new List<Producto>();
 
-                    }
-                }
-                try
-                {
-                    int Idaux = int.Parse(Request.QueryString["id"]);
-                    pro.IdProducto = Idaux;
+                //listaProducto = ProdNegddl.listarconSp();
 
-                    if (Session["ListaVenta"] == null)
-                    {
-                        VentaNegocio Negocio = new VentaNegocio();
-                        Session.Add("ListaVenta", (Negocio.Cargar(Idaux, ListadeVenta)));
-
-                    }
-                    else
-                    {
-                        VentaNegocio Negocio = new VentaNegocio();
-                        List<Producto> Temporal1 = (List<Producto>)Session["ListaVenta"];
-                        Temporal1.Add(Negocio.Buscar(Idaux));
-
-                    }
-
-                    List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
-
-                    dgvVentas.DataSource = Temporal;
-                    dgvVentas.DataBind();
-
-                }
-                catch (Exception)
-
-                {
-                    List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
-
-                    dgvVentas.DataSource = Temporal;
-                    dgvVentas.DataBind();
-
-                }
-                finally
-                {
-                    List<Producto> Temporal2 = new List<Producto>();
-                    Temporal2 = (List<Producto>)Session["ListaVenta"];
-
-                    if (Temporal2 != null)
-                    {
-                        foreach (Producto item in Temporal2)
-                        {
-                            AuxPrecio += item.PrecioCompra;
-                            contador = Temporal2.Count();
-                            FuncionGlobal.CantidadTotalAsignada(contador);
-                            FuncionGlobal.CantidadTotal();
-                        }
-
-                    }
-
-                    PrecioTotal = string.Format("{0:C}", AuxPrecio);
-                    TextPrecioTotal.Text = PrecioTotal;
-                }
-
+                //ddlProducto.DataSource = listaProducto;
+                //ddlProducto.DataTextField = "Nombre";
+                //ddlProducto.DataValueField = "IDProducto";
+                //ddlProducto.DataBind();
             }
-            else
-            {
-                List<Producto> Temporal2 = new List<Producto>();
-                Temporal2 = (List<Producto>)Session["ListaVenta"];
-
-                if (Temporal2 != null)
-                {
-                    foreach (Producto item in Temporal2)
-                    {
-                        AuxPrecio += item.PrecioCompra;
-                        FuncionGlobal.CantidadTotalAsignada(contador);
-                        FuncionGlobal.CantidadTotal();
-                    }
-
-                }
-
-                PrecioTotal = string.Format("{0:C}", AuxPrecio);
-                TextPrecioTotal.Text = PrecioTotal;
-            }
-
-        }
-        
-        public void BtnFactura_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Factura.aspx"); 
-        }
-               
-
-        protected void Unnamed_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Productos.aspx", false);
         }
 
         protected void ddlCliente_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,80 +44,95 @@ namespace HandelApp
             ClienteNegocio CliNegFiltro = new ClienteNegocio();
             List<Cliente> listaCliente = new List<Cliente>();
 
-            listaCliente = CliNegFiltro.listarconSp();
+            int idClienteElegido = Convert.ToInt32(ddlCliente.SelectedValue);
 
-            foreach (var Cliente in listaCliente)
+            ClienteFiltro = CliNegFiltro.buscar(idClienteElegido);
+
+            listaCliente.Add(ClienteFiltro);
+
+            dgvClienteVenta.DataSource = listaCliente;
+            dgvClienteVenta.DataBind();
+        }
+
+        protected void btnBuscarCuit_Click(object sender, EventArgs e)
+        {
+            string Cuil = txtBuscarCuit.Text;
+            ClienteNegocio clienteNeg = new ClienteNegocio();
+            Cliente clienteBuscado = new Cliente();
+            List<Cliente> listaCliente = new List<Cliente>();
+
+            listaCliente.Clear();
+            clienteBuscado = clienteNeg.buscarCuitBD(Cuil);
+
+            if (clienteBuscado != null)
             {
-                if (Cliente.NombreFantasia == ddlCliente.SelectedValue)
-                {
-                    CuilCliente.Text = Cliente.Cuil;
-                    TelefonoCliente.Text = Cliente.Telefono;
-                    MailCliente.Text = Cliente.Mail;
+                listaCliente.Add(clienteBuscado);
+            }
 
+            dgvClienteVenta.DataSource = listaCliente;
+            dgvClienteVenta.DataBind();
+        }
+
+        protected void btnBusquedaProducto_Click(object sender, EventArgs e)
+        {
+            string PalabraBuscada = txtBusquedaProducto.Text;
+            AccesoBD accesoBD = new AccesoBD();
+            List<Producto> listaProdBuscado = new List<Producto>();
+
+            try
+            {
+
+                if (PalabraBuscada != "")
+                {
+                    accesoBD.setearConsulta("select Pr.IDProducto, Pr.Codigo, Pr.Nombre, Pr.Descripcion, Pr.Marcas, M.Descripcion as MDes,Pr.Categorias, C.Descripcion as CDes, Pr.StockTotal, Pr.StockMinimo, Pr.PrecioCompra from Producto Pr \r\ninner join Marcas M on M.IDMarca = Pr.Marcas\r\ninner join Categorias C on C.IDCategoria = Pr.Categorias\r\nwhere Pr.Nombre like ('%" + PalabraBuscada + "%')");
+
+                    accesoBD.ejecutarLectura();
+                    while (accesoBD.Lector.Read())
+                    {
+                        Producto proaux = new Producto();
+                        proaux.Marca = new Marca();
+                        proaux.Categoria = new Categoria();
+
+                        proaux.IdProducto = (int)accesoBD.Lector["IDProducto"];
+                        proaux.Codigo = (string)accesoBD.Lector["Codigo"];
+                        proaux.Nombre = (string)accesoBD.Lector["Nombre"];
+                        proaux.Descripcion = (string)accesoBD.Lector["Descripcion"];
+                        proaux.Marca.ID = (int)accesoBD.Lector["Marcas"];
+                        if (!(accesoBD.Lector["Marcas"] is DBNull))
+                        {
+                            proaux.Marca.Descripcion = (string)accesoBD.Lector["MDes"];
+                        }
+                        else { proaux.Marca.Descripcion = "No tiene"; }
+                        proaux.Categoria.Id = (int)accesoBD.Lector["Categorias"];
+                        if (!(accesoBD.Lector["Categorias"] is DBNull))
+                        {
+                            proaux.Categoria.Descripcion = (string)accesoBD.Lector["CDes"];
+                        }
+                        else { proaux.Categoria.Descripcion = "No tiene"; }
+                        proaux.StockTotal = (int)accesoBD.Lector["StockTotal"];
+                        proaux.StockMinimo = (int)accesoBD.Lector["StockMinimo"];
+                        proaux.PrecioCompra = accesoBD.Lector.GetDecimal(accesoBD.Lector.GetOrdinal("PrecioCompra"));
+
+                        listaProdBuscado.Add(proaux);
+
+                    }
+                    dgvProdBuscado.DataSource = listaProdBuscado;
+                    dgvProdBuscado.DataBind();
                 }
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
             }
         }
 
-        protected void dgvVentas_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void dgvProdBuscado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int id = Convert.ToInt32(e.CommandArgument);
-
-            LinkButton btn = (LinkButton)e.CommandSource;
-            GridViewRow row = (GridViewRow)btn.NamingContainer;
-
-            TextBox txtCantidad = (TextBox)row.FindControl("txtStockavender");
-            int cantidad = Convert.ToInt32(txtCantidad.Text);
-           
-            ProductoNegocio auxProductonegocio = new ProductoNegocio();
-            Producto Prodaux = new Producto();
-
-            Prodaux = auxProductonegocio.buscar(id);
-
-            if (e.CommandName == "Restar" && Prodaux.StockTotal > 0)
-            {
-                
-                cantidad--;
-            }
-            else if (e.CommandName == "Sumar" && cantidad <= Prodaux.StockTotal)
-            {
-                
-                cantidad++;
-            }
-            else if (e.CommandName == "Eliminar")
-            {
-
-                AuxPrecio = 0;
-                Producto aux = new Producto();
-
-                List<Producto> ventas = (List<Producto>)Session["ListaVenta"];
-                aux = ventas.Find(x => x.IdProducto == id);
-                if (aux != null)
-                {
-                    ventas.Remove(aux);
-                    Session["ListaVenta"] = ventas;
-
-
-
-                    if (ventas != null)
-                    {
-                        foreach (Producto item in ventas)
-                        {
-                            AuxPrecio += item.PrecioCompra;
-                            contador = ventas.Count();
-                            FuncionGlobal.CantidadTotalAsignada(contador);
-                            FuncionGlobal.CantidadTotal();
-
-                        }
-                        PrecioTotal = string.Format("{0:C}", AuxPrecio);
-                        TextPrecioTotal.Text = PrecioTotal;
-
-
-                    }
-                    dgvVentas.DataSource = ventas;
-                    dgvVentas.DataBind();
-                }
-            }
-            txtCantidad.Text = cantidad.ToString();
 
         }
     }

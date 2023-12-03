@@ -1,67 +1,79 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Vender.aspx.cs" Inherits="HandelApp.Vender" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <%--<h1 class="display-2 custom-heading"">Nueva Venta   </h1>  --%>
 
-    <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <h1>CARGAR VENTA </h1>
 
-    <script type="text/javascript">
-        function confirmarEliminar() {
-           return confirm('¿Estás seguro de que deseas eliminar este producto?');
-        }              
-    </script>
+    <div class="card">
+        <div class="card-body">
+            <h1>CLIENTE </h1>
 
-<div class="form-floating mb-3">
-    <asp:Label runat="server" Text="Cliente" />
-    <asp:DropDownList style = "height: 50%" ID="ddlCliente" runat="server"  CssClass="form-control" placeholder="Selecciona el cliente" AutoPostBack="true" OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged"></asp:DropDownList>
-    <br />
-    <asp:Label runat="server" Text="Cuil :" />
-    <asp:TextBox ID="CuilCliente" ReadOnly="true" runat="server" />  
-    <asp:Label runat="server" Text="Telefono:" />
-    <asp:TextBox  ID="TelefonoCliente" ReadOnly="true" runat="server" />
-    <asp:Label runat="server" Text="Mail:" />
-    <asp:TextBox  ID="MailCliente" ReadOnly="true" runat="server"  />        
-    <hr /> 
-</div>
-    <asp:Button runat="server" Text="Agregar Producto" OnClick="Unnamed_Click"  />
+            <div>
 
-<asp:GridView ID="dgvVentas" runat="server" CssClass="table" DataKeyNames="IDProducto" AutoGenerateColumns="false" OnRowCommand="dgvVentas_RowCommand">
-    <Columns>
+                <asp:DropDownList ID="ddlCliente" runat="server" CssClass="form-select" placeholder="Buscar Cliente..." AutoPostBack="true" OnSelectedIndexChanged="ddlCliente_SelectedIndexChanged">
+                </asp:DropDownList>
+                <br />
+                <div>
 
-        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-        <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-        <asp:BoundField HeaderText="PrecioVenta" DataField="PrecioCompra" DataFormatString="{0:C}" />
-        <asp:BoundField HeaderText="Stock" DataField="StockTotal"/>
+                    <asp:Label runat="server" Text="Búsqueda por CUIT/CUIL:" />
+                    <asp:TextBox ID="txtBuscarCuit" runat="server" />
+                    <asp:Button ID="btnBuscarCuit" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="btnBuscarCuit_Click" />
 
-        <asp:TemplateField HeaderText="Stock a Vender">
-            <ItemTemplate>
+                </div>
 
-                <asp:LinkButton ID="lnkbtnRestar" runat="server" CommandName="Restar" CommandArgument='<%#Eval("IdProducto") %>'>              
-                <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/pngwing.com%20(menos).png" AlternateText="Eliminar" />
-                </asp:LinkButton>
+                <asp:GridView ID="dgvClienteVenta" runat="server" Width="100%">
+                    <Columns>
 
-                <asp:TextBox ID="txtStockavender" runat="server" CssClass="maspequeña"  AutoPostBack="true" />  
+                        <asp:BoundField HeaderText="Nombre Cliente" DataField="NombreFantasia" />
+                        <asp:BoundField HeaderText="Cuil" DataField="Cuil" />
+                        <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
+                        <asp:BoundField HeaderText="Mail" DataField="Mail" />
 
-                <asp:LinkButton ID="lnkbtnSumar" runat="server" CommandName="Sumar" CommandArgument='<%#Eval("IdProducto") %>'>
-                <asp:Image runat="server" class="maspequeña"  src="Logos/pngwing.com%20(mas).png" AlternateText=" "  />
-                </asp:LinkButton>
+                    </Columns>
+                </asp:GridView>
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h1>PRODUCTO </h1>
 
-                <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();" >              
-                <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
-                </asp:LinkButton>
+            <asp:TextBox ID="txtBusquedaProducto" runat="server" CssClass="form-control" placeholder="Buscar producto..." AutoPostBack="false"></asp:TextBox>
+            <asp:Button ID="btnBusquedaProducto" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="btnBusquedaProducto_Click" />
+            <br />
 
-            </ItemTemplate>
-        </asp:TemplateField>
+            <%--<asp:DropDownList ID="ddlProducto" runat="server" CssClass="form-select" AutoPostBack="true" >
+                    <asp:ListItem Text="Seleccionar Cliente" Value=""  />
+                </asp:DropDownList>--%>
+            <br />
+
+            <asp:GridView ID="dgvProdBuscado" runat="server" OnRowCommand="dgvProdBuscado_RowCommand">
+
+                <Columns>
+                    <asp:BoundField HeaderText="Id" DataField="IDProducto" />
+                    <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
+                    <asp:BoundField HeaderText="Producto" DataField="MarcaYNombre" />
 
 
-    </Columns>
+                    <asp:ButtonField Text="Seleccionar" ButtonType="Button" CommandName="SeleccionarProd" />
+
+                </Columns>
 
 
-</asp:GridView>
+            </asp:GridView>
+            <asp:GridView ID="dgvProductoVenta" runat="server" Width="100%">
 
-<asp:Label ID="lblPrecio" Style="color: brown" runat="server" Text="Precio Total: "></asp:Label>
-<asp:TextBox ID="TextPrecioTotal" ReadOnly="true" CssClass="form-control" runat="server" Style="width: 150px; height: 45px" alt="..."></asp:TextBox>
-<asp:Button runat="server" Text="Imprimir Factura" OnClick="BtnFactura_Click" />
+                <Columns>
+                    <asp:BoundField HeaderText="Nombre Producto" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
+                    <asp:BoundField HeaderText="Precio Unitario" DataField="Precio" />
+                </Columns>
 
+
+            </asp:GridView>
+        </div>
+    </div>
 </asp:Content>

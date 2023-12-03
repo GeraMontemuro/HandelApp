@@ -49,5 +49,9 @@ namespace dominio
             PrecioVenta = PrecioCompra * PorcentajeGanancia;
         }
         //// VALOR TOTALL = STOCK DGV * (VALOR DE COMPRA + PORCENTAJE GANANCIA)
+        public string MarcaYNombre
+        {
+            get { return $"{Marca.Descripcion} - {Nombre}"; }
+        }
     }
 }

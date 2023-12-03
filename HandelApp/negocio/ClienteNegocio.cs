@@ -110,6 +110,37 @@ namespace negocio
             }
         }
 
+        public Cliente buscarCuitBD(string cuil)
+        {
+            Cliente ClienteBuscado = new Cliente();
+            AccesoBD accesoBD = new AccesoBD();
+
+            try
+            {
+                accesoBD.setearConsulta("SELECT NombreFantasia, Cuil, Telefono, Mail FROM Cliente where Cuil = @Cuil");
+                accesoBD.setearParametro("@Cuil", cuil);
+                accesoBD.ejecutarLectura();
+
+                if (accesoBD.Lector.Read())
+                {
+                    ClienteBuscado.NombreFantasia = (string)accesoBD.Lector["NombreFantasia"];
+                    ClienteBuscado.Cuil = (string)accesoBD.Lector["Cuil"];
+                    ClienteBuscado.Telefono = (string)accesoBD.Lector["Telefono"];
+                    ClienteBuscado.Mail = (string)accesoBD.Lector["Mail"];
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                accesoBD.cerrarConexion();
+            }
+            return ClienteBuscado;
+        }
+
         public void modificar(Cliente nuevo)
         {
             AccesoBD accesoBD = new AccesoBD();
