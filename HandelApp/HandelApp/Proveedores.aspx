@@ -3,7 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
 
+    <script type="text/javascript">
+        function confirmarEliminar() {
+            return confirm('¿Estás seguro de que deseas eliminar este producto?');
+        }
+
+    </script>
     <h1>PROVEEDORES </h1>
 
     <div class="form-floating mb-3">
@@ -13,7 +20,8 @@
 
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="BtnAgregarProveedor" onclick="AgregarProveedor_Click">Nuevo Proveedor</button>
+
+    <asp:Button type="button" Text="Agregar Proveedor" CssClass="btn btn-primary" runat="server" ID="btnAgregProv" OnClick="btnAgregProv_Click" />
 
     <asp:GridView ID="dgvProveedores" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" OnRowCommand="dgvProveedores_RowCommand">
 
@@ -34,7 +42,7 @@
                     <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IDProveedor") %>'>
                     <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
                     </asp:LinkButton>
-                                      
+
 
                 </ItemTemplate>
             </asp:TemplateField>

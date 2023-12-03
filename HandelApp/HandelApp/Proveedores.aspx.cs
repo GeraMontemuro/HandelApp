@@ -76,10 +76,7 @@ namespace HandelApp
             }
 
         }*/
-        protected void AgregarProveedor_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("NuevoProveedor.aspx", false);
-        }
+        
 
         protected void buscarproveedor_Click(object sender, EventArgs e)
         {
@@ -128,6 +125,11 @@ namespace HandelApp
             {
                 accesoBD.cerrarConexion();
             }
+        }
+
+        protected void btnAgregProv_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NuevoProveedor.aspx");
         }
     }
 }
