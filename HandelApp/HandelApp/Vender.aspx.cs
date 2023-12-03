@@ -12,6 +12,8 @@ namespace HandelApp
 {
     public partial class Vender : System.Web.UI.Page
     {
+        List<Producto> listaventafinal = new List<Producto>();
+        List<Producto> listaProdBuscado = new List<Producto>();
         public void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,15 +28,15 @@ namespace HandelApp
                 ddlCliente.DataValueField = "IDCliente";
                 ddlCliente.DataBind();
 
-                //ProductoNegocio ProdNegddl = new ProductoNegocio();
-                //List<Producto> listaProducto = new List<Producto>();
+                ProductoNegocio ProdNegddl = new ProductoNegocio();
+                List<Producto> listaProducto = new List<Producto>();
 
-                //listaProducto = ProdNegddl.listarconSp();
+                listaProducto = ProdNegddl.listarconSp();
 
-                //ddlProducto.DataSource = listaProducto;
-                //ddlProducto.DataTextField = "Nombre";
-                //ddlProducto.DataValueField = "IDProducto";
-                //ddlProducto.DataBind();
+                ddlProducto.DataSource = listaProducto;
+                ddlProducto.DataTextField = "Nombre";
+                ddlProducto.DataValueField = "IDProducto";
+                ddlProducto.DataBind();
             }
         }
 
@@ -133,7 +135,31 @@ namespace HandelApp
 
         protected void dgvProdBuscado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int id = Convert.ToInt32(e.CommandArgument);
+            ProductoNegocio prodNeg = new ProductoNegocio();
 
+
+            if (e.CommandName == "SeleccionarProd")
+            {
+                if (Session["ListaVenta"] != null)
+                {
+
+                    VentaNegocio Negocio = new VentaNegocio();
+                    List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
+                    Temporal.Add(Negocio.Buscar(id));
+
+                }
+                else
+                {
+                    VentaNegocio negocio = new VentaNegocio();
+                    Session.Add("ListaVenta", (negocio.Cargar(id, listaventafinal)));
+
+                }
+
+            }
+            listaventafinal = (List<Producto>)Session["ListaVenta"];
+            dgvProductoVenta.DataSource = listaventafinal;
+            dgvProductoVenta.DataBind();
         }
     }
 }

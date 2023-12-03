@@ -83,6 +83,7 @@
     <Content Include="Logos\pencil.jpg" />
     <Content Include="Logos\pngwing.com %28mas%29.png" />
     <Content Include="Logos\pngwing.com %28menos%29.png" />
+    <Content Include="Logos\pngwing.com%28check%29.png" />
     <Content Include="Logos\pngwing.com.png" />
     <Content Include="Logos\trash.jpg" />
     <Content Include="NewLogin.aspx" />
