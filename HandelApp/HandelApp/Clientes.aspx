@@ -13,12 +13,12 @@
     <h1>CLIENTES   </h1>
     <div class="form-floating mb-3">
 
-    <asp:TextBox ID="TxtBuscador" runat="server" />
-    <asp:Button ID="buscarcliente" class="btn btn-primary" Text="Buscar Cliente/s" runat="server" Onclick="buscarcliente_Click"/>
-   
+        <asp:TextBox ID="TxtBuscador" runat="server" />
+        <asp:Button ID="buscarcliente" class="btn btn-primary" Text="Buscar Cliente/s" runat="server" OnClick="buscarcliente_Click" />
+
     </div>
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Cliente</button>
+    <asp:Button type="button" Text="Agregar Cliente" CssClass="btn btn-primary" runat="server" ID="btnAgregClie" Onclick="btnAgregClie_Click"    />
 
     <asp:GridView ID="dgvClientes" runat="server" CssClass="table" AutoGenerateColumns="false" AutoGenerateColums="false" DataKeyNames="IdCliente" OnRowCommand="dgvClientes_RowCommand">
 
@@ -45,48 +45,5 @@
             </asp:TemplateField>
 
         </Columns>
-
     </asp:GridView>
-
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Cliente</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                </div>
-                <div class="modal-body">
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Nombre" />
-                        <asp:TextBox runat="server" ID="txtNombre" />
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Cuil" />
-                        <asp:TextBox runat="server" ID="txtCuil" />
-                    </div>
-
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Telefono" />
-                        <asp:TextBox runat="server" ID="txtTelefono" />
-                    </div>
-                    
-                    <div style="margin-bottom: 10px;">
-                        <asp:Label runat="server" Text="Mail" />
-                        <asp:TextBox runat="server" ID="txtMail" />
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <asp:Button ID="btnAgregarCliente" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarCliente_Click" />
-                    <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
 </asp:Content>

@@ -30,35 +30,9 @@ namespace HandelApp
                 // lblMensaje.Text = "";
                 
             }
+        }       
 
-
-}
-
-        protected void btnAgregarCliente_Click(object sender, EventArgs e)
-        {
-            ClienteNegocio CliNegocio = new ClienteNegocio();
-
-            try
-            {
-                if(Cliente == null) { Cliente = new Cliente(); }
-
-                Cliente.NombreFantasia = txtNombre.Text;
-                Cliente.Cuil = txtCuil.Text;
-                Cliente.Telefono = txtTelefono.Text;
-                Cliente.Mail = txtMail.Text;
-
-                CliNegocio.alta(Cliente);
-                Response.Redirect("Clientes.aspx");
-
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
+        
         protected void dgvClientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
@@ -132,6 +106,11 @@ namespace HandelApp
             {
                 accesoBD.cerrarConexion();
             }
+        }
+
+        protected void btnAgregClie_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NuevoCliente.aspx");
         }
     }
     }

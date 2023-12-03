@@ -52,31 +52,7 @@ namespace HandelApp
             }
 
         }
-
-       /* protected void btnAgregarProd_Click(object sender, EventArgs e)
-        {
-            ProveedorNegocio ProNegocio = new ProveedorNegocio ();
-
-            try
-            {
-                if(proveedor == null) { proveedor = new Proveedor(); }
-
-                proveedor.NombreFantasia = txtNombre.Text;
-                proveedor.Cuil = txtCuil.Text;  
-                proveedor.Telefono= txtTelefono.Text;   
-                proveedor.Mail = txtMail.Text;
-
-                ProNegocio.alta(proveedor);
-                Response.Redirect("Proveedores.aspx");
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-        }*/
-        
+       
 
         protected void buscarproveedor_Click(object sender, EventArgs e)
         {
