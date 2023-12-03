@@ -25,9 +25,9 @@
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
 
-                    <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IDCompra") %>' OnClientClick="return confirmarEliminar();">              
+                    <%--<asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IDCompra") %>' OnClientClick="return confirmarEliminar();">              
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
-                    </asp:LinkButton>
+                    </asp:LinkButton>--%>
 
                      <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IDCompra") %>'>
                     <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
@@ -88,6 +88,8 @@
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="btnAgregarCompra" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarCompra_Click"/>
+                    <asp:Button ID="btnAgregarCliente" CssClass="btn btn-success" Text="+ Cliente" runat="server" Onclick="btnAgregarCliente_Click" />
+                    <asp:Button ID="btnAgregarProveedor" CssClass="btn btn-success" Text="+ Proveedor" runat="server" Onclick="btnAgregarProveedor_Click"   />
                     <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
                 </div>
 

@@ -148,5 +148,15 @@ namespace HandelApp
                 Response.Redirect($"~/EditarCompra.aspx?id={id}");
             }
         }
+
+        protected void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NuevoCliente.aspx");
+        }
+
+        protected void btnAgregarProveedor_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NuevoProveedor.aspx");
+        }
     }
 }
