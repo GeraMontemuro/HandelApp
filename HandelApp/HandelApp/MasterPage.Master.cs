@@ -17,7 +17,7 @@ namespace HandelApp
             {
                 if (!Seguridad.SessionActiva(Session["usuario"]))
                 {
-                    Response.Redirect("Inicio.aspx", false);
+                    Response.Redirect("Default.aspx", false);
                 }
             }
 

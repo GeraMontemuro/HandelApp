@@ -38,10 +38,10 @@
             <div class="mb-3">
                 <label class="form-class">Imagen Perfil</label>
                 <input type="file" id="txtImagen" runat="server" class="form-control" />
-            </div>
+           <%-- </div>
             <asp:Image ID="imaNuevoPerfil" ImageUrl="~/Logos/Logo.jpg" runat="server" CssClass="img-fluid mb-3" />
 
-        </div>
+        </div>--%>
 </div>
 <div class="row">
 
