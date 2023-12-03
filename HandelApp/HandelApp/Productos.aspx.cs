@@ -94,13 +94,14 @@ namespace HandelApp
         {
             string PalabraBuscada = TxtBuscador.Text;
             AccesoBD accesoBD = new AccesoBD();
+            ProductoNegocio PNaux = new ProductoNegocio();
 
             try
             {
 
                 if (PalabraBuscada != "")
                 {
-                    accesoBD.setearConsulta("select Pr.IDProducto, Pr.Codigo, Pr.Nombre, Pr.Descripcion, Pr.Marcas, M.Descripcion as MDes,Pr.Categorias, C.Descripcion as CDes, Pr.StockTotal, Pr.StockMinimo, Pr.PrecioCompra from Producto Pr \r\ninner join Marcas M on M.IDMarca = Pr.Marcas\r\ninner join Categorias C on C.IDCategoria = Pr.Categorias\r\nwhere Pr.Nombre like ('%" + PalabraBuscada + "%')");
+                    accesoBD.setearConsulta("select Pr.IDProducto, Pr.Codigo, Pr.Nombre, Pr.Porcentaje, Pr.Descripcion, Pr.Marcas, M.Descripcion as MDes,Pr.Categorias, C.Descripcion as CDes, Pr.StockTotal, Pr.StockMinimo, Pr.PrecioCompra from Producto Pr \r\ninner join Marcas M on M.IDMarca = Pr.Marcas\r\ninner join Categorias C on C.IDCategoria = Pr.Categorias\r\nwhere Pr.Nombre like ('%" + PalabraBuscada + "%')");
                     accesoBD.ejecutarLectura();
 
 
@@ -129,6 +130,8 @@ namespace HandelApp
                         proaux.StockTotal = (int)accesoBD.Lector["StockTotal"];
                         proaux.StockMinimo = (int)accesoBD.Lector["StockMinimo"];
                         proaux.PrecioCompra = accesoBD.Lector.GetDecimal(accesoBD.Lector.GetOrdinal("PrecioCompra"));
+                        proaux.PorcentajeGanancia = (decimal)accesoBD.Lector["Porcentaje"];
+                        proaux.CalcularPRecioVenta();
 
                         ListaFiltrada.Add(proaux);
 
@@ -138,6 +141,7 @@ namespace HandelApp
                 }
                 else
                 {
+                    lista = PNaux.listarconSp();
                     dgvProductos.DataSource = lista;
                     dgvProductos.DataBind();
                 }

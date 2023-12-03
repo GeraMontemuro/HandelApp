@@ -27,8 +27,7 @@ namespace HandelApp
                         txtNombre.Text = producto.Nombre;
                         txtDescripcion.Text = producto.Descripcion;
                         txtStockMinimo.Text = producto.StockMinimo.ToString();
-
-
+                        txtPorcentaje.Text = producto.PorcentajeGanancia.ToString();
 
                     }
                     catch (Exception ex)
@@ -49,6 +48,7 @@ namespace HandelApp
                 producto.Nombre = txtNombre.Text;
                 producto.Descripcion = txtDescripcion.Text;
                 producto.StockMinimo = int.Parse(txtStockMinimo.Text);
+                producto.PorcentajeGanancia = decimal.Parse(txtPorcentaje.Text);
 
                 auxProdNegocio.modificar(producto);
 

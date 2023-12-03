@@ -43,12 +43,17 @@ namespace dominio
         public decimal PorcentajeGanancia { get; set; }
 
 
-        public Producto()//no sirvio
+        public void CalcularPRecioVenta()
         {
-            PorcentajeGanancia = decimal.Round(1, 21);
-            PrecioVenta = PrecioCompra * PorcentajeGanancia;
+            PrecioVenta = PrecioCompra * (1 + (PorcentajeGanancia / 100));
         }
-        //// VALOR TOTALL = STOCK DGV * (VALOR DE COMPRA + PORCENTAJE GANANCIA)
+
+
+        public Producto()
+        {
+            PrecioVenta = 0;
+        }
+        
         public string MarcaYNombre
         {
             get { return $"{Marca.Descripcion} - {Nombre}"; }

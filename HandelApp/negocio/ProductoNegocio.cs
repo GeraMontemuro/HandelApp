@@ -24,7 +24,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("SP_listarProducto");
-                datos.setearConsulta("select P.IDProducto, P.Codigo, P.Nombre, P.Descripcion, P.Marcas, M.Descripcion as MDes, P.Categorias, C.Descripcion as CDes, P.StockTotal, P.StockMinimo, \r\n P.PrecioCompra from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
+                datos.setearConsulta("select P.IDProducto, P.Codigo, P.Nombre, P.Descripcion, P.Marcas, M.Descripcion as MDes, P.Categorias, C.Descripcion as CDes, P.StockTotal,P.Porcentaje, P.StockMinimo, \r\n P.PrecioCompra from Producto P \r\ninner join Marcas M on M.IDMarca = P.Marcas\r\ninner join Categorias C on C.IDCategoria = P.Categorias");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read()){
@@ -52,6 +52,8 @@ namespace negocio
                     ProdAux.StockTotal = (int)datos.Lector["StockTotal"];
                     ProdAux.StockMinimo = (int)datos.Lector["StockMinimo"];                    
                     ProdAux.PrecioCompra = datos.Lector.GetDecimal(datos.Lector.GetOrdinal("PrecioCompra"));
+                    ProdAux.PorcentajeGanancia = (decimal)datos.Lector["Porcentaje"];
+                    ProdAux.CalcularPRecioVenta();
 
                     listaaux.Add(ProdAux);
 
@@ -111,7 +113,7 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("insert Into Producto (Nombre, Descripcion, Codigo, Marcas, Categorias, StockTotal, StockMinimo, PrecioCompra) values ('" + nuevo.Nombre + "', '" + nuevo.Descripcion + "','" + nuevo.Codigo + "', @Marcas, @Categorias,'" + nuevo.StockTotal + "','" + nuevo.StockMinimo + "','" + nuevo.PrecioCompra + "')");
+                accesoBD.setearConsulta("insert Into Producto (Nombre, Descripcion, Codigo, Marcas, Categorias, StockTotal, StockMinimo, PrecioCompra, Porcentaje) values ('" + nuevo.Nombre + "', '" + nuevo.Descripcion + "','" + nuevo.Codigo + "', @Marcas, @Categorias,'" + nuevo.StockTotal + "','" + nuevo.StockMinimo + "','" + nuevo.PrecioCompra + "','" + nuevo.PorcentajeGanancia + "')");
                 accesoBD.setearParametro("@Marcas", nuevo.Marca.ID);
                 accesoBD.setearParametro("@Categorias", nuevo.Categoria.Id);
                 accesoBD.ejecutarAccion();
@@ -137,12 +139,13 @@ namespace negocio
 
             try
             {
-                accesoBD.setearConsulta("Update Producto set Nombre = @Nombre,Descripcion = @Descripcion,StockMinimo = @StockMinimo, StockTotal = @StockTotal, PrecioCompra = @PrecioCompra where IDProducto=@id");
+                accesoBD.setearConsulta("Update Producto set Nombre = @Nombre,Descripcion = @Descripcion,StockMinimo = @StockMinimo, StockTotal = @StockTotal, PrecioCompra = @PrecioCompra, Porcentaje = @Porcentaje where IDProducto=@id");
                 accesoBD.setearParametro("@Nombre", nuevo.Nombre);
                 accesoBD.setearParametro("@Descripcion", nuevo.Descripcion);
                 accesoBD.setearParametro("@StockMinimo", nuevo.StockMinimo);
                 accesoBD.setearParametro("@StockTotal", nuevo.StockTotal);
                 accesoBD.setearParametro("@PrecioCompra", nuevo.PrecioCompra);
+                accesoBD.setearParametro("@Porcentaje", nuevo.PorcentajeGanancia);
                 accesoBD.setearParametro("@id", nuevo.IdProducto);
 
                 accesoBD.ejecutarAccion();

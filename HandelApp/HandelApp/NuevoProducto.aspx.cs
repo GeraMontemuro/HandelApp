@@ -72,9 +72,10 @@ namespace HandelApp
                 producto.StockTotal = int.Parse(txtStockTotal.Text);
                 producto.StockMinimo = int.Parse(txtStockMinimo.Text);
                 producto.PrecioCompra = decimal.Parse(txtPrecio.Text);
+                producto.PorcentajeGanancia = decimal.Parse(txtPorcentaje.Text);
 
                 auxProdNegocio.alta(producto);
-                Response.Redirect("Productos.aspx");
+                Response.Redirect("Productos.aspx",false);
                 //lblMensaje.Text = "Producto agregado con éxito";
 
 

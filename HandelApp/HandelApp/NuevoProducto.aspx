@@ -46,6 +46,11 @@
         <asp:TextBox runat="server" ID="txtPrecio" />
     </div>
 
+    <div style="margin-bottom: 10px;">
+        <asp:Label runat="server" Text="Porcentaje de Ganancia" />
+        <asp:TextBox runat="server" ID="txtPorcentaje" />
+    </div>
+
     <div class="modal-footer">
         <asp:Button ID="btnAgregar" CssClass="btn btn-success" Text="Agregar Producto" runat="server" OnClick="btnAgregar_Click" />
         <asp:Button ID="btnCancelar" CssClass="btn btn-secondary" Text="Cancelar" runat="server" OnClick="btnCancelar_Click" />

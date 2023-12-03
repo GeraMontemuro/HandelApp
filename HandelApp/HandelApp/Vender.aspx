@@ -3,6 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+    <script type="text/javascript">
+        function confirmarEliminar() {
+            return confirm('¿Estás seguro de que deseas eliminar este producto?');
+        }
+    </script>
 
     <h1>CARGAR VENTA </h1>
 
@@ -62,6 +69,9 @@
                                     <%--<asp:BoundField HeaderText="Id" DataField="IDProducto" />--%>
                                     <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
                                     <asp:BoundField HeaderText="Producto" DataField="MarcaYNombre" />
+                                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                                    <asp:BoundField HeaderText="Stock" DataField="StockTotal" />
+                                    <asp:BoundField HeaderText="Precio Unit" DataField="PrecioVenta" DataFormatString="{0:C}" />
 
 
                                     <asp:TemplateField HeaderText="Acciones">
@@ -88,12 +98,25 @@
     <div class="card">
         <div class="card-body">
             <h1>PRE-FACTURA </h1>
-            <asp:GridView ID="dgvProductoVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%">
+            <asp:GridView ID="dgvProductoVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%" OnRowCommand="dgvProductoVenta_RowCommand" >
 
                 <Columns>
                     <asp:BoundField HeaderText="Nombre Producto" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                     <%--<asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />--%>
-                    <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioCompra" />
+                    <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioVenta" DataFormatString="{0:C}" />
+
+                    <asp:TemplateField HeaderText="Acciones">
+                        <ItemTemplate>
+
+
+                            <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
+                            <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
+                            </asp:LinkButton>
+
+
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
 
             </asp:GridView>

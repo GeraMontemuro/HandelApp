@@ -38,7 +38,7 @@
             <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
             <asp:BoundField HeaderText="Stock Total" DataField="StockTotal" />
             <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
-            <asp:BoundField HeaderText="Precio Venta" DataField="PrecioVenta" DataFormatString="{0:C}" />
+            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGAnancia" />
             <asp:BoundField HeaderText="Precio Compra" DataField="PrecioCompra" DataFormatString="{0:C}" />
 
             <asp:TemplateField HeaderText="Acciones">

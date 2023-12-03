@@ -86,7 +86,7 @@ namespace HandelApp
 
                 if (PalabraBuscada != "")
                 {
-                    accesoBD.setearConsulta("select Pr.IDProducto, Pr.Codigo, Pr.Nombre, Pr.Descripcion, Pr.Marcas, M.Descripcion as MDes,Pr.Categorias, C.Descripcion as CDes, Pr.StockTotal, Pr.StockMinimo, Pr.PrecioCompra from Producto Pr \r\ninner join Marcas M on M.IDMarca = Pr.Marcas\r\ninner join Categorias C on C.IDCategoria = Pr.Categorias\r\nwhere Pr.Nombre like ('%" + PalabraBuscada + "%')");
+                    accesoBD.setearConsulta("select Pr.IDProducto, Pr.Codigo, Pr.Nombre, Pr.Descripcion, Pr.Marcas, Pr.Porcentaje, M.Descripcion as MDes,Pr.Categorias, C.Descripcion as CDes, Pr.StockTotal, Pr.StockMinimo, Pr.PrecioCompra from Producto Pr \r\ninner join Marcas M on M.IDMarca = Pr.Marcas\r\ninner join Categorias C on C.IDCategoria = Pr.Categorias\r\nwhere Pr.Nombre like ('%" + PalabraBuscada + "%')");
 
                     accesoBD.ejecutarLectura();
                     while (accesoBD.Lector.Read())
@@ -114,6 +114,9 @@ namespace HandelApp
                         proaux.StockTotal = (int)accesoBD.Lector["StockTotal"];
                         proaux.StockMinimo = (int)accesoBD.Lector["StockMinimo"];
                         proaux.PrecioCompra = accesoBD.Lector.GetDecimal(accesoBD.Lector.GetOrdinal("PrecioCompra"));
+                        proaux.PorcentajeGanancia = (decimal)accesoBD.Lector["Porcentaje"];
+                        proaux.PrecioVenta = 0;
+                        proaux.CalcularPRecioVenta();
 
                         listaProdBuscado.Add(proaux);
 
@@ -160,6 +163,26 @@ namespace HandelApp
             listaventafinal = (List<Producto>)Session["ListaVenta"];
             dgvProductoVenta.DataSource = listaventafinal;
             dgvProductoVenta.DataBind();
+        }
+
+        protected void dgvProductoVenta_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+
+            if (e.CommandName == "Eliminar")
+            {
+                Producto aux = new Producto();
+                List<Producto> ventas = (List<Producto>)Session["ListaVenta"];
+                aux = ventas.Find(x => x.IdProducto == id);
+                if (aux != null)
+                {
+                    ventas.Remove(aux);
+                    Session["ListaVenta"] = ventas;
+
+                    dgvProductoVenta.DataSource = ventas;
+                    dgvProductoVenta.DataBind();
+                }
+            }
         }
     }
 }
