@@ -9,16 +9,16 @@
     </asp:ContentPlaceHolder>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
+
     <style>
         img.pequeña {
             width: 50px;
             height: 50px;
         }
 
-        img.maspequeña{
-            width:35px;
-            height:35px;
+        img.maspequeña {
+            width: 35px;
+            height: 35px;
         }
 
         footer {
@@ -62,7 +62,7 @@
                 background-color: #555;
             }
 
-         .btnAcciones {
+        .btnAcciones {
             display: inline-block;
             width: 200px;
             height: 200px;
@@ -102,23 +102,24 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-                    <div class="navbar-nav">                        
+                    <div class="navbar-nav">
                         <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
-                        <div class="right-text">Bienvenido  <%=Request.Form["txtusuario"] %>    </div>   
-                          <asp:Image  ID="imaAvatar" Style="height:40px; Width:40px; border-radius:50%;" ImageUrl="Logos/Logo.jpg"  runat="server" />
-                                          <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    login
-  </a>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="EditarPerfilUsuario.aspx">Mi Perfil</a></li>
-    <li>   <%if (((dominio.Usuario)Session["usuario"])!= null &&((dominio.Usuario)Session["usuario"]).TipoUsuario== dominio.TipoUsuario.ADMIN) { %>
-<asp:Button Text ="Agregar Nuevo Usuario" runat="server"  ID="btnNuevoUsuario" onclick="btnNuevoUsuario_Click" />
-      <% }; %></li>
-    <li><asp:button  class="dropdown-item" runat="server" Text="Cerrar Sesión" id="btnSalirSession" CssClass="btn btn-primary" onclick="btnSalirSession_Click" ></asp:button></li>
-  
-  </ul>
-</li>
+                        <div class="right-text">Bienvenido  <%=Request.Form["txtusuario"] %>    </div>
+                        <asp:Image ID="imaAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" ImageUrl="Logos/Logo.jpg" runat="server" />
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">login
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="EditarPerfilUsuario.aspx">Mi Perfil</a></li>
+                                <li><%if (((dominio.Usuario)Session["usuario"]) != null && ((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+                                        { %>
+                                    <asp:Button Text="Agregar Nuevo Usuario" runat="server" ID="btnNuevoUsuario" OnClick="btnNuevoUsuario_Click" />
+                                    <% }; %></li>
+                                <li>
+                                    <asp:Button class="dropdown-item" runat="server" Text="Cerrar Sesión" ID="btnSalirSession" CssClass="btn btn-primary" OnClick="btnSalirSession_Click"></asp:Button></li>
+
+                            </ul>
+                        </li>
                     </div>
                 </div>
             </div>
@@ -131,17 +132,15 @@
             <a class="nav-link" href="Vender.aspx">VENDER</a>
             <a class="nav-link" href="Compras.aspx">COMPRAS</a>
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
-            <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>          
+            <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
-         <%--   <asp:Button ID="btnSalir" runat="server" Text="Cerrar Sesión" OnClick="BtnSalir_Click" />--%>
-            
-            
+            <%--   <asp:Button ID="btnSalir" runat="server" Text="Cerrar Sesión" OnClick="BtnSalir_Click" />--%>
         </div>
 
-            <div class="container">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
-            </div>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </form>
 </body>
 </html>

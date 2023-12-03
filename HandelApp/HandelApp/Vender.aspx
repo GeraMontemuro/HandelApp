@@ -23,7 +23,7 @@
 
                 </div>
 
-                <asp:GridView ID="dgvClienteVenta" runat="server" Width="100%">
+                <asp:GridView ID="dgvClienteVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%">
                     <Columns>
 
                         <asp:BoundField HeaderText="Nombre Cliente" DataField="NombreFantasia" />
@@ -50,7 +50,7 @@
                 </asp:DropDownList>--%>
             <br />
 
-            <asp:GridView ID="dgvProdBuscado" runat="server" OnRowCommand="dgvProdBuscado_RowCommand">
+            <asp:GridView ID="dgvProdBuscado" runat="server" CssClass="table" AutoGenerateColumns="false" OnRowCommand="dgvProdBuscado_RowCommand">
 
                 <Columns>
                     <asp:BoundField HeaderText="Id" DataField="IDProducto" />
@@ -64,7 +64,7 @@
 
 
             </asp:GridView>
-            <asp:GridView ID="dgvProductoVenta" runat="server" Width="100%">
+            <asp:GridView ID="dgvProductoVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%">
 
                 <Columns>
                     <asp:BoundField HeaderText="Nombre Producto" DataField="Nombre" />
