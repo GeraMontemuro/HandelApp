@@ -78,6 +78,8 @@
     <Content Include="EditarProveedor.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="Logos\CARGAR STOCK.png" />
+    <Content Include="Logos\FACTURAS EMITIDAS.png" />
     <Content Include="Logos\Logo.jpg" />
     <Content Include="Logos\logoSolo.png" />
     <Content Include="Logos\pencil.jpg" />
@@ -85,6 +87,7 @@
     <Content Include="Logos\pngwing.com %28menos%29.png" />
     <Content Include="Logos\pngwing.com%28check%29.png" />
     <Content Include="Logos\pngwing.com.png" />
+    <Content Include="Logos\REGISTRAR VENTA.png" />
     <Content Include="Logos\trash.jpg" />
     <Content Include="NewLogin.aspx" />
     <Content Include="NuevoCliente.aspx" />
