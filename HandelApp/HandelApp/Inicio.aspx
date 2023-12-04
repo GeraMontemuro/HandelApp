@@ -10,17 +10,17 @@
         <div class="row align-items-start">
             <div class="col">
                 <button class="btnAcciones">
-                    <img src="Logos/CARGAR%20STOCK.png"  heigth="100px" alt="...">
+                    <img src= "Logos/NuevaVenta.png" />  alt="...">
                 </button>
             </div>
             <div class="col">
                 <button class="btnAcciones">
-                    <img src="Logos/REGISTRAR%20VENTA.png" alt="...">
+                    <img src= "Logos/CargarStock.png" /> alt="...">
                 </button>
             </div>
             <div class="col">
                 <button class="btnAcciones">
-                    <img src="Logos/FACTURAS%20EMITIDAS.png" alt="...">
+                    <img src= "Logos/Facturas.png" /> alt="...">
                 </button>
             </div>
         </div>
