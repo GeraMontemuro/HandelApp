@@ -12,7 +12,7 @@ namespace negocio
         private List<Producto> pro;
         private Producto pro1;
 
-        public List<Producto> Cargar(int ID, List<Producto> lista)
+        public List<Producto> Cargar(int ID, List<Producto> lista, int cantidad,decimal PrecioTotal)
         {
 
             try
@@ -24,6 +24,8 @@ namespace negocio
                 {
                     if (ID == (int)Producto.IdProducto)
                     {
+                        Producto.Cantidad = cantidad;
+                        Producto.PrecioFinal= PrecioTotal;  
                         lista.Add(Producto);
                     }
                 }

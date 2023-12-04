@@ -60,7 +60,8 @@
                             <br />
 
                             <asp:TextBox ID="txtBusquedaProducto" runat="server" CssClass="form-control" placeholder="Buscar producto..." AutoPostBack="false"></asp:TextBox>
-                            <asp:Button ID="btnBusquedaProducto" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="btnBusquedaProducto_Click" />
+                            <asp:Button ID="btnBusquedaProducto" runat="server" Text="Buscar por Nombre" CssClass="btn btn-success" OnClick="btnBusquedaProducto_Click" />
+                            <asp:Button ID="btnLimpiarFiltros" runat="server" text="Limpiar Filtro" CssClass="btn btn-success" OnClick="btnLimpiarFiltros_Click"/>   
 
 
                             <asp:GridView ID="dgvProdBuscado" runat="server" CssClass="table" AutoGenerateColumns="false" OnRowCommand="dgvProdBuscado_RowCommand">
@@ -73,8 +74,15 @@
                                     <asp:BoundField HeaderText="Stock" DataField="StockTotal" />
                                     <asp:BoundField HeaderText="Precio Unit" DataField="PrecioVenta" DataFormatString="{0:C}" />
 
+                                    <asp:TemplateField HeaderText="Cantidad">
+                                        <ItemTemplate>
 
-                                    <asp:TemplateField HeaderText="Acciones">
+                                            <asp:TextBox ID="txtCantidad" Style="width: 70px; text-align: center;" MaxLength="7" runat="server" Text='<%#Eval("Cantidad") %>'></asp:TextBox>
+
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Agregar a Fac">
                                         <ItemTemplate>
 
                                             <%--<asp:ButtonField Text="Seleccionar" ButtonType="Button" CommandName="SeleccionarProd" />--%>
@@ -98,13 +106,14 @@
     <div class="card">
         <div class="card-body">
             <h1>PRE-FACTURA </h1>
-            <asp:GridView ID="dgvProductoVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%" OnRowCommand="dgvProductoVenta_RowCommand" >
+            <asp:GridView ID="dgvProductoVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%" OnRowCommand="dgvProductoVenta_RowCommand">
 
                 <Columns>
                     <asp:BoundField HeaderText="Nombre Producto" DataField="Nombre" />
                     <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                    <%--<asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />--%>
+                    <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
                     <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioVenta" DataFormatString="{0:C}" />
+                    <asp:BoundField HeaderText="Precio Final" DataField="PrecioFinal" DataFormatString="{0:C}" />
 
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>

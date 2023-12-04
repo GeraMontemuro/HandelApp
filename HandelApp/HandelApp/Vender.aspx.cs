@@ -12,6 +12,7 @@ namespace HandelApp
 {
     public partial class Vender : System.Web.UI.Page
     {
+
         List<Producto> listaventafinal = new List<Producto>();
         List<Producto> listaProdBuscado = new List<Producto>();
         public void Page_Load(object sender, EventArgs e)
@@ -124,6 +125,13 @@ namespace HandelApp
                     dgvProdBuscado.DataSource = listaProdBuscado;
                     dgvProdBuscado.DataBind();
                 }
+                else
+                {
+
+                    List<Productos> lala = new List<Productos>();
+                    dgvProdBuscado.DataSource = lala;
+                    dgvProdBuscado.DataBind();
+                }
 
             }
             catch (Exception Ex)
@@ -139,23 +147,36 @@ namespace HandelApp
         protected void dgvProdBuscado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int id = Convert.ToInt32(e.CommandArgument);
-            ProductoNegocio prodNeg = new ProductoNegocio();
+            LinkButton btn = (LinkButton)e.CommandSource;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+            TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
+
 
 
             if (e.CommandName == "SeleccionarProd")
             {
+
+                int cantidad = Convert.ToInt32(txtCantidad.Text);
+                ProductoNegocio prodNeg = new ProductoNegocio();
+                Producto proaux = new Producto();
+                proaux = prodNeg.buscar(id);
+                proaux.Cantidad = cantidad;
+                decimal Cantidad = decimal.Parse(proaux.Cantidad.ToString());
+                proaux.PrecioFinal = cantidad * proaux.PrecioVenta;
+
                 if (Session["ListaVenta"] != null)
                 {
 
                     VentaNegocio Negocio = new VentaNegocio();
                     List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
-                    Temporal.Add(Negocio.Buscar(id));
+                    Temporal.Add(proaux);
 
                 }
                 else
                 {
+
                     VentaNegocio negocio = new VentaNegocio();
-                    Session.Add("ListaVenta", (negocio.Cargar(id, listaventafinal)));
+                    Session.Add("ListaVenta", (negocio.Cargar(id, listaventafinal, proaux.Cantidad, proaux.PrecioFinal)));
 
                 }
 
@@ -183,6 +204,13 @@ namespace HandelApp
                     dgvProductoVenta.DataBind();
                 }
             }
+        }
+
+        protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            List<Productos> lala = new List<Productos>();
+            dgvProdBuscado.DataSource = lala;
+            dgvProdBuscado.DataBind();
         }
     }
 }

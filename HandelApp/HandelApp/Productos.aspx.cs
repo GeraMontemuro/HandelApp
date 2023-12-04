@@ -48,7 +48,7 @@ namespace HandelApp
             ProductoNegocio prodNeg = new ProductoNegocio();
             Producto producto = new Producto();
 
-            if (e.CommandName == "AgregarProd")
+            /*if (e.CommandName == "AgregarProd")
             {               
 
                 if (Session["ListaVenta"] != null)
@@ -70,8 +70,8 @@ namespace HandelApp
                     FuncionGlobal.CantidadTotal();
                     Response.Redirect("Productos.aspx");
                 }
-            }
-            else if (e.CommandName == "Eliminar")
+            }*/
+            if (e.CommandName == "Eliminar")
             {               
                 try
                 {

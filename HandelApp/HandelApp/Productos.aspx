@@ -38,14 +38,14 @@
             <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
             <asp:BoundField HeaderText="Stock Total" DataField="StockTotal" />
             <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
-            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGAnancia" />
+            <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGAnancia" DataFormatString="{0}%" />
             <asp:BoundField HeaderText="Precio Compra" DataField="PrecioCompra" DataFormatString="{0:C}" />
 
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
 
-                    <asp:LinkButton runat="server" Text="Agregar Producto" CommandName="AgregarProd" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return prodAgregado();">                    
-                    </asp:LinkButton>
+                    <%--<asp:LinkButton runat="server" Text="Agregar Producto" CommandName="AgregarProd" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return prodAgregado();">                    
+                    </asp:LinkButton>--%>
 
                     <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />

@@ -41,6 +41,8 @@ namespace dominio
         public decimal PrecioCompra { get; set; }
         [DisplayName("Ganancia Adquirida")]
         public decimal PorcentajeGanancia { get; set; }
+        public int Cantidad { get; set; }
+        public decimal PrecioFinal { get; set; }
 
 
         public void CalcularPRecioVenta()
