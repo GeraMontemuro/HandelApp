@@ -84,12 +84,12 @@ namespace negocio
             AccesoBD datos = new AccesoBD();
             try
             {
-                datos.setearConsulta("Update Usuarios set Imagen= @Imagen,Nombre = @Nombre,Apellido =@Apellido,Email= @Mail where Usuario = @User");
+                datos.setearConsulta("Update Usuarios set Imagen= @Imagen,Nombre = @Nombre,Apellido =@Apellido,Email= @Mail,  FechaNacimiento= @Fecha where Usuario = @User");
                 datos.setearParametro("@Imagen", user.ImagenPerfil);
                 datos.setearParametro("@Apellido", user.Apellido);
                 datos.setearParametro("@Nombre", user.Nombre);
                 datos.setearParametro("@Mail", user.Mail);
-                // datos.setearParametro("@Imagen", user.FechaNacimiento);
+                datos.setearParametro("@Fecha", user.FechaNacimiento);
                 datos.setearParametro("@User", user.User);
                 datos.ejecutarAccion();
 
@@ -152,6 +152,39 @@ namespace negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+
+        public Usuario buscar(int Id)
+        {
+            Usuario UsuarioBuscado = new Usuario();
+            UsuarioNegocio Unegocio = new UsuarioNegocio();
+            List<Usuario> ListaFiltro = new List<Usuario>();
+            AccesoBD accesoBD = new AccesoBD();
+
+            try
+            {
+                ListaFiltro = Unegocio.listarconSp();
+
+                foreach (var usu in ListaFiltro)
+                {
+                    if (Id == (int) usu.Id)
+                    {
+                        UsuarioBuscado = usu;
+                    }
+                }
+
+                return UsuarioBuscado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            finally
+            {
+                accesoBD.cerrarConexion();
             }
         }
 
