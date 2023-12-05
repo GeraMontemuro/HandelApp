@@ -15,6 +15,15 @@ namespace HandelApp
         {
             if (!Seguridad.SessionActiva(Session["usuario"]))
                 Response.Redirect("Default.aspx", false);
+
+            if (!IsPostBack)
+            {
+                if (Session["usuario"] != null)
+                {
+                    Usuario usuario = (Usuario)Session["usuario"];
+                    txtUsuario.Text = usuario.User;
+                }
+            }
         }
 
         protected void btnGuardarEditarPerfil_Click(object sender, EventArgs e)
