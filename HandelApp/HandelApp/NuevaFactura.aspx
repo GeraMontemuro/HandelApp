@@ -6,20 +6,19 @@
         <div class="card-body">
             <div class="row g-3">
                 <div class="card">
-                    <div class="card-body">
-                        <div class="col-md-8">
-                            <div class="left">
+                     <div class="card-body">
+                        <div style="display: flex">
+                            <div class="col-md-6">
                                 <img src="Logos/Logo.jpg" alt="Logo" />
                             </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <asp:Label ID="lblVendedor" runat="server" CssClass="form-label alineadoDerecha"  Text="Vendedor"></asp:Label>
-                            <asp:TextBox ID="txtVendedor" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-6">
-                            <asp:Label ID="lblNroFactura" runat="server" CssClass="form-label" Text="Número de Factura"></asp:Label>
-                            <asp:TextBox ID="txtNroFactura" runat="server" CssClass="form-control"></asp:TextBox>
+                            <div class="col-md-6">
+                                <asp:Label ID="lblVendedor" runat="server" CssClass="form-label" Text="Vendedor"></asp:Label>
+                                <asp:TextBox ID="txtVendedor" runat="server" CssClass="form-control"></asp:TextBox>
+                            <br />
+                                <asp:Label ID="lblNroFactura" runat="server" CssClass="form-label " Text="Número de Factura"></asp:Label>
+                                <asp:TextBox ID="txtNroFactura" runat="server" CssClass="form-control "></asp:TextBox>
+                            </div>
                         </div>
                     </div>
 
