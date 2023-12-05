@@ -23,6 +23,7 @@ namespace HandelApp
                 {
                     Usuario usuario = (Usuario)Session["usuario"];
                     txtUsuario.Text = usuario.User;
+                    txtNombre.Text = usuario.Nombre;
 
                 }
             }
