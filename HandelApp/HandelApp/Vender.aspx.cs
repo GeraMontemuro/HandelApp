@@ -15,6 +15,8 @@ namespace HandelApp
 
         List<Producto> listaventafinal = new List<Producto>();
         List<Producto> listaProdBuscado = new List<Producto>();
+        decimal AuxPrecio = 0;
+        string PrecioTotal;
         public void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,6 +40,9 @@ namespace HandelApp
                 ddlProducto.DataTextField = "Nombre";
                 ddlProducto.DataValueField = "IDProducto";
                 ddlProducto.DataBind();
+
+                PrecioTotal = "$ 0,00";
+                TxtPrecioTotal.Text = PrecioTotal;
             }
         }
 
@@ -181,6 +186,18 @@ namespace HandelApp
                 }
 
             }
+            List<Producto> Temporal2 = new List<Producto>();
+            Temporal2 = (List<Producto>)Session["ListaVenta"];
+
+            if (Temporal2 != null)
+            {
+                foreach (Producto item in Temporal2)
+                {
+                    AuxPrecio += item.PrecioFinal;
+                }
+            }
+            PrecioTotal = string.Format("{0:C}", AuxPrecio);
+            TxtPrecioTotal.Text = PrecioTotal;
             listaventafinal = (List<Producto>)Session["ListaVenta"];
             dgvProductoVenta.DataSource = listaventafinal;
             dgvProductoVenta.DataBind();
@@ -192,6 +209,8 @@ namespace HandelApp
 
             if (e.CommandName == "Eliminar")
             {
+                AuxPrecio = 0;
+                int contador = 0;
                 Producto aux = new Producto();
                 List<Producto> ventas = (List<Producto>)Session["ListaVenta"];
                 aux = ventas.Find(x => x.IdProducto == id);
@@ -199,6 +218,22 @@ namespace HandelApp
                 {
                     ventas.Remove(aux);
                     Session["ListaVenta"] = ventas;
+
+                    if (ventas != null)
+                    {
+                        foreach (Producto item in ventas)
+                        {
+                            AuxPrecio += item.PrecioFinal;
+                            contador++;
+                        }
+                        PrecioTotal = string.Format("{0:C}", AuxPrecio);
+                        TxtPrecioTotal.Text = PrecioTotal;
+                    }
+                    if (contador <= 0)
+                    {
+                        PrecioTotal = "$ 0,00";
+                        TxtPrecioTotal.Text = PrecioTotal;
+                    }
 
                     dgvProductoVenta.DataSource = ventas;
                     dgvProductoVenta.DataBind();
@@ -211,6 +246,11 @@ namespace HandelApp
             List<Productos> lala = new List<Productos>();
             dgvProdBuscado.DataSource = lala;
             dgvProdBuscado.DataBind();
+        }
+
+        protected void btnAgregarFactura_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

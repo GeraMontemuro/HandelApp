@@ -131,4 +131,7 @@
             </asp:GridView>
         </div>
     </div>
+    <asp:Label ID="lblPrecio" Style="color: brown" runat="server" Text="Precio Total: "></asp:Label>
+    <asp:TextBox ID="TxtPrecioTotal" ReadOnly="true" CssClass="form-control" runat="server" Style="width: 150px; height: 45px" alt="..."></asp:TextBox>
+    <asp:Button ID="btnAgregarFactura" runat="server" CssClass="btn btn-success" Text="Imprimir Factura" Onclick="btnAgregarFactura_Click"     />
 </asp:Content>
