@@ -73,7 +73,7 @@
             </div>
             <div class="col-md-2">
 
-                <asp:TextBox ID="txtTotalFactura" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtTotalFactura" ReadOnly="true" CssClass="form-control" runat="server" Style="width: 150px; height: 45px" alt="..."></asp:TextBox>
             </div>
 
             <div class="col-12">

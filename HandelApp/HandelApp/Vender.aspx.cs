@@ -250,7 +250,7 @@ namespace HandelApp
 
         protected void btnAgregarFactura_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("NuevaFactura.aspx");
         }
     }
 }
