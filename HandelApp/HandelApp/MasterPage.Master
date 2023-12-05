@@ -105,22 +105,24 @@
                     <div class="navbar-nav">
                         <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
 
-                        <div class="right-text">Bienvenido <asp:label id="lblUsuario" Text=" " runat="server"></asp:label>   </div>
+                        <div class="right-text">Bienvenido
+                            <asp:Label ID="lblUsuario" Text=" " runat="server"></asp:Label>
+                        </div>
                         <asp:Image ID="imaAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" ImageUrl="Logos/Logo.jpg" runat="server" />
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Login
-    </button>
-    <ul class="dropdown-menu">
-        <li>
-            <button class="dropdown-item" runat="server" type="button" id="btnEditarPerfil" commandargument='<%#Eval("Id") %>' onserverclick="btnEditarPerfil_ServerClick">Mi Perfil</button></li>
-        <li>
-            <button class="dropdown-item" runat="server" type="button" id="btnAgregarNuevoUsuario" onserverclick="btnAgregarNuevoUsuario_ServerClick" >Agregar Nuevo Usuario</button></li>
-        <li>
-            <button class="dropdown-item" runat="server" type="button" id="btnSalirSesion" onserverclick="btnSalirSesion_ServerClick">Cerrar Sesión</button></li>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Login
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="dropdown-item" runat="server" type="button" id="btnEditarPerfil" commandargument='<%#Eval("Id") %>' onserverclick="btnEditarPerfil_ServerClick">Mi Perfil</button></li>
+                                <li>
+                                    <button class="dropdown-item" runat="server" type="button" id="btnAgregarNuevoUsuario" onserverclick="btnAgregarNuevoUsuario_ServerClick">Agregar Nuevo Usuario</button></li>
+                                <li>
+                                    <button class="dropdown-item" runat="server" type="button" id="btnSalirSesion" onserverclick="btnSalirSesion_ServerClick">Cerrar Sesión</button></li>
 
-    </ul>
-</div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

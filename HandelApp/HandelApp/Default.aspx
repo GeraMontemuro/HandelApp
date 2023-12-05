@@ -24,7 +24,7 @@
                     
                     </div>
 
-                    <div class="input-container">
+                    <div class="input-container" type="password">
                         <label for="contraseña">Contraseña</label>
                          <asp:TextBox runat ="server" ID="txtPassword"  CssClass="form-control" />
                     
