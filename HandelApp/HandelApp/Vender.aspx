@@ -54,7 +54,7 @@
                         <div class="card-body">
                             <h1>PRODUCTO </h1>
 
-                            <asp:DropDownList ID="ddlProducto" runat="server" CssClass="form-select" AutoPostBack="true">
+                            <asp:DropDownList ID="ddlProducto" runat="server"  CssClass="form-select" AutoPostBack="true">
                                 <asp:ListItem Text="Seleccionar Producto" Value="" />
                             </asp:DropDownList>
                             <br />

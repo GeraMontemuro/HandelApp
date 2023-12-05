@@ -110,7 +110,7 @@
                         </div>
                         <asp:Image ID="imaAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" ImageUrl="Logos/Logo.jpg" runat="server" />
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle ml_auto" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Login
                             </button>
                             <ul class="dropdown-menu">

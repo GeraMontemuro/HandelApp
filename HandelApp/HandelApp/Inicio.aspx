@@ -15,7 +15,7 @@
             </div>
             <div class="col">
                 <button class="btnAcciones">
-                    <img src= "Logos/CargarStock.png" /> alt="...">
+                    <img src= "Logos/NuevaCompra.png"  /> alt="...">
                 </button>
             </div>
             <div class="col">

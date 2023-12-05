@@ -16,27 +16,27 @@ namespace HandelApp
         {
             if (!IsPostBack)
             {
-               
-                    MarcaNegocio marNegAux = new MarcaNegocio();
-                    List<Marca> listaMarcas = new List<Marca>();
-                    
-                    CategoriaNegocio catNegAux = new CategoriaNegocio();
-                    List<Categoria> listaCategorias = new List<Categoria>();
 
-                    listaMarcas = marNegAux.listar();
-                    listaCategorias = catNegAux.listar();
+                MarcaNegocio marNegAux = new MarcaNegocio();
+                List<Marca> listaMarcas = new List<Marca>();
 
-                    ddlMarca.DataSource = listaMarcas;
-                    ddlMarca.DataTextField = "Descripcion";
-                    ddlMarca.DataValueField = "ID";
-                    ddlMarca.DataBind();
+                CategoriaNegocio catNegAux = new CategoriaNegocio();
+                List<Categoria> listaCategorias = new List<Categoria>();
 
-                    ddlCategoria.DataSource = listaCategorias;
-                    ddlCategoria.DataTextField = "Descripcion";
-                    ddlCategoria.DataValueField = "Id";
-                    ddlCategoria.DataBind();
+                listaMarcas = marNegAux.listar();
+                listaCategorias = catNegAux.listar();
 
-                
+                ddlMarca.DataSource = listaMarcas;
+                ddlMarca.DataTextField = "Descripcion";
+                ddlMarca.DataValueField = "ID";
+                ddlMarca.DataBind();
+
+                ddlCategoria.DataSource = listaCategorias;
+                ddlCategoria.DataTextField = "Descripcion";
+                ddlCategoria.DataValueField = "Id";
+                ddlCategoria.DataBind();
+
+
             }
         }
 
@@ -44,7 +44,9 @@ namespace HandelApp
         {
             ProductoNegocio auxProdNegocio = new ProductoNegocio();
             Producto producto = new Producto();
-
+            Page.Validate();
+            if(!Page.IsValid) { return; }
+  
             try
             {
 
@@ -75,7 +77,7 @@ namespace HandelApp
                 producto.PorcentajeGanancia = decimal.Parse(txtPorcentaje.Text);
 
                 auxProdNegocio.alta(producto);
-                Response.Redirect("Productos.aspx",false);
+                Response.Redirect("Productos.aspx", false);
                 //lblMensaje.Text = "Producto agregado con éxito";
 
 
@@ -83,22 +85,7 @@ namespace HandelApp
             }
             catch (FormatException ex)
             {
-                if (string.IsNullOrWhiteSpace(txtPrecio.Text))
-                {
-                    string script = "alert('El campo de precio no puede dejarse en blanco.');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-                else if (string.IsNullOrWhiteSpace(txtPrecio.Text))
-                {
-                    string script = "alert('El campo de precio no puede dejarse en blanco.');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-                else
-                {
-                    string script = "alert('Ingresa un precio en números por favor');";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-                }
-
+                throw ex;
             }
 
             catch (OverflowException ex)
@@ -107,16 +94,11 @@ namespace HandelApp
                 ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
             }
 
-            catch (Exception ex)
-            {
-                // lblMensaje.Text = ex.ToString();
-
-            }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Productos.aspx");
+            Response.Redirect("Productos.aspx", false);
         }
     }
 }
