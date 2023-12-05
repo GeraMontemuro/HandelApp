@@ -86,13 +86,7 @@ namespace HandelApp
             catch (FormatException ex)
             {
                 throw ex;
-            }
-
-            catch (OverflowException ex)
-            {
-                string script = "alert('Superaste la cantidad de caracteres');";
-                ClientScript.RegisterStartupScript(this.GetType(), "Alert", script, true);
-            }
+            }        
 
         }
 

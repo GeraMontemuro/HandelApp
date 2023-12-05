@@ -14,7 +14,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <asp:Label ID="lblVendedor" runat="server" CssClass="form-label" Text="Vendedor"></asp:Label>
+                            <asp:Label ID="lblVendedor" runat="server" CssClass="form-label alineadoDerecha"  Text="Vendedor"></asp:Label>
                             <asp:TextBox ID="txtVendedor" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="col-md-6">

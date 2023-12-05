@@ -26,7 +26,7 @@
 
                     <div class="input-container" type="password">
                         <label for="contraseña">Contraseña</label>
-                         <asp:TextBox runat ="server" ID="txtPassword"  CssClass="form-control" />
+                         <asp:TextBox runat ="server" ID="txtPassword" textmode="Password" CssClass="form-control" />
                     
                     </div>
 
