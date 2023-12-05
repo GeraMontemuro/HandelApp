@@ -15,22 +15,22 @@ namespace HandelApp
     {
 
         /// <summary>
-        /// lblVendedor control.
+        /// lblFecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVendedor;
+        protected global::System.Web.UI.WebControls.Label lblFecha;
 
         /// <summary>
-        /// txtVendedor control.
+        /// txtFecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVendedor;
+        protected global::System.Web.UI.WebControls.TextBox txtFecha;
 
         /// <summary>
         /// lblNroFactura control.
@@ -49,6 +49,24 @@ namespace HandelApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNroFactura;
+
+        /// <summary>
+        /// lblVendedor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVendedor;
+
+        /// <summary>
+        /// txtVendedor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtVendedor;
 
         /// <summary>
         /// lblCliente control.

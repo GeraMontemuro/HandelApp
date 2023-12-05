@@ -15,6 +15,8 @@ namespace HandelApp
         {
             if (!IsPostBack)
             {
+                txtFecha.Text = DateTime.Today.ToString("dd/MM/yyyy");
+
                 VentaRealizada.ProductoVenta = (List<Producto>)Session["ListaVenta"];
 
                 dgvProdFactura.DataSource = (List<Producto>)VentaRealizada.ProductoVenta;

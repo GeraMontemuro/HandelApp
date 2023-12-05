@@ -160,29 +160,33 @@ namespace HandelApp
 
             if (e.CommandName == "SeleccionarProd")
             {
-
                 int cantidad = Convert.ToInt32(txtCantidad.Text);
                 ProductoNegocio prodNeg = new ProductoNegocio();
                 Producto proaux = new Producto();
                 proaux = prodNeg.buscar(id);
-                proaux.Cantidad = cantidad;
-                decimal Cantidad = decimal.Parse(proaux.Cantidad.ToString());
-                proaux.PrecioFinal = cantidad * proaux.PrecioVenta;
 
-                if (Session["ListaVenta"] != null)
+                if (proaux.StockTotal > cantidad)
                 {
+                    proaux.Cantidad = cantidad;
+                    decimal Cantidad = decimal.Parse(proaux.Cantidad.ToString());
+                    proaux.PrecioFinal = cantidad * proaux.PrecioVenta;
 
-                    VentaNegocio Negocio = new VentaNegocio();
-                    List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
-                    Temporal.Add(proaux);
+                    if (Session["ListaVenta"] != null)
+                    {
+                        VentaNegocio Negocio = new VentaNegocio();
+                        List<Producto> Temporal = (List<Producto>)Session["ListaVenta"];
+                        Temporal.Add(proaux);
+                    }
+                    else
+                    {
+                        VentaNegocio negocio = new VentaNegocio();
+                        Session.Add("ListaVenta", (negocio.Cargar(id, listaventafinal, proaux.Cantidad, proaux.PrecioFinal)));
 
+                    }
                 }
                 else
                 {
-
-                    VentaNegocio negocio = new VentaNegocio();
-                    Session.Add("ListaVenta", (negocio.Cargar(id, listaventafinal, proaux.Cantidad, proaux.PrecioFinal)));
-
+                    lblMensaje.Text = "La compra excede el stock disponible.";
                 }
 
             }

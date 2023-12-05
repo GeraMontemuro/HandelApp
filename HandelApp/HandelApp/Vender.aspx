@@ -92,9 +92,9 @@
 
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
                                 </Columns>
                             </asp:GridView>
+                            <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger"></asp:Label>
                         </div>
                     </div>
                 </div>

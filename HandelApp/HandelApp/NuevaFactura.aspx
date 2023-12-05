@@ -13,12 +13,16 @@
                             </div>
 
                             <div class="col-md-6">
+                                <asp:Label ID="lblFecha" runat="server" CssClass="form-label" Text="Fecha"></asp:Label>
+                                <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control"></asp:TextBox>
+                                <br />
+                                <asp:Label ID="lblNroFactura" runat="server" CssClass="form-label " Text="Número de Factura"></asp:Label>
+                                <asp:TextBox ID="txtNroFactura" runat="server" CssClass="form-control "></asp:TextBox>                                
+                                <br />
                                 <asp:Label ID="lblVendedor" runat="server" CssClass="form-label" Text="Vendedor"></asp:Label>
                                 <asp:TextBox ID="txtVendedor" runat="server" CssClass="form-control"></asp:TextBox>
-                            <br />
-                                <asp:Label ID="lblNroFactura" runat="server" CssClass="form-label " Text="Número de Factura"></asp:Label>
-                                <asp:TextBox ID="txtNroFactura" runat="server" CssClass="form-control "></asp:TextBox>
                             </div>
+
                         </div>
                     </div>
 
