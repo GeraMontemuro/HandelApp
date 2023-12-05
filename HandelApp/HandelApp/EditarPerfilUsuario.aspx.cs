@@ -15,6 +15,7 @@ namespace HandelApp
         {
             if (!Seguridad.SessionActiva(Session["usuario"]))
                 Response.Redirect("Default.aspx", false);
+<<<<<<< HEAD
 
             if (!IsPostBack)
             {
@@ -22,6 +23,39 @@ namespace HandelApp
                 {
                     Usuario usuario = (Usuario)Session["usuario"];
                     txtUsuario.Text = usuario.User;
+=======
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["Id"] != null)
+                {
+                    try
+                    {
+                        int id = Convert.ToInt32(Request.QueryString["Id"]);
+                        UsuarioNegocio cliNeg = new UsuarioNegocio();
+                        Usuario cliente = new Usuario();
+                        cliente = cliNeg.buscar(id);
+                        if ((Seguridad.SessionActiva(Session["usuario"])) == true)
+                        {
+                            txtUsuario.Text = cliente.User;
+                            txtNombre.Text = cliente.Nombre;
+                            txtApellido.Text = cliente.Apellido;
+                            txtApellido.Text = cliente.Mail;
+                            txtFecha.Text = cliente.FechaNacimiento.ToString();
+
+                        }
+                        txtUsuario.Text = Master.FindControl("lblUsuario").ToString();
+
+                        cliente.Nombre = txtNombre.Text;
+                        cliente.Apellido = txtApellido.Text;
+                        cliente.Mail = txtEmail.Text;
+                        cliente.FechaNacimiento = DateTime.Parse(txtFecha.Text);
+
+                        cliNeg.actualizar(cliente);
+
+                    }
+                    catch (Exception ex)
+                    { throw ex; }
+>>>>>>> 20e1802c63f7567b8a75805f157f5f45eed61189
                 }
             }
         }
@@ -31,19 +65,24 @@ namespace HandelApp
             try
             {
                 UsuarioNegocio Useraux = new UsuarioNegocio();
-                string ruta = Server.MapPath("./Imagenes/");
                 Usuario User = (Usuario)Session["usuario"];
-                txtImagen.PostedFile.SaveAs(ruta + "perfil-" + User.Id + ".jpg");
+                if (txtImagen.PostedFile.FileName != "")
+                {
+                    string ruta = Server.MapPath("./Imagenes/");
+                    txtImagen.PostedFile.SaveAs(ruta + "perfil-" + User.Id + ".jpg");
+                    User.ImagenPerfil = "perfil-" + User.Id + ".jpg";
 
-                User.ImagenPerfil = "perfil-" + User.Id + ".jpg";
+                }
+
+
                 User.Nombre = txtNombre.Text;
                 User.Apellido = txtApellido.Text;
                 User.Mail = txtEmail.Text;
-                // User.FechaNacimiento = (DateTime) txtFecha.Text;
+                User.FechaNacimiento = DateTime.Parse(txtFecha.Text);
                 Useraux.actualizar(User);
 
-                //Image img = (Image)Master.FindControl("imgAvatar");
-                //img.ImageUrl = "~/Imagenes/" + User.ImagenPerfil;
+                Image img = (Image)Master.FindControl("imgAvatar");
+                img.ImageUrl = "~/Imagenes/" + User.ImagenPerfil;
 
             }
             catch (Exception ex)

@@ -33,6 +33,15 @@ namespace HandelApp
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// lblUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsuario;
+
+        /// <summary>
         /// imaAvatar control.
         /// </summary>
         /// <remarks>
@@ -42,22 +51,31 @@ namespace HandelApp
         protected global::System.Web.UI.WebControls.Image imaAvatar;
 
         /// <summary>
-        /// btnNuevoUsuario control.
+        /// btnEditarPerfil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevoUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnEditarPerfil;
 
         /// <summary>
-        /// btnSalirSession control.
+        /// btnAgregarNuevoUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalirSession;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnAgregarNuevoUsuario;
+
+        /// <summary>
+        /// btnSalirSesion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSalirSesion;
 
         /// <summary>
         /// ContentPlaceHolder1 control.
