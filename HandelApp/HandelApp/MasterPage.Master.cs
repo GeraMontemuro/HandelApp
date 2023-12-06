@@ -21,8 +21,7 @@ namespace HandelApp
                     Response.Redirect("Error.aspx", false);
                 }
             //imaAvatar.ImageUrl = "~/Logos/logoSolo.png";
-            if (!(Page is Inicio))
-            {
+            
                 if (!Seguridad.SessionActiva(Session["usuario"]))
                 {
 
@@ -46,7 +45,7 @@ namespace HandelApp
 
 
 
-            }
+            
 
         }
 
