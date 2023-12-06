@@ -42,17 +42,14 @@
             <asp:BoundField HeaderText="Precio Compra" DataField="PrecioCompra" DataFormatString="{0:C}" />
 
             <asp:TemplateField HeaderText="Acciones">
-                <ItemTemplate>
-
-                    <%--<asp:LinkButton runat="server" Text="Agregar Producto" CommandName="AgregarProd" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return prodAgregado();">                    
-                    </asp:LinkButton>--%>
+                <ItemTemplate>                    
 
                     <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
 
                     <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IdProducto") %>'>
-                    <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
+                    <asp:Image runat="server" class="maspequeña"  src="Logos/lapizz.jpg" AlternateText=" "  />
                     </asp:LinkButton>
 
                 </ItemTemplate>

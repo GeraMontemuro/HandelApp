@@ -143,7 +143,7 @@
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
             <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
-            <%--   <asp:Button ID="btnSalir" runat="server" Text="Cerrar Sesión" OnClick="BtnSalir_Click" />--%>
+          
         </div>
 
         <div class="container">

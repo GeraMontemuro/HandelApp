@@ -80,6 +80,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="Logos\CargarStock.png" />
     <Content Include="Logos\Facturas.png" />
+    <Content Include="Logos\lapizz.jpg" />
     <Content Include="Logos\Logo.jpg" />
     <Content Include="Logos\logoSolo.png" />
     <Content Include="Logos\NuevaCompra.png" />

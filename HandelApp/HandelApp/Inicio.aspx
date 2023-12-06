@@ -9,19 +9,17 @@
     <div class="container text-center">
         <div class="row align-items-start">
             <div class="col">
-                <button class="btnAcciones">
-                    <img src= "Logos/NuevaVenta.png" />  alt="...">
-                </button>
+                
+                <button class="btnAcciones" runat="server"  >
+                    <img src= "Logos/NuevaVenta.png" />  alt="..."></button>
             </div>
             <div class="col">
                 <button class="btnAcciones">
-                    <img src= "Logos/NuevaCompra.png"  /> alt="...">
-                </button>
+                    <img src= "Logos/NuevaCompra.png"  /> alt="..."></button>
             </div>
             <div class="col">
                 <button class="btnAcciones">
-                    <img src= "Logos/Facturas.png" /> alt="...">
-                </button>
+                    <img src= "Logos/Facturas.png" /> alt="..."></button>
             </div>
         </div>
     </div>

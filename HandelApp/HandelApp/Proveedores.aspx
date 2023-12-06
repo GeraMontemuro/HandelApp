@@ -40,7 +40,7 @@
                     </asp:LinkButton>
 
                     <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IDProveedor") %>'>
-                    <asp:Image runat="server" class="maspequeña"  src="Logos/pencil.jpg" AlternateText=" "  />
+                    <asp:Image runat="server" class="maspequeña"  src="Logos/lapizz.jpg" AlternateText=" "  />
                     </asp:LinkButton>
 
 
