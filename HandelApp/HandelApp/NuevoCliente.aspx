@@ -4,12 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
- <script type="text/javascript">
-     function clienteAgregado() {
-         return confirm('Cliente agregado con éxito!');
-     }
+    <script type="text/javascript">
+        function clienteAgregado() {
+            return confirm('Cliente agregado con éxito!');
+        }
 
- </script>
+    </script>
 
     <h1 class="display-2 custom-heading">NUEVO CLIENTE </h1>
 
@@ -29,7 +29,7 @@
         <asp:RegularExpressionValidator runat="server" ControlToValidate="txtCuil"
             ErrorMessage="Se requiere un CUIL/CUIT"
             Display="Dynamic"
-            ValidationExpression="^.{3,10}$"
+            ValidationExpression="^\d+$"
             ForeColor="Red" />
     </div>
 
@@ -39,7 +39,7 @@
         <asp:RegularExpressionValidator runat="server" ControlToValidate="txtTelefono"
             ErrorMessage="Indicar código de área"
             Display="Dynamic"
-            ValidationExpression="^.{3,50}$"
+            ValidationExpression="^\d+$"
             ForeColor="Red" />
     </div>
 
@@ -54,7 +54,7 @@
     </div>
 
     <div>
-        <asp:Button ID="btnAgregarCliente" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarCliente_Click" OnClientClick="return clienteAgregado();"/>
+        <asp:Button ID="btnAgregarCliente" CssClass="btn btn-success" Text="Agregar" runat="server" OnClick="btnAgregarCliente_Click" OnClientClick="return clienteAgregado();" />
         <asp:Button ID="btnCancelar" CssClass="btn btn-secondary" Text="Cancelar" runat="server" OnClick="btnCancelar_Click" />
     </div>
 </asp:Content>

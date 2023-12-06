@@ -29,13 +29,13 @@
 
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="IDProducto" />
-            <asp:BoundField HeaderText="Codigo" DataField="Codigo" />
+            <asp:BoundField HeaderText="Código" DataField="Codigo" />
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-            <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+            <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
             <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
-            <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />
+            <asp:BoundField HeaderText="Categoría" DataField="Categoria.Descripcion" />
             <asp:BoundField HeaderText="Stock Total" DataField="StockTotal" />
-            <asp:BoundField HeaderText="Stock Minimo" DataField="StockMinimo" />
+            <asp:BoundField HeaderText="Stock Mínimo" DataField="StockMinimo" />
             <asp:BoundField HeaderText="Porcentaje Ganancia" DataField="PorcentajeGAnancia" DataFormatString="{0}%" />
             <asp:BoundField HeaderText="Precio Compra" DataField="PrecioCompra" DataFormatString="{0:C}" />
 

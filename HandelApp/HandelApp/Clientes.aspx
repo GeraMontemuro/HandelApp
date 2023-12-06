@@ -10,7 +10,8 @@
             return confirm('¿Estás seguro de que deseas eliminar el cliente?');
         }
     </script>
-    <h1>CLIENTES   </h1>
+
+    <h1 class="display-2 custom-heading"> CLIENTES </h1>
     <div class="form-floating mb-3">
 
         <asp:TextBox ID="TxtBuscador" runat="server" />
@@ -26,7 +27,7 @@
             <asp:BoundField HeaderText="Id" DataField="IdCliente" />
             <asp:BoundField HeaderText="Nombre Cliente" DataField="NombreFantasia" />
             <asp:BoundField HeaderText="Cuil" DataField="Cuil" />
-            <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
+            <asp:BoundField HeaderText="Teléfono" DataField="Telefono" />
             <asp:BoundField HeaderText="Contacto" DataField="Mail" />
 
 

@@ -22,7 +22,7 @@
         <asp:RegularExpressionValidator runat="server" ControlToValidate="txtCuil"
             ErrorMessage="Se requiere un CUIL/CUIT"
             Display="Dynamic"
-            ValidationExpression="^.{3,10}$"
+            ValidationExpression="^\d+$"
             ForeColor="Red" />
     </div>
 
@@ -32,7 +32,7 @@
         <asp:RegularExpressionValidator runat="server" ControlToValidate="txtTelefono"
             ErrorMessage="Indicar código de área"
             Display="Dynamic"
-            ValidationExpression="^.{3,50}$"
+            ValidationExpression="^\d+$"
             ForeColor="Red" />
     </div>
 

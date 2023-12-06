@@ -11,7 +11,7 @@
         }
 
     </script>
-    <h1>PROVEEDORES </h1>
+    <h1 class="display-2 custom-heading"> PROVEEDORES </h1>
 
     <div class="form-floating mb-3">
 
@@ -27,9 +27,9 @@
 
         <Columns>
             <asp:BoundField HeaderText="Id" DataField="IDProveedor" />
-            <asp:BoundField HeaderText="Nombre Fantasia" DataField="NombreFantasia" />
-            <asp:BoundField HeaderText="Cuil" DataField="Cuil" />
-            <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
+            <asp:BoundField HeaderText="Nombre Fantasía" DataField="NombreFantasia" />
+            <asp:BoundField HeaderText="Cuil/Cuit" DataField="Cuil" />
+            <asp:BoundField HeaderText="Teléfono" DataField="Telefono" />
             <asp:BoundField HeaderText="Mail" DataField="Mail" />
 
             <asp:TemplateField HeaderText="Acciones">

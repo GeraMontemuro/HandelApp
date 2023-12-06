@@ -11,7 +11,7 @@
 
  </script>
 
-    <h1 class="display-2 custom-heading">NUEVO PRODUCTO </h1>
+    <h1 class="display-2 custom-heading"> NUEVO PRODUCTO </h1>
 
     <div class="container-center">
         <div class="inner-container">

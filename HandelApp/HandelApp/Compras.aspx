@@ -10,7 +10,7 @@
         }
     </script>
 
-    <h1 class="display-2 custom-heading">COMPRAS </h1>
+    <h1 class="display-2 custom-heading"> COMPRAS </h1>
     <hr />
 
     <asp:Button type="button" Text="Nueva Compra" CssClass="btn btn-primary" runat="server" ID="btnNvaCompra" OnClick="btnNvaCompra_Click" />
