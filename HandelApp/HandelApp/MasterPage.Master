@@ -11,6 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <style>
+        .container {
+            margin-left: 130px;
+            margin-right: 20px;
+            max-width: 1200px;
+        }
+
         img.pequeña {
             width: 50px;
             height: 50px;
@@ -22,8 +28,8 @@
         }
 
         footer {
-            background-color: #333;
-            color: chocolate;
+            background-color: white;
+            color: black;
             padding: 20px;
             margin-top: auto;
             text-align: center;
@@ -33,14 +39,14 @@
             font-family: inherit;
             font-weight: bold;
             text-align: center;
-            color: aquamarine;
+            color: mediumslateblue;
             font-family: inherit;
         }
 
         #sidebar {
             position: fixed;
             margin-left: 0px;
-            width: 115px;
+            width: 130px;
             background-color: #333;
             color: #fff;
             height: 100%;
@@ -91,9 +97,7 @@
         }
 
         .alineadoDerecha {
-
             float: right;
-
         }
     </style>
 
@@ -111,7 +115,8 @@
                     <div class="navbar-nav">
                         <a class="nav-link" href="Inicio.aspx">HANDELAPP</a>
 
-                        <div class="right-text">Bienvenido
+                        <div class="right-text">
+                            Bienvenido
                             <asp:Label ID="lblUsuario" Text=" " runat="server"></asp:Label>
                         </div>
                         <asp:Image ID="imaAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" ImageUrl="Logos/Logo.jpg" runat="server" />
@@ -138,18 +143,26 @@
             <br />
             <a class="nav-link" href="Inicio.aspx">INICIO</a>
             <a class="nav-link" href="Productos.aspx">PRODUCTOS</a>
-            <a class="nav-link" href="Vender.aspx">VENDER</a>
             <a class="nav-link" href="Compras.aspx">COMPRAS</a>
             <a class="nav-link" href="Clientes.aspx">CLIENTES</a>
             <a class="nav-link" href="Proveedores.aspx">PROVEEDORES</a>
             <a class="nav-link" href="Usuarios.aspx">USUARIOS</a>
-          
+
         </div>
 
         <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <footer>
+            <hr />
+            <asp:Label ID="lblFooter" CssClass="form-label" runat="server" Text="Desarrollado por: "></asp:Label>
+
+            <h7>Cristina Moreira - </h7>
+            <h7>Rosario Ruiz - </h7>
+            <h7>Gerardo Montemuro </h7>
+
+        </footer>
     </form>
 </body>
 </html>

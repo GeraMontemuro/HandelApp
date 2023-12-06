@@ -8,8 +8,9 @@
             return confirm('¿Estás seguro de que deseas eliminar este registro de compra?');
         }
    </script>
-     <h1> COMPRAS </h1>
-
+     <%--<h1> COMPRAS </h1>--%>
+     <h1 class="display-2 custom-heading"> COMPRAS </h1>
+    <hr />
      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNvaCompra">Cargar Compra</button>
 
     <asp:GridView ID="dgvCompras" runat="server" CssClass="table" DataKeyNames="IDCompra"  AutoGenerateColumns="false" OnRowCommand="dgvCompras_RowCommand" >

@@ -16,9 +16,19 @@ namespace HandelApp
             
         }
 
-        protected void Unnamed_Click(object sender, EventArgs e)
+        protected void btnNuevaVenta_Click(object sender, EventArgs e)
         {
+            Response.Redirect("Vender.aspx");
+        }
 
+        protected void btnNuevaCompra_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
+
+        protected void btnFacturas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
         }
     }
 }
