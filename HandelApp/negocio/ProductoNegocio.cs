@@ -197,5 +197,16 @@ namespace negocio
                 modificar(producto);
             }
         }
+        public void modificarStock(int idProducto, int cantidad)
+        {
+            AccesoBD accesoBD2 = new AccesoBD();
+
+            accesoBD2.setearConsulta("Update Producto set StockTotal = StockTotal - @cantidad where IDProducto = @idProducto");
+            accesoBD2.setearParametro("@cantidad", cantidad);
+            accesoBD2.setearParametro("@idProducto", idProducto);
+
+            accesoBD2.ejecutarAccion();
+            accesoBD2.cerrarConexion();
+        }
     }
 }

@@ -11,10 +11,12 @@ namespace HandelApp
     public partial class NuevaFactura : System.Web.UI.Page
     {
         Venta VentaRealizada = new Venta();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
+            {   
+                
                 txtFecha.Text = DateTime.Today.ToString("dd/MM/yyyy");
                 VentaRealizada.UsuarioVenta = new Usuario();
 
@@ -48,6 +50,20 @@ namespace HandelApp
 
             }
 
+        }
+
+        protected void Finalizar_Click(object sender, EventArgs e)
+        {
+            List<Producto> LimpiarSessionPro = (List<Producto>)Session["ListaVenta"];
+            LimpiarSessionPro.Clear();
+
+            Cliente LimpiarSessionCliente = (Cliente)Session["ListaCliente"];
+            LimpiarSessionCliente = new Cliente();
+
+            Usuario LimpiarSessionUsuario = (Usuario)Session["usuario"];
+            LimpiarSessionUsuario = new Usuario();
+            
+            Response.Redirect("Inicio.aspx", false);
         }
     }
 }

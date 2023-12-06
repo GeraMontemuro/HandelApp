@@ -42,8 +42,26 @@ namespace HandelApp
                 ddlProducto.DataValueField = "IDProducto";
                 ddlProducto.DataBind();
 
-                PrecioTotal = "$ 0,00";
-                TxtPrecioTotal.Text = PrecioTotal;
+                if (Session["ListaVentas"] != null)
+                {
+                    PrecioTotal = "$ 0,00";
+                    TxtPrecioTotal.Text = PrecioTotal;
+                }
+                else
+                {
+                    List<Producto> Temporal2 = new List<Producto>();
+                    Temporal2 = (List<Producto>)Session["ListaVenta"];
+
+                    if (Temporal2 != null)
+                    {
+                        foreach (Producto item in Temporal2)
+                        {
+                            AuxPrecio += item.PrecioFinal;
+                        }
+                    }
+                    PrecioTotal = string.Format("{0:C}", AuxPrecio);
+                    TxtPrecioTotal.Text = PrecioTotal;
+                }
 
                 listaventafinal = (List<Producto>)Session["ListaVenta"];
                 dgvProductoVenta.DataSource = listaventafinal;
@@ -288,7 +306,17 @@ namespace HandelApp
 
 
             ///2) MODIFICAR STOCK DE LOS PRODUCTOS
-            ///
+            ProductoNegocio productoNegocio = new ProductoNegocio();
+            List<Producto> listaModificar = (List<Producto>)Session["ListaVenta"];
+
+            if (listaModificar != null)
+            {
+                foreach (Producto item in listaModificar)
+                {
+                    productoNegocio.modificarStock(item.IdProducto, item.Cantidad);
+                }
+            }
+            
             Response.Redirect("NuevaFactura.aspx",false);
         }
 

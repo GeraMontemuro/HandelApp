@@ -81,6 +81,7 @@
 
             <div class="col-12">
                 <asp:Button ID="btnImprimir" runat="server" CssClass="btn btn-primary" Text="Imprimir" />
+                <asp:Button ID="Finalizar" runat="server" CssClass="btn btn-primary" Text="Imprimir" OnClick="Finalizar_Click"   />
             </div>
         </div>
     </div>
