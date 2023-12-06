@@ -14,7 +14,7 @@
     <div class="form-floating mb-3">
 
         <asp:TextBox ID="TxtBuscador" runat="server" />
-        <asp:Button ID="buscarcliente" class="btn btn-primary" Text="Buscar Cliente/s" runat="server" OnClick="buscarcliente_Click" />
+        <asp:Button ID="buscarcliente" class="btn btn-dark" Text="Buscar Cliente/s" runat="server" OnClick="buscarcliente_Click" />
 
     </div>
 

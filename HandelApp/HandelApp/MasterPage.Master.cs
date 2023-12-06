@@ -32,10 +32,20 @@ namespace HandelApp
                 {
                     Usuario user = (Usuario)Session["usuario"];
                     lblUsuario.Text = user.User;
-                    //if(user.ImagenPerfil != null)
-                    imaAvatar.ImageUrl = "~/Imagenes/" + user.ImagenPerfil;
+                    if (!string.IsNullOrEmpty(user.ImagenPerfil))
+                    {
+                        imaAvatar.ImageUrl = "~/Imagenes/" + user.ImagenPerfil;
+
+                    }
+                    else
+                    {
+                        imaAvatar.ImageUrl = "https://www.bing.com/ck/a?!&&p=f1cb5705983cae33JmltdHM9MTcwMTgyMDgwMCZpZ3VpZD0zYTRjYmNiMC0yYWY0LTZlMTMtMmFlNi1hZDdhMmI1MTZmZGUmaW5zaWQ9NTU0NA&ptn=3&ver=2&hsh=3&fclid=3a4cbcb0-2af4-6e13-2ae6-ad7a2b516fde&u=a1L2ltYWdlcy9zZWFyY2g_cT1sb2dvIHZhY2lvIGRlIHVzdWFyaW8mRk9STT1JUUZSQkEmaWQ9NjA1NjM0QkM2MEMwREMxM0VGQUQ2QTkzQ0VGNTk0MDRCQzgzQzQ3Rg&ntb=1";
+                    }
 
                 }
+
+
+
             }
 
         }

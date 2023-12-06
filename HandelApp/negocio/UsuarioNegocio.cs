@@ -131,7 +131,7 @@ namespace negocio
             AccesoBD datos = new AccesoBD();
             try
             {
-                datos.setearConsulta("Select ID,TipoUser from Usuarios where Usuario = @User  AND Pass = @Pass");
+                datos.setearConsulta("Select ID,TipoUser,ImagenPerfil,FechaNacimiento from Usuarios where Usuario = @User  AND Pass = @Pass");
                 datos.setearParametro("@User", usuario.User);
                 datos.setearParametro("@Pass", usuario.Pass);
 
@@ -141,6 +141,10 @@ namespace negocio
 
                     usuario.Id = (int)datos.Lector["ID"];
                     usuario.TipoUsuario = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+                    if (!(datos.Lector["ImagenPerfil"] is DBNull))
+                        usuario.ImagenPerfil = (string)datos.Lector["ImagenPerfil"];
+                    if (!(datos.Lector["FechaNacimiento"] is DBNull))
+                        usuario.FechaNacimiento = DateTime.Parse(datos.Lector["FechaNacimiento"].ToString());
                     return true;
                 }
                 return false;

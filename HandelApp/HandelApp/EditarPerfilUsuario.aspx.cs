@@ -28,7 +28,7 @@ namespace HandelApp
                     txtNombre.Text = User.Nombre;
                     txtApellido.Text = User.Apellido;
                     txtEmail.Text = User.Mail;
-                    txtFecha.Text = User.FechaNacimiento.ToString();
+                    txtFecha.Text = User.FechaNacimiento.ToString("dd-MM-yyyy");
 
                 }
             }
@@ -48,9 +48,33 @@ namespace HandelApp
                 }
 
 
-                User.Nombre = txtNombre.Text;
-                User.Apellido = txtApellido.Text;
-                User.Mail = txtEmail.Text;
+                string aux = User.Nombre;
+                if (aux == txtNombre.Text)
+                {
+                    User.Nombre = User.Nombre;
+                }
+                else
+                {
+                    User.Nombre = txtNombre.Text;
+                }
+
+                if (User.Apellido == txtApellido.Text)
+                {
+                    User.Apellido = User.Apellido;
+                }
+                else
+                {
+                    User.Apellido = txtApellido.Text;
+                }
+
+                if (User.Mail == txtEmail.Text)
+                {
+                    User.Mail = User.Mail;
+                }
+                else
+                {
+                    User.Mail = txtEmail.Text;
+                }
                 User.FechaNacimiento = DateTime.Parse(txtFecha.Text);
                 Useraux.actualizar(User);
 

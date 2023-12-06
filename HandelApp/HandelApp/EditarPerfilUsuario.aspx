@@ -39,7 +39,7 @@
           </div>
          <div>
              <asp:Button Text="Guardar" runat="server" ID="btnGuardarEditarPerfil" OnClick="btnGuardarEditarPerfil_Click" />
-             <a href="Usuario.aspx">Regresar</> </a>
+             <a href="Inicio.aspx">Regresar</> </a>
          </div>
      </div>
      </div>
