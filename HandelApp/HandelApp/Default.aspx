@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="Styles.css" />
 </head>
 <body>
+
+   
+
     <div class="container">
         <div class="left">
             <img src="Logos/Logo.jpg" alt="Logo" />
@@ -20,18 +23,21 @@
                 <form runat="server">
                     <div class="input-container">
                         <label for="usuario">Usuario</label>
-                         <asp:TextBox runat ="server" ID="txtUsuario"  CssClass="form-control" />
-                    
+                        <asp:TextBox runat="server" ID="txtUsuario" CssClass="form-control" />
+
+
                     </div>
 
-                    <div class="input-container" type="password">
+
+                    <div class="input-container">
                         <label for="contraseña">Contraseña</label>
-                         <asp:TextBox runat ="server" ID="txtPassword" textmode="Password" CssClass="form-control" />
-                    
+                        <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" TextMode="Password" />
+
                     </div>
 
-                        
+    
                     <asp:Button Text="Iniciar sesión" runat="server" ID="btnIngresar" OnClick="btnIngresar_Click"/>
+                    <asp:Label ID="Verificacion" runat="server" Text="" ForeColor="Red"></asp:Label>
                 </form>
             </div>
         </div>

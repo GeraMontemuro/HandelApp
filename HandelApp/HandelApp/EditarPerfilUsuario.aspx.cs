@@ -21,9 +21,14 @@ namespace HandelApp
             {
                 if (Session["usuario"] != null)
                 {
-                    Usuario usuario = (Usuario)Session["usuario"];
-                    txtUsuario.Text = usuario.User;
-                    txtNombre.Text = usuario.Nombre;
+                    Usuario User = (Usuario)Session["usuario"];
+                    UsuarioNegocio cliNeg = new UsuarioNegocio();
+                    User = cliNeg.buscar(User.Id);
+                    txtUsuario.Text = User.User;
+                    txtNombre.Text = User.Nombre;
+                    txtApellido.Text = User.Apellido;
+                    txtEmail.Text = User.Mail;
+                    txtFecha.Text = User.FechaNacimiento.ToString();
 
                 }
             }

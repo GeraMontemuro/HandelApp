@@ -30,13 +30,11 @@ namespace HandelApp
                 }
                 else
                 {
-                    Session.Add("Error", "Usuario y/o contraseña incorrectos");
-                    Response.Redirect("Default.aspx", false);
+                    Verificacion.Text = "Usuario y/o contraseña incorrecto";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Session.Add("Error", ex.ToString()); 
                 Response.Redirect("Default.aspx", false);
             }
         }

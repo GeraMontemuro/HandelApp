@@ -14,7 +14,7 @@ namespace HandelApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            imaAvatar.ImageUrl = "~/Logos/logoSolo.png";
+            //imaAvatar.ImageUrl = "~/Logos/logoSolo.png";
             if (!(Page is Inicio))
             {
                 if (!Seguridad.SessionActiva(Session["usuario"]))
