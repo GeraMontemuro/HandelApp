@@ -11,7 +11,8 @@
         }
     </script>
 
-    <h1>CARGAR VENTA </h1>
+    <h1 class="display-2 custom-heading">NUEVA VENTA </h1>
+    <br />
 
     <div class="container text-center">
         <div class="row align-items-start">
@@ -38,7 +39,7 @@
 
                                     <asp:BoundField HeaderText="Nombre Cliente" DataField="NombreFantasia" />
                                     <asp:BoundField HeaderText="Cuil" DataField="Cuil" />
-                                    <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
+                                    <asp:BoundField HeaderText="Teléfono" DataField="Telefono" />
                                     <asp:BoundField HeaderText="Mail" DataField="Mail" />
 
                                 </Columns>
@@ -54,14 +55,14 @@
                         <div class="card-body">
                             <h1>PRODUCTO </h1>
 
-                            <asp:DropDownList ID="ddlProducto" runat="server"  CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlProducto" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged">
                                 <asp:ListItem Text="Seleccionar Producto" Value="" />
                             </asp:DropDownList>
                             <br />
 
                             <asp:TextBox ID="txtBusquedaProducto" runat="server" CssClass="form-control" placeholder="Buscar producto..." AutoPostBack="false"></asp:TextBox>
                             <asp:Button ID="btnBusquedaProducto" runat="server" Text="Buscar por Nombre" CssClass="btn btn-success" OnClick="btnBusquedaProducto_Click" />
-                            <asp:Button ID="btnLimpiarFiltros" runat="server" text="Limpiar Filtro" CssClass="btn btn-success" OnClick="btnLimpiarFiltros_Click"/>   
+                            <asp:Button ID="btnLimpiarFiltros" runat="server" Text="Limpiar Filtro" CssClass="btn btn-success" OnClick="btnLimpiarFiltros_Click" />
 
 
                             <asp:GridView ID="dgvProdBuscado" runat="server" CssClass="table" AutoGenerateColumns="false" OnRowCommand="dgvProdBuscado_RowCommand">
@@ -103,35 +104,50 @@
     </div>
     <br />
     <br />
-    <div class="card">
-        <div class="card-body">
-            <h1>PRE-FACTURA </h1>
-            <asp:GridView ID="dgvProductoVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%" OnRowCommand="dgvProductoVenta_RowCommand">
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>PRE-FACTURA </h1>
+                        <asp:GridView ID="dgvProductoVenta" CssClass="table" AutoGenerateColumns="false" runat="server" Width="100%" OnRowCommand="dgvProductoVenta_RowCommand">
 
-                <Columns>
-                    <asp:BoundField HeaderText="Nombre Producto" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                    <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
-                    <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioVenta" DataFormatString="{0:C}" />
-                    <asp:BoundField HeaderText="Precio Final" DataField="PrecioFinal" DataFormatString="{0:C}" />
+                            <Columns>
+                                <asp:BoundField HeaderText="Nombre Producto" DataField="Nombre" />
+                                <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
+                                <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
+                                <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioVenta" DataFormatString="{0:C}" />
+                                <asp:BoundField HeaderText="Precio Final" DataField="PrecioFinal" DataFormatString="{0:C}" />
 
-                    <asp:TemplateField HeaderText="Acciones">
-                        <ItemTemplate>
+                                <asp:TemplateField HeaderText="Acciones">
+                                    <ItemTemplate>
 
 
-                            <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
+                                        <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
                             <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
-                            </asp:LinkButton>
+                                        </asp:LinkButton>
 
 
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
 
-            </asp:GridView>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <asp:Label ID="lblPrecio" Style="color: brown" runat="server" Text="Precio Total: "></asp:Label>
-    <asp:TextBox ID="TxtPrecioTotal" ReadOnly="true" CssClass="form-control" runat="server" Style="width: 150px; height: 45px" alt="..."></asp:TextBox>
-    <asp:Button ID="btnAgregarFactura" runat="server" CssClass="btn btn-success" Text="Imprimir Factura" Onclick="btnAgregarFactura_Click"     />
+    <div class="container-center">
+        <div class="inner-container">
+            <div style="margin-bottom: 10px;">
+                <asp:Label ID="lblPrecio" Style="color: brown" runat="server" Text="Precio Total: " />
+                <asp:TextBox ID="TxtPrecioTotal" ReadOnly="true" CssClass="form-control" runat="server" Style="width: 150px; height: 45px" alt="..."></asp:TextBox>
+
+            </div>
+        </div>
+        <asp:Button ID="btnAgregarFactura" runat="server" CssClass="btn btn-success" Text="Imprimir Factura" OnClick="btnAgregarFactura_Click" />
+    </div>
+
+
 </asp:Content>
