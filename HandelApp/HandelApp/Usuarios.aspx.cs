@@ -11,7 +11,7 @@ namespace HandelApp
 {
     public partial class Usuarios : System.Web.UI.Page
     {
-        Usuario usuario;
+        //Usuario usuario;
         List<Usuario> lista = new List<Usuario>();
         protected void Page_Load(object sender, EventArgs e)
         {

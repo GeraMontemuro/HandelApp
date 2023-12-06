@@ -14,6 +14,12 @@ namespace HandelApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page is NuevoProducto || Page is Productos || Page is Proveedores || Page is NuevoProveedor || Page is NewLogin || Page is NuevoProveedor ||Page is EditarProveedor || Page is EditarProducto)
+                if (!(Seguridad.EsAdmin(Session["usuario"]) is dominio.TipoUsuario.ADMIN))
+                {
+                    Session.Add("ERROR", "Se requiere permisos de aministrador.");
+                    Response.Redirect("Error.aspx", false);
+                }
             //imaAvatar.ImageUrl = "~/Logos/logoSolo.png";
             if (!(Page is Inicio))
             {
