@@ -6,10 +6,9 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="Styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
 </head>
-<body>
-
-   
+<body class="d-flex align-items-center justify-content-center" style="background-color: black">
 
     <div class="container">
         <div class="left">
@@ -24,19 +23,14 @@
                     <div class="input-container">
                         <label for="usuario">Usuario</label>
                         <asp:TextBox runat="server" ID="txtUsuario" CssClass="form-control" />
-
-
                     </div>
-
 
                     <div class="input-container">
                         <label for="contraseña">Contraseña</label>
                         <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" TextMode="Password" />
-
                     </div>
 
-    
-                    <asp:Button Text="Iniciar sesión" runat="server" ID="btnIngresar" OnClick="btnIngresar_Click"/>
+                    <asp:Button Text="Iniciar sesión" runat="server" ID="btnIngresar" OnClick="btnIngresar_Click" />
                     <asp:Label ID="Verificacion" runat="server" Text="" ForeColor="Red"></asp:Label>
                 </form>
             </div>
