@@ -10,17 +10,15 @@
             return confirm('¿Estás seguro de que deseas eliminar este producto?');
         }
 
-        function prodAgregado() {
-            return confirm('Producto agregado con éxito!');
-        }
+       
     </script>
 
-    <h1>PRODUCTOS  </h1>
+    <h1 class="display-2 custom-heading"> PRODUCTO </h1>
 
     <div class="form-floating mb-3">
         
-        <asp:TextBox ID="TxtBuscador" runat="server" />
-        <asp:Button ID="buscarproducto" class="btn btn-primary" Text="Buscar Producto/s" runat="server" OnClick="buscarproducto_Click" />
+        <asp:TextBox ID="TxtBuscador" runat="server"  />
+        <asp:Button ID="buscarproducto" class="btn btn-dark" Text="Buscar Producto/s" runat="server" OnClick="buscarproducto_Click" />
        
     </div>
 

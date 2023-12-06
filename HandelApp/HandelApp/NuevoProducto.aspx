@@ -3,6 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:ScriptManager runat="server"></asp:ScriptManager>
+ <script type="text/javascript">
+     function prodAgregado() {
+         return confirm('Producto agregado con éxito!');
+     }
+
+ </script>
 
     <h1 class="display-2 custom-heading">NUEVO PRODUCTO </h1>
 
@@ -66,11 +73,10 @@
             <div style="margin-bottom: 10px;">
                 <asp:Label runat="server" Text="Precio de Compra" />
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control txtBox" />
-                <asp:RangeValidator runat="server" ControlToValidate="txtPrecio"
-                    ErrorMessage="El precio de compra debe ser númerico y mayor a cero"
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="txtPrecio"
+                    ErrorMessage="El precio debe ser mayor a cero"
                     Display="Dynamic"
-                    MinimumValue="0"
-                    Type="Double"
+                    ValidationExpression="^\d+$"
                     ForeColor="Red" />
             </div>
 
@@ -89,7 +95,7 @@
     </div>
     <br />
     <div>
-        <asp:Button ID="btnAgregar" CssClass="btn btn-success" Text="Agregar Producto" runat="server" OnClick="btnAgregar_Click" />
+        <asp:Button ID="btnAgregar" CssClass="btn btn-success" Text="Agregar Producto" runat="server" OnClick="btnAgregar_Click" OnClientClick="return prodAgregado();" />
         <asp:Button ID="btnCancelar" CssClass="btn btn-secondary" Text="Cancelar" runat="server" OnClick="btnCancelar_Click" />
     </div>
 
