@@ -17,7 +17,7 @@ namespace negocio
             try
             {
                 
-                datos.setearConsulta("Select Com.ID as IDCompra, Com.Fecha, Com.IDProducto, P.Nombre as ProdNombre, Com.Cantidad, Com.PrecioCompra, Prov.NombreFantasia as NombreProv from Compras Com\r\ninner join Producto P on P.IDProducto = Com.IDProducto\r\ninner join Proveedor Prov on Prov.IDProveedor = Com.IDProveedor");
+                datos.setearConsulta("Select Com.ID as IDCompra, Com.Fecha, Com.IDProducto, P.Nombre as ProdNombre, Com.Cantidad, Com.PrecioCompra, Prov.NombreFantasia as NombreProv from Compras Com\r\ninner join Producto P on P.IDProducto = Com.IDProducto\r\ninner join Proveedor Prov on Prov.IDProveedor = Com.IDProveedor order by Com.Fecha asc");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
