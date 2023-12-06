@@ -28,23 +28,27 @@
 
     <div style="margin-bottom: 10px;">
         <asp:Label runat="server" Text="Código" />
-        <asp:TextBox runat="server" ID="txtCodigo" CssClass="form-control txtBox" />
+        <asp:TextBox runat="server" ID="txtCodigo" ReadOnly="true" BackColor="Silver" CssClass="form-control txtBox" />
 
     </div>
 
+
     <div style="margin-bottom: 10px;">
         <asp:Label runat="server" Text="Marca" />
-        <asp:DropDownList ID="ddlMarca" runat="server" CssClass="form-select" Width="500px" AutoPostBack="true"></asp:DropDownList>
+        <asp:TextBox runat="server" ID="txtMarca" ReadOnly="true" BackColor="Silver" CssClass="form-control txtBox" />
+
     </div>
 
     <div style="margin-bottom: 10px;">
         <asp:Label runat="server" Text="Categoria" />
-        <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select" Width="500px" AutoPostBack="true"></asp:DropDownList>
+        <asp:TextBox runat="server" ID="txtCategoria" ReadOnly="true" BackColor="Silver" CssClass="form-control txtBox" />
+
     </div>
+
 
     <div style="margin-bottom: 10px;">
         <asp:Label runat="server" Text="Stock Total" />
-        <asp:TextBox runat="server" ID="txtStockTotal" CssClass="form-control txtBox" />
+        <asp:TextBox runat="server" ID="txtStockTotal" ReadOnly="true" BackColor="Silver" CssClass="form-control txtBox" />
         <asp:RegularExpressionValidator runat="server" ControlToValidate="txtStockTotal"
             ErrorMessage="Stock Total debe ser un número entero"
             Display="Dynamic"

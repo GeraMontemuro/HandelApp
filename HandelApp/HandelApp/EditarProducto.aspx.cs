@@ -25,9 +25,14 @@ namespace HandelApp
                         producto = prodNeg.buscar(id);
 
                         txtNombre.Text = producto.Nombre;
+                        txtCodigo.Text = producto.Codigo;
                         txtDescripcion.Text = producto.Descripcion;
                         txtStockMinimo.Text = producto.StockMinimo.ToString();
+                        txtPrecio.Text = producto.PrecioCompra.ToString();
                         txtPorcentaje.Text = producto.PorcentajeGanancia.ToString();
+                        txtMarca.Text = producto.Marca.Descripcion.ToString();
+                        txtCategoria.Text = producto.Categoria.Descripcion.ToString();
+                        txtStockTotal.Text = producto.StockTotal.ToString();
 
                     }
                     catch (Exception ex)
@@ -49,6 +54,7 @@ namespace HandelApp
                 producto.Descripcion = txtDescripcion.Text;
                 producto.StockMinimo = int.Parse(txtStockMinimo.Text);
                 producto.PorcentajeGanancia = decimal.Parse(txtPorcentaje.Text);
+                producto.PrecioCompra = decimal.Parse(txtPrecio.Text);
 
                 auxProdNegocio.modificar(producto);
 
