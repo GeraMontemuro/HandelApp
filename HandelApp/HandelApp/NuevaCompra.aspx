@@ -56,8 +56,7 @@
         <asp:Button ID="btnAgregarCompra" CssClass="btn btn-success" Text="Guardar Compra" runat="server" OnClick="btnAgregarCompra_Click" />
     </div>
     <br />
-    <div>
-        <asp:Button ID="btnAgregarCliente" CssClass="btn btn-dark" Text="Nuevo Cliente" runat="server" OnClick="btnAgregarCliente_Click" />
+    <div>        
         <asp:Button ID="btnAgregarProveedor" CssClass="btn btn-dark" Text="Nuevo Proveedor" runat="server" OnClick="btnAgregarProveedor_Click" />
         <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
     </div>
