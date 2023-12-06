@@ -43,7 +43,7 @@
 
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>                    
-
+                    <div class="d-flex justify-content-around">
                     <asp:LinkButton ID="lnkbtnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%#Eval("IdProducto") %>' OnClientClick="return confirmarEliminar();">              
                     <asp:Image runat="server" CssClass="maspequeña" ImageUrl="Logos/trash.jpg" AlternateText="Eliminar" />
                     </asp:LinkButton>
@@ -51,7 +51,7 @@
                     <asp:LinkButton runat="server" CommandName="Editar" CommandArgument='<%#Eval("IdProducto") %>'>
                     <asp:Image runat="server" class="maspequeña"  src="Logos/lapizz.jpg" AlternateText=" "  />
                     </asp:LinkButton>
-
+                    </div>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

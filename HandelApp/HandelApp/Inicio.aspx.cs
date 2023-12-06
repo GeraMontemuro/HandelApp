@@ -23,7 +23,7 @@ namespace HandelApp
 
         protected void btnNuevaCompra_Click(object sender, EventArgs e)
         {
-            Response.Redirect("");
+            Response.Redirect("NuevaCompra.aspx");
         }
 
         protected void btnFacturas_Click(object sender, EventArgs e)
