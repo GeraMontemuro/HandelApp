@@ -92,6 +92,7 @@
     <Content Include="Logos\pngwing.com.png" />
     <Content Include="Logos\trash.jpg" />
     <Content Include="NewLogin.aspx" />
+    <Content Include="NuevaCompra.aspx" />
     <Content Include="NuevaFactura.aspx" />
     <Content Include="NuevoCliente.aspx" />
     <Content Include="NuevoProducto.aspx" />
@@ -188,6 +189,13 @@
     </Compile>
     <Compile Include="NewLogin.aspx.designer.cs">
       <DependentUpon>NewLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NuevaCompra.aspx.cs">
+      <DependentUpon>NuevaCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NuevaCompra.aspx.designer.cs">
+      <DependentUpon>NuevaCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="NuevaFactura.aspx.cs">
       <DependentUpon>NuevaFactura.aspx</DependentUpon>
