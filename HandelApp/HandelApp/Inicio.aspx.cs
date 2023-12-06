@@ -28,7 +28,7 @@ namespace HandelApp
 
         protected void btnFacturas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("");
+            Response.Redirect("NuevoCliente.aspx");
         }
     }
 }

@@ -22,7 +22,7 @@
         </div>
         <div class="col">
             <asp:LinkButton runat="server" ID="btnFacturas" OnClick="btnFacturas_Click" style="display: inline-block; width: 250px; height: 250px; padding: 0; margin: 0; background-color: black; border: none; cursor: pointer; border-radius: 10px; box-shadow: 3px 3px 5px #888888; outline: none;">
-                <img src="Logos/Facturas.png" alt="..." style="width: 100%;" />
+                <img src="Logos/NuevoCliente.png" alt="..." style="width: 100%;" />
             </asp:LinkButton>
         </div>
     </div>

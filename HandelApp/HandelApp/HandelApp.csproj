@@ -79,13 +79,12 @@
     <Content Include="Error.aspx" />
     <Content Include="Imagenes\perfil-2.jpg" />
     <Content Include="Inicio.aspx" />
-    <Content Include="Logos\CargarStock.png" />
-    <Content Include="Logos\Facturas.png" />
     <Content Include="Logos\lapizz.jpg" />
     <Content Include="Logos\Logo.jpg" />
     <Content Include="Logos\logoSolo.png" />
     <Content Include="Logos\NuevaCompra.png" />
     <Content Include="Logos\NuevaVenta.png" />
+    <Content Include="Logos\NuevoCliente.png" />
     <Content Include="Logos\pencil.jpg" />
     <Content Include="Logos\pngwing.com %28mas%29.png" />
     <Content Include="Logos\pngwing.com %28menos%29.png" />
