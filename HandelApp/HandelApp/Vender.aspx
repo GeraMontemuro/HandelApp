@@ -54,7 +54,7 @@
                         <div class="card-body">
                             <h1>PRODUCTO </h1>
 
-                            <asp:DropDownList ID="ddlProducto" runat="server"  CssClass="form-select" AutoPostBack="true">
+                            <asp:DropDownList ID="ddlProducto" runat="server"  CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlProducto_SelectedIndexChanged">
                                 <asp:ListItem Text="Seleccionar Producto" Value="" />
                             </asp:DropDownList>
                             <br />
@@ -94,7 +94,7 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                            <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger"></asp:Label>
+                            <asp:Label ID="lblMensajestock" runat="server" CssClass="text-danger"></asp:Label>
                         </div>
                     </div>
                 </div>

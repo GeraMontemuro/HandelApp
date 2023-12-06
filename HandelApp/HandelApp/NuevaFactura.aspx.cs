@@ -16,8 +16,18 @@ namespace HandelApp
             if (!IsPostBack)
             {
                 txtFecha.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                VentaRealizada.UsuarioVenta = new Usuario();
 
                 VentaRealizada.ProductoVenta = (List<Producto>)Session["ListaVenta"];
+                VentaRealizada.ClienteVenta = (Cliente)Session["ListaCliente"];
+                VentaRealizada.UsuarioVenta = (Usuario)Session["usuario"];
+
+                txtVendedor.Text = VentaRealizada.UsuarioVenta.User;
+                txtNombreCliente.Text = VentaRealizada.ClienteVenta.NombreFantasia.ToString();
+                txtCuil.Text = VentaRealizada.ClienteVenta.Cuil.ToString();
+                txtMail.Text = VentaRealizada.ClienteVenta.Mail.ToString();
+                txtTelefono.Text = VentaRealizada.ClienteVenta.Telefono.ToString();
+
 
                 dgvProdFactura.DataSource = (List<Producto>)VentaRealizada.ProductoVenta;
                 dgvProdFactura.DataBind();

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 
 namespace HandelApp
 {
@@ -37,12 +38,17 @@ namespace HandelApp
                 listaProducto = ProdNegddl.listarconSp();
 
                 ddlProducto.DataSource = listaProducto;
-                ddlProducto.DataTextField = "Nombre";
+                ddlProducto.DataTextField = "Codigo";
                 ddlProducto.DataValueField = "IDProducto";
                 ddlProducto.DataBind();
 
                 PrecioTotal = "$ 0,00";
                 TxtPrecioTotal.Text = PrecioTotal;
+
+                listaventafinal = (List<Producto>)Session["ListaVenta"];
+                dgvProductoVenta.DataSource = listaventafinal;
+                dgvProductoVenta.DataBind();
+
             }
         }
 
@@ -53,13 +59,27 @@ namespace HandelApp
             List<Cliente> listaCliente = new List<Cliente>();
 
             int idClienteElegido = Convert.ToInt32(ddlCliente.SelectedValue);
-
             ClienteFiltro = CliNegFiltro.buscar(idClienteElegido);
-
             listaCliente.Add(ClienteFiltro);
+
+            Session["ListaCliente"] = ClienteFiltro;
 
             dgvClienteVenta.DataSource = listaCliente;
             dgvClienteVenta.DataBind();
+        }
+
+        protected void ddlProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Producto ProductoFiltro = new Producto();
+            ProductoNegocio ProNegFiltro = new ProductoNegocio();
+            List<Producto> listaProducto = new List<Producto>();
+
+            int idProductoElegido = Convert.ToInt32(ddlProducto.SelectedValue);
+            ProductoFiltro = ProNegFiltro.buscar(idProductoElegido);
+            listaProducto.Add(ProductoFiltro);
+
+            dgvProdBuscado.DataSource = listaProducto;
+            dgvProdBuscado.DataBind();
         }
 
         protected void btnBuscarCuit_Click(object sender, EventArgs e)
@@ -75,6 +95,7 @@ namespace HandelApp
             if (clienteBuscado != null)
             {
                 listaCliente.Add(clienteBuscado);
+                Session["ListaCliente"] = clienteBuscado;
             }
 
             dgvClienteVenta.DataSource = listaCliente;
@@ -183,10 +204,12 @@ namespace HandelApp
                         Session.Add("ListaVenta", (negocio.Cargar(id, listaventafinal, proaux.Cantidad, proaux.PrecioFinal)));
 
                     }
+                    lblMensajestock.Visible = false;
                 }
                 else
                 {
-                    lblMensaje.Text = "La compra excede el stock disponible.";
+                    lblMensajestock.Text = "La compra excede el stock disponible.";
+                    lblMensajestock.Visible = true;
                 }
 
             }
@@ -254,7 +277,20 @@ namespace HandelApp
 
         protected void btnAgregarFactura_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NuevaFactura.aspx");
+            ///1) GUARDAR EL OBJETO EN BASE DE DATOS
+            Venta ventaBD = new Venta();
+
+            ventaBD.DiaVenta = DateTime.Today;
+            ventaBD.TotalVenta = decimal.Parse(TxtPrecioTotal.Text, NumberStyles.Currency);
+            ventaBD.ClienteVenta = (Cliente)Session["ListaCliente"];
+            ventaBD.ProductoVenta = (List<Producto>)Session["ListaVenta"];
+            ventaBD.UsuarioVenta = (Usuario)Session["usuario"];
+
+
+            ///2) MODIFICAR STOCK DE LOS PRODUCTOS
+            ///
+            Response.Redirect("NuevaFactura.aspx",false);
         }
+
     }
 }

@@ -13,5 +13,6 @@ namespace dominio
         public Cliente ClienteVenta { get; set; }
         public Usuario UsuarioVenta { get; set; }
         public decimal TotalVenta { get; set; }
+        public DateTime DiaVenta { get; set; }
     }
 }
